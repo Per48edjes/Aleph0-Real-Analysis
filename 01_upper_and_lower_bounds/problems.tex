@@ -1,7 +1,8 @@
 \section{Upper and Lower Bounds}
 
 \begin{problem}\label{prob:bounded-convergent}
-  Prove that if $a$ is an upper bound for $A$, and if $a$ is also an element of $A$, then it must be that $a = \sup{A}$.
+  Prove that if $a$ is an upper bound for $A$, and if $a$ is also an element of $A$, 
+  then it must be that $a = \sup{A}$.
 \end{problem}
 
 \begin{proof}
@@ -22,7 +23,8 @@
 
 
 \begin{problem}\label{prob:sup-subset}
-  Let $A$ and $B$ be nonempty sets. Prove that if $B \subseteq A$, then $\sup{B} \leq \sup{A}$.
+  Let $A$ and $B$ be nonempty sets. Prove that if $B \subseteq A$, then
+  $\sup{B} \leq \sup{A}$.
 \end{problem}
 
 \begin{proof}
@@ -121,25 +123,33 @@
 
       \begin{proof}
 
-        Let $c = -d$ where $d > 0$. Then we can rewrite the set $cA$ as $-dA = \{-da : a \in A\} = -(dA)$. The following lemma will be useful:
+        Let $c = -d$ where $d > 0$. Then we can rewrite the set $cA$ as $-dA = \{-da : a \in A\} = -(dA)$. 
+        The following lemma will be useful:
 
         \begin{lemma} \label{lem:sup-neg-bounded}
-          If $B \subseteq \R$ is nonempty and bounded below, then $\sup(-B) = -\inf B$ where $-B = \{-b : b \in B\}$.
+          If $B \subseteq \R$ is nonempty and bounded below, then $\sup(-B) = -\inf B$ 
+          where $-B = \{-b : b \in B\}$.
         \end{lemma}
 
         \begin{subproof}[Proof of \lemref{lem:sup-neg-bounded}]
-          Let $m = \inf B$, so for every $b \in B$, we have $b \geq m$. Therefore, multiplying both sides by $-1$ (which reverses the inequality) 
-          gives us:
+          Let $m = \inf B$, so for every $b \in B$, we have $b \geq m$.
+          Therefore, multiplying both sides by $-1$ (which reverses the
+          inequality) gives us:
           \[
             -b \leq -m,
           \]
-          so every element of $-B$ is less than or equal to $-m$, thus $-m$ is an upper bound for $-B$. Now, suppose $u < -m$ is an upper bound for $-B$. 
-          Then,  $-u > m$, which means there exists some $b \in B$ with $m \leq b < -u \implies -b > u$ (by the definition of the infimum), so $u$ cannot be an upper bound for $-B$.
+          so every element of $-B$ is less than or equal to $-m$, thus $-m$ is
+          an upper bound for $-B$. Now, suppose $u < -m$ is an upper bound for
+          $-B$. Then,  $-u > m$, which means there exists some $b \in B$ with
+          $m \leq b < -u \implies -b > u$ (by the definition of the infimum),
+          so $u$ cannot be an upper bound for $-B$.
 
           Hence, $-m = -\inf B$ is the least upper bound for $-B$. 
         \end{subproof}
 
-        Invoking \lemref{lem:sup-neg-bounded} and result of \ref{prob:sup-cA}, we have $\sup(-dA) = -d \inf(A)$, and thus, $\sup(cA) = c \inf(A)$ when $c < 0$. 
+        Invoking \lemref{lem:sup-neg-bounded} and result of \ref{prob:sup-cA},
+        we have $\sup(-dA) = -d \inf(A)$, and thus, $\sup(cA) = c \inf(A)$ when
+        $c < 0$. 
 
       \end{proof}
 
@@ -162,3 +172,40 @@
   \]
   and therefore, some $b \in B$ is an upper bound for $A$.
 \end{proof}
+
+\begin{problem} \label{prob:sup-inf-claims}
+  Without worrying about formal proofs for the moment, decide if the following
+  statements about suprema and infima are true or false. For any that are false,
+  supply an example where the claim does not appear to hold.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item A finite, nonempty set always contains its supremum. 
+
+      True
+
+    \item If $a < L$ for every element $a \in A$, then $\sup a < L$.
+
+      True
+
+    \item If $A$ and $B$ are sets with the property that $a < b$ for every $a
+      \in A$ and $b \in B$, then it follows that $\sup A < \sup B$.
+
+      True
+
+    \item If $\sup A = s$ and $\sup B = t$, then $\sup (A + B) = \sup A + \sup B$.
+      The set $A + B$ is defined as $A + B = \{a + b : a \in A \text{ and } b \in B\}$.
+
+      False. Consider $A = \{ a : a < -3 \}$ and $B = \{ b : b < 0 \}$, so
+      $\sup A = -3$ and $\sup B = 0$. Then $\sup(A + B) = 0 \neq -3 = \sup(A) +
+      \sup(B)$.
+
+    \item If $\sup A \leq \sup B$, then there exists an element of $b \in B$
+      that is an upper bound for $A$. 
+
+      False. Consider $A = B = \{ x : 0 < x < 1 \}$. Then $\sup A = \sup B = 1$,
+      but no element of $b \in B$ is an upper bound for $A$ because no element
+      in $b$ is greater than or equal to $1$.
+
+  \end{enumerate}
+
+\end{problem}
