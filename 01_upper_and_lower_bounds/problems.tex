@@ -1,0 +1,19 @@
+\section{Upper and Lower Bounds}
+
+\begin{problem}\label{prob:bounded-convergent}
+  Prove that if $a$ is an upper bound for $A$, and if $a$ is also an element of $A$, then it must be that $a = \sup{A}$.
+\end{problem}
+
+\begin{proof}
+  To establish that $a = \sup{A}$, we must show that:
+  \begin{enumerate}
+    \item $a$ is an upper bound for $A$, and \label{item:upper-bound}
+    \item $a \leq b$ for any upper bound $b$ of $A$. \label{item:least-upper-bound}
+  \end{enumerate}
+
+  Note that (\ref{item:upper-bound}) is given by the problem statement, so we
+  only need to show (\ref{item:least-upper-bound}). Immediately, $a$ is the
+  least upper bound of $A$ because any $b > a$ (whilst being an upper bound of
+  $A$) would not be the \textit{least} upper bound since $a$ is a smaller upper bound.
+
+\end{proof}

@@ -1,0 +1,29 @@
+% Common math symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\eps}{\varepsilon}
+
+% Problem environment with local numbering per section
+\newcounter{problem}[section]
+\renewcommand{\theproblem}{\thesection.\arabic{problem}}
+\newenvironment{problem}{%
+  \refstepcounter{problem}%
+  \paragraph{Problem \theproblem.}%
+}{}
+
+% Theorem styles
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+% Reference convenience
+\newcommand{\eqnref}[1]{Equation~(\ref{#1})}
+\newcommand{\secref}[1]{Section~\ref{#1}}
+\newcommand{\thmref}[1]{Theorem~\ref{#1}}
+\newcommand{\lemref}[1]{Lemma~\ref{#1}}
+\newcommand{\corref}[1]{Corollary~\ref{#1}}
