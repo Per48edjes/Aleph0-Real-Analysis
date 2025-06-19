@@ -28,8 +28,14 @@
 \newcommand{\lemref}[1]{Lemma~\ref{#1}}
 \newcommand{\corref}[1]{Corollary~\ref{#1}}
 
+% Custom function convenience
+\newcommand{\diam}[1]{\text{diam}(#1)}
+
 % Subproof environment with black QED
 \usepackage{xcolor}
 \newenvironment{subproof}[1][Proof]
   {\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}\begin{proof}[#1]}
   {\end{proof}}
+
+% "Callout" box
+\newtcolorbox{callout}[1][]{colback=yellow!10!white, colframe=red!50!black, fonttitle=\bfseries, title=#1}

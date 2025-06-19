@@ -242,3 +242,23 @@
 \begin{proof}
   See proof of \lemref{lem:sup-neg-bounded} in \ref{prob:sup-inf-linear-transformation}\ref{prob:sup-cA-negative}.
 \end{proof}
+
+\begin{problem}
+  For a bounded set $A \subset \R$, define its diameter as $\diam{A} = \sup A -
+  \inf A$. Prove that for any bounded sets $A$ and $B$, $\diam{A \cup B} \leq
+  \diam{A} + \diam{B}$ if and only if there exists $c \in A \cap B$.
+\end{problem}
+
+\begin{callout}
+  This claim is incorrect. Consider $A = \{2, 4, 6, 8\}$ and $B = \{1, 3, 5, 7, 9, 11 \}$.
+  Then, $\diam{A \cup B} \leq \diam{A} + \diam{B}$ even when $\nexists c \in A \cap B$. 
+\end{callout}
+
+\begin{problem}
+  Let $A$ be a nonempty subset of $\R$ that is bounded above. Define 
+  $S = \{ x : x \text{ is an upper bound for } A \}$. Prove that $\inf S = \sup A$.
+\end{problem}
+
+\begin{proof}
+  TBC.
+\end{proof}
