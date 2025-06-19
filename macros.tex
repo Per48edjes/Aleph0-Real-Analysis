@@ -27,3 +27,9 @@
 \newcommand{\thmref}[1]{Theorem~\ref{#1}}
 \newcommand{\lemref}[1]{Lemma~\ref{#1}}
 \newcommand{\corref}[1]{Corollary~\ref{#1}}
+
+% Subproof environment with black QED
+\usepackage{xcolor}
+\newenvironment{subproof}[1][Proof]
+  {\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}\begin{proof}[#1]}
+  {\end{proof}}
