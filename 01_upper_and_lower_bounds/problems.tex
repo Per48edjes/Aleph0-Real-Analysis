@@ -126,7 +126,7 @@
         Let $c = -d$ where $d > 0$. Then we can rewrite the set $cA$ as $-dA = \{-da : a \in A\} = -(dA)$. 
         The following lemma will be useful:
 
-        \begin{lemma} \label{lem:sup-neg-bounded}
+        \begin{lemma}\label{lem:sup-neg-bounded}
           If $B \subseteq \R$ is nonempty and bounded below, then $\sup(-B) = -\inf B$ 
           where $-B = \{-b : b \in B\}$.
         \end{lemma}
@@ -147,7 +147,7 @@
           Hence, $-m = -\inf B$ is the least upper bound for $-B$. 
         \end{subproof}
 
-        Invoking \lemref{lem:sup-neg-bounded} and result of \ref{prob:sup-cA},
+        Invoking \lemref{lem:sup-neg-bounded} and the result from \ref{prob:sup-cA},
         we have $\sup(-dA) = -d \inf(A)$, and thus, $\sup(cA) = c \inf(A)$ when
         $c < 0$. 
 
@@ -209,3 +209,36 @@
   \end{enumerate}
 
 \end{problem}
+
+\begin{problem}
+  Let $A$ and $B$ be nonempty subsets of $\R$ with $A$ bounded above and $B$
+  bounded below. Define the set $A - B = \{ a - b : a \in A, b \in B\}$.
+  Prove that $\sup(A-B) = \sup A - \inf B$.
+\end{problem}
+
+\begin{proof}
+  Let $s = \sup A - \inf B$. First, we see that $s$ is an upper bound
+  for $A - B$ since there does not exist any $x \in A - B$ such that $x > s$.
+
+  Now we must show that $s$ is the \textit{least} upper bound for $A - B$. Suppose,
+  to the contrary, that $\exists u \in \R$ such that $x \leq u < s$ for any $x \in A - B$.
+  Then, $\exists \eps > 0$ satisfying $s - \eps = u$, giving:
+  \begin{align*}
+    u = s - \eps &= \sup A - \inf B - \eps \\
+                 &= (\sup A - \frac{\eps}{2}) - (\inf B + \frac{\eps}{2}). \\ 
+  \end{align*}
+  Notice that, by definition of the supremum and infimum, respectively,
+  $\exists a' \in A$ such that $a' > (\sup A - \frac{\eps}{2})$ and $\exists b'
+  \in B$ such that $b' < (\inf B + \frac{e}{2})$, which results in a
+  contradiction: $u < a' - b' \in A - B$. Therefore, $s$ must be the least
+  upper bound for $A - B$.
+\end{proof}
+
+\begin{problem}
+  Prove that for any nonempty set $S$ of real numbers that is bounded below,
+  $\inf S = - \sup(-S)$, where $-S = \{ -s : s \in S\}$.
+\end{problem}
+
+\begin{proof}
+  See proof of \lemref{lem:sup-neg-bounded} in \ref{prob:sup-inf-linear-transformation}\ref{prob:sup-cA-negative}.
+\end{proof}
