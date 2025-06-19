@@ -1,5 +1,3 @@
-# README.md
-
 # Aleph 0 Real Analysis
 
 This repository contains artifacts from the [Aleph 0](https://aleph0.substack.com/about) real analysis course as taught in 2H25.
