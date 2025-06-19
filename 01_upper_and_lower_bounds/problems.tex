@@ -18,5 +18,21 @@
   bound), and any $b < a$ cannot be a smaller upper bound of $A$ (since $a$ is an
   element of $A$ and thus $b$ would not be greater than or equal to all
   elements of $A$).
+\end{proof}
 
+
+\begin{problem}\label{prob:sup-subset}
+  Let $A$ and $B$ be non-empty sets. Prove that if $B \subseteq A$, then $\sup{B} \leq \sup{A}$.
+\end{problem}
+
+\begin{proof}
+  Let $a = \sup{A}$ and $b = \sup{B}$. We need to show that $b \leq a$.
+
+  Since $B \subseteq A$, every element of $B$ is also an element of $A$. Thus,
+  by the definition of supremum, $b$ must be less than or equal to any upper
+  bound of $A$. Since $a$ is an upper bound for $A$, we have:
+  \[
+    b \leq a.
+  \]
+  Therefore, we conclude that $\sup{B} \leq \sup{A}$.
 \end{proof}
