@@ -12,6 +12,8 @@ This repository contains artifacts from the [Aleph 0](https://aleph0.substack.co
 make
 ```
 
+(Requires TeX Live 2024.)
+
 ### Clean auxiliary files
 
 ```bash
@@ -30,7 +32,7 @@ make purge
 make release
 ```
 
-(Requires GitHub CLI tool `gh` installed and authenticated)
+(Requires GitHub CLI tool `gh` installed and authenticated.)
 
 ## Structure
 
