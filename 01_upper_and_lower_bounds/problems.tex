@@ -91,7 +91,8 @@
     \item If $c \geq 0$, show that $\sup(cA) = c \sup A$. \label{prob:sup-cA}
 
       \begin{proof}
-        Let $s = \sup A$. Since $A$ is nonempty and bounded above, $s$ exists. We will show that $c s$ is an upper bound for $cA$, and then we will show that it is the least upper bound.
+        Let $s = \sup A$. Since $A$ is nonempty and bounded above, $s$ exists. We will show that $c s$ is an upper bound for $cA$, and then 
+        we will show that it is the least upper bound.
 
         For every $a \in A$, we have $a \leq s$. Therefore, multiplying both sides by $c \geq 0$ gives us:
         \[
@@ -127,7 +128,8 @@
         \end{lemma}
 
         \begin{subproof}[Proof of \lemref{lem:sup-neg-bounded}]
-          Let $m = \inf B$, so for every $b \in B$, we have $b \geq m$. Therefore, multiplying both sides by $-1$ (which reverses the inequality) gives us:
+          Let $m = \inf B$, so for every $b \in B$, we have $b \geq m$. Therefore, multiplying both sides by $-1$ (which reverses the inequality) 
+          gives us:
           \[
             -b \leq -m,
           \]
@@ -143,3 +145,20 @@
 
   \end{enumerate}
 \end{problem}
+
+\begin{problem} \label{prob:sup-upper-bound}
+  If $\sup A < \sup B$, then show that there exists some $b \in B$ that is an upper bound for $A$.
+\end{problem}
+
+\begin{proof}
+  Let $s_A = \sup A$ and $s_B = \sup B$. Since $s_A < s_B$, there exists some
+  $\eps$ such that $s_B - s_A > \eps > 0$. 
+
+  Notice that there exists some $b \in B$ such that $s_B - \eps < b \leq s_B$
+  (by the definition of the supremum) and $s_B - \eps > s_A$, so taken together
+  we have some $b \in B$ that is an upper bound for $A$ because for every $a \in A$, we have
+  \[
+    a \leq s_A < s_B - \eps < b,
+  \]
+  and therefore, some $b \in B$ is an upper bound for $A$.
+\end{proof}
