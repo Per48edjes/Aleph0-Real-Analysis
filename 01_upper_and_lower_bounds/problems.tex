@@ -260,5 +260,16 @@
 \end{problem}
 
 \begin{proof}
-  TBC.
+  We argue by contraction that $\inf S = \sup A$:
+  \begin{itemize}
+    \item If we let $\eps = \sup A - \inf S > 0$ and $c = \inf S +
+      \frac{\eps}{2} = \sup A - \frac{\eps}{2}$, then there exists some
+      element $a' \in A$ where $a' > c$ and some element $x' \in S$ such that $x' < b$, which
+      results in $a' > x'$, contradicting the fact that $S = \{ x : \forall a \in A. x \geq a \}$ 
+      only contains upper bounds of $A$.
+    \item $\inf S$ cannot be greater than $\sup A$ because then there would
+      exist some point $c$ such that $\inf B > c > \sup A$, implying $c$ is an upper bound of $A$ 
+      but not in $S$ -- a contradiction.
+  \end{itemize}
+  Hence, $\inf S = \sup A$.
 \end{proof}
