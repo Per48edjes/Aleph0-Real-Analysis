@@ -321,7 +321,7 @@
   \]
   Since $S$ is nonempty and finite, there exists a maximum element $M \in S$
   such that $M \geq s$ for all $s \in S$. However, $M < x_{2}$ and $M, x_{2} \in \R$, 
-  so by \ref{prob:density-rationals-in-reals}, there exists $M' \in \Q$ 
+  so by the claim made in \probref{prob:density-rationals-in-reals}, there exists $M' \in \Q$ 
   such that $M < M' < x_{2}$. This leads to a contradiction:
   \begin{itemize}
     \item $M$ is the maximum rational number between $x_{1}$ and $x_{2}$, but
@@ -330,4 +330,62 @@
   Therefore, our assumption that there are finitely many rational numbers
   between $x_{1}$ and $x_{2}$ is false. Hence, there are infinitely many rational
   numbers between any two distinct real numbers.
+\end{proof}
+
+\begin{problem}\label{prob:density-irrationals-in-reals}
+  Prove that between any two distinct real numbers, there exists a irrational number.
+\end{problem}
+
+\begin{proof}
+  We start by proving two, useful lemmas that will aid us later in the proof.
+
+    \begin{lemma}\label{lem:rationals-closed-under-addition-multiplication}
+      If $a, b \in \Q$, then $a + b \in \Q$ and $ab \in \Q$.
+    \end{lemma}
+
+      \begin{subproof}[Proof of \lemref{lem:rationals-closed-under-addition-multiplication}]
+        Let $a, b \in \Q$ be arbitrary. We may express $a = \frac{p_{a}}{q_{a}}$ and $b = \frac{p_{b}}{q_{b}}$, 
+        where $p_{a}, p_{b} \in \Z$ and $q_{a}, q_{b} \in \N$ such that $\gcd(p_{a}, q_{a}) = 1$ and $\gcd(p_{b}, q_{b}) = 1$.
+        First, we can show that $ab \in \Q$:
+        \[
+          ab = \frac{p_{a}p_{b}}{q_{a}q_{b}},
+        \]
+        and $p_{a}p_{b} \in \Z$ and $q_{a}q_{b} \in \N$ with $\gcd(p_{a}p_{b}, q_{a}q_{b}) = 1$, so $ab \in \Q$.
+
+        Secondly, we can show that $a + b \in \Q$:
+        \[
+          a + b = \frac{p_{a}}{q_{b}} + \frac{p_{b}}{q_{a}} = \frac{p_{a}q_{b} + p_{b}q_{a}}{q_{a}q_{b}}
+        \]
+        and $p_{a}q_{b} + p_{b}q_{a} \in \Z$ and $q_{a}q_{b} \in \N$ with 
+        $\gcd(p_{a}q_{b} + p_{b}q_{a}, q_{a}q_{b}) = 1$, so $a + b \in \Q$.
+
+        Therefore, the rationals are closed under addition and multiplication. 
+      \end{subproof}
+
+    \begin{lemma}\label{lem:rational-irrational-addition-multiplication}
+      If $a \in \Q$ and $b \in \I$\footnotemark{}, then $a + b \in \I$ and $ab \in \I$ as long as $a \neq 0$.
+    \end{lemma}
+    \footnotetext{$\I$ is defined as $\R \setminus \Q$.}
+
+    \begin{subproof}[Proof of \lemref{lem:rational-irrational-addition-multiplication}]
+      Let $\Q \ni a \neq 0$ and $b \in \I$ be arbitrary. 
+      First, suppose (to find a contradiction) that $a + b \in \Q$. By \lemref{lem:rationals-closed-under-addition-multiplication}:
+      \[
+        (a + b) - a = b \implies b \in \Q,
+      \]
+      which is not true, so $a + b \not\in \Q \implies a + b \in \I$.
+
+      Similarly, suppose $ab \in \Q$ whenever $a \neq 0$. By \lemref{lem:rationals-closed-under-addition-multiplication}:
+      \[
+        ab \left( \frac{1}{a} \right) = b \implies b \in \Q,
+      \]
+      which contradicts our assumption, so (when $a \neq 0$), $ab \not\in \Q \implies ab \in \I$.
+    \end{subproof}
+
+    Take the real numbers $a < b$ to be arbitrary. Suppose, to the contrary, that $\forall t.\ a < t < b \implies t \in \Q$. 
+    Let $t' = t - \sqrt{2}$, so by \lemref{lem:rational-irrational-addition-multiplication}, $t' \in \I$ for all $t'$ where 
+    $a - \sqrt{2} < t' < b - \sqrt{2}$, which contradicts the result from \probref{prob:density-rationals-in-reals}.
+
+    Therefore, there must exist an irrational number between any two distinct real numbers.
+
 \end{proof}
