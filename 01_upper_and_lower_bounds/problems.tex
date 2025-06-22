@@ -265,11 +265,48 @@
     \item If we let $\eps = \sup A - \inf S > 0$ and $c = \inf S +
       \frac{\eps}{2} = \sup A - \frac{\eps}{2}$, then there exists some
       element $a' \in A$ where $a' > c$ and some element $x' \in S$ such that $x' < b$, which
-      results in $a' > x'$, contradicting the fact that $S = \{ x : \forall a \in A. x \geq a \}$ 
+      results in $a' > x'$, contradicting the fact that $S = \{ x : \forall a \in A.\ x \geq a \}$ 
       only contains upper bounds of $A$.
     \item $\inf S$ cannot be greater than $\sup A$ because then there would
       exist some point $c$ such that $\inf B > c > \sup A$, implying $c$ is an upper bound of $A$ 
       but not in $S$ -- a contradiction.
   \end{itemize}
   Hence, $\inf S = \sup A$.
+\end{proof}
+
+\begin{problem}
+  Show that between any two distinct real numbers, there is a rational number.
+\end{problem}
+
+
+\begin{proof}
+  Without loss of generality, consider arbitrary $x_{1}, x_{2} \in \R$ with
+  $x_{1} < x_{2}$. For convenience, we define $\Delta = x_{2} - x_{1}$. Notice
+  that if $\Delta > 1$, $\exists r \in \Z$ such that $x_1 < r < x_2$. We must
+  show that $\exists r \in \Q$ such that $x_{1} < r < x_{2}$ when $\Delta \leq 1$.
+
+  Consider the case when $\Delta \leq 1$ and $x_{1} \in \Q$ or $x_{2} \in \Q$:
+  \begin{itemize}
+    \item If $x_{1} \in \Q$, and we let $S = \{ 1/n : n \in \N, n > 0 \}$ and
+      $0 < \eps < \Delta$, then $\exists s \in S$ such that 
+      $x_{1} < x_{1} + s < x_{1} + \inf S + \eps = x_{1} + \eps < x_{2}$ (by the definition 
+      of the infimum). Notice that $x_1 + s \in \Q$, so we have some rational 
+      $r = x_{1} + s$ such that $x_{1} < r < x_{2}$. 
+    \item A similar argument can be made when $x_{2} \in \Q$. Let $-S = \{ -1/n : n \in \N, n > 0 \}$
+      and $0 < \eps < \Delta$: $\exists s \in -S$ such that 
+      $x_{1} < x_{2} + \sup(-S) - \eps = x_{2} - \eps < x_{2} + s < x_{2}$ 
+      (by the definition of the supremum). So, $\Q \ni r = x_{2} + s$ satisfies $x_{1} < r < x_{2}$.
+  \end{itemize}
+
+  Finally, we have the case when $\Delta \leq 1$ and $x_{1}, x_{2} \not\in \Q$.
+  In the subcase where $\lceil x_{2} \rceil - \lfloor x_{1} \rfloor > 1$,
+  we have $x_{1} < r = \lceil x_{1} \rceil = \lfloor x_{2} \rfloor < x_{2}$ 
+  (since $r \in \Z$), so the remainder of the proof concerns itself with the
+  last subcase (i.e., when $\lceil x_{2} \rceil - \lfloor x_{1} \rfloor = 1$).
+
+  Let $n \in \N$ so that $\frac{1}{n} < \Delta$ (such a $n$ exists by the Archimedean property). 
+  Then, $\exists k \in \Z$ such that $x_{1} < \frac{k}{n} < x_{2}$ because $nx_{1} < k < nx_{2}$, 
+  where $k$ is some integer (owing to the fact that $n \cdot \Delta > 1$). 
+  Since $\frac{k}{n} \in \Q$, we have found some rational $r = \frac{k}{n}$ such that $x_{1} < r < x_{2}$. 
+
 \end{proof}
