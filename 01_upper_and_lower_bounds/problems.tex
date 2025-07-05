@@ -298,9 +298,12 @@
   last subcase (i.e., when $\lceil x_{2} \rceil - \lfloor x_{1} \rfloor = 1$).
 
   Let $n \in \N$ so that $\frac{1}{n} < \Delta$ (such an $n$ exists by the Archimedean property). 
-  Then, $\exists k \in \Z$ such that $x_{1} < \frac{k}{n} < x_{2}$ because $nx_{1} < k < nx_{2}$, 
-  where $k$ is some integer (owing to the fact that $n \cdot \Delta > 1$). 
-  Since $\frac{k}{n} \in \Q$, we have found some rational $r = \frac{k}{n}$ such that $x_{1} < r < x_{2}$. 
+  Then, owing to the fact that $n \cdot \Delta > 1$, $\exists k \in \Z$ such that 
+  $nx_{1} < k < nx_{2} \implies x_{1} < \frac{k}{n} < x_{2}$. Since $\frac{k}{n} \in \Q$,
+  we have found some rational $r = \frac{k}{n}$ such that $x_{1} < r < x_{2}$.
+
+  Having shown the existence of a rational number between a pair of real numbers separated by any distance $\Delta$,
+  we may conclude that between any two distinct real numbers, there exists a rational number.
 \end{proof}
 
 \begin{problem}\label{prob:infinite-rationals-in-reals}
