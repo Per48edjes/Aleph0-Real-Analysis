@@ -75,19 +75,15 @@
         \[
           c + a \leq c + s,
         \]
-        so every element of $c + A$ is less than or equal to $c + s$. This shows that $c + s$ is an upper bound for $c + A$.
+        so every element of $c + A$ is less than or equal to $c + s$, demonstrating that $c + s$ is an upper bound for $c + A$.
 
-        Next, suppose for sake of contradiction that $c + s$ is not the \textit{least} upper bound for $c + A$.
-        This would mean $b = \sup(c + A) < c + s$ for some $b \in \R$. By the definition of the supremum, there exists some $a \in A$ such that:
+        Next, suppose for sake of contradiction that $c + s$ is not the \textit{least} upper bound for $c + A$, and instead
+        $b = \sup(c + A)$, so $c + a < b < c + s$ for all $a \in A$. Then,
         \[
-          b - c < a,
-        \] 
-        and adding $c$ to both sides gives us:
-        \[
-          b < a + c,
+          \forall a \in A.\, a < b - c < s,
         \]
-        resulting in a contradiction since $c + a \in c + A$ and $b$ is supposed to be an upper bound for $c + A$.
-        Therefore, no such $b$ can exist, and we conclude that $c + s$ is indeed the least upper bound for $c + A$.
+        which yields a contradiction: $b-c \in \R$ is a smaller upperbound of $A$ than $s = \sup A$.
+        Hence, $c + s$ is indeed the least upper bound for $c + A$.
       \end{proof}
 
     \item If $c \geq 0$, show that $\sup(cA) = c \sup A$. \label{prob:sup-cA}
@@ -103,20 +99,17 @@
         so every element of $cA$ is less than or equal to $cs$. This shows that $cs$ is an upper bound for $cA$. 
         Next, we proceed by casework on the value of $c$ to show that $cs$ is the least upper bound.
 
-        When $c > 0$, let us suppose for sake of contradiction that $cs$ is not the \textit{least} upper bound for $cA$. 
-        This means $b = \sup(cA) < cs$ for some $b \in \R$. First, consider when $c > 0$. Dividing through by $c > 0$ gives us:
+        When $c > 0$, let us suppose for sake of contradiction that $cs$ is not the \textit{least} upper bound 
+        for $cA$, i.e., letting $\sup(cA) = b$, we have $ca < b < cs$ for all $a \in A$. First, consider when $c > 0$. Dividing through 
+        by $c > 0$ gives us:
         \[
-          \frac{b}{c} < s,
+          \forall a \in A.\, a < \frac{b}{c} < s,
         \]
-        so there exists some $a \in A$ such that:
-        \[
-          a > \frac{b}{c} \implies ca > b.
-        \]
-        However, a contradiction is reached because $ca \in cA$ and $b$ is supposed to be an upper bound for $cA$.
+        which yields a contradiction: $\frac{b}{c} \in \R$ is a smaller upperbound of $A$ than $s = \sup A$.
 
-        Now consider the case when $c = 0$. In this case, $cA = \{0\}$, and thus $\sup(cA) = 0 = cs$. 
+        Next, consider the case when $c = 0$. Then, $cA = \{0\}$, and thus $\sup(cA) = b = 0 = cs$. 
 
-        Therefore, in both cases, we conclude that $cs$ is indeed the least upper bound for $cA$.
+        In either case, we conclude that $cs$ is indeed the least upper bound for $cA$.
       \end{proof}
 
     \item If $c < 0$, show that $\sup(cA) = c \inf A$. \label{prob:sup-cA-negative}
@@ -133,16 +126,16 @@
 
         \begin{subproof}[Proof of \lemref{lem:sup-neg-bounded}]
           Let $m = \inf B$, so for every $b \in B$, we have $b \geq m$.
-          Therefore, multiplying both sides by $-1$ (which reverses the
+          Multiplying both sides by $-1$ (which reverses the
           inequality) gives us:
           \[
-            -b \leq -m,
+            \forall b \in B.\, -b \leq -m.
           \]
-          so every element of $-B$ is less than or equal to $-m$, thus $-m$ is
+          Every element of $-B$ is less than or equal to $-m$, thus $-m$ is
           an upper bound for $-B$. Now, suppose $u < -m$ is an upper bound for
-          $-B$. Then,  $-u > m$, which means there exists some $b \in B$ with
-          $m \leq b < -u \implies -b > u$ (by the definition of the infimum),
-          so $u$ cannot be an upper bound for $-B$.
+          $-B$. Then,  $-u > m$, which means there exists some $b' \in B$ with
+          $m \leq b' < -u$ by the definition of the infimum.
+          But $-b' \in -B$ and $-b' > u$, contradicting the fact that $u$ is an upperbound for $-B$.
 
           Hence, $-m = -\inf B$ is the least upper bound for $-B$. 
         \end{subproof}
