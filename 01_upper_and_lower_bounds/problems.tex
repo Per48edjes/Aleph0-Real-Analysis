@@ -279,21 +279,22 @@
 \end{problem}
 
 \begin{proof}
-  Without loss of generality, consider arbitrary $x_{1}, x_{2} \in \R$ with
+  Without loss of generality, let $x_{1}, x_{2} \in \R$ with
   $x_{1} < x_{2}$. For convenience, we define $\Delta = x_{2} - x_{1}$. Notice
-  that if $\Delta > 1$, $\exists r \in \Z$ such that $x_1 < r < x_2$. We must
-  show that $\exists r \in \Q$ such that $x_{1} < r < x_{2}$ when $\Delta \leq 1$.
+  that if $\Delta > 1$, $\exists r \in \Z \subset \Q$ such that $x_1 < r < x_2$. So, 
+  we just need to show that $\exists r \in \Q$ such that $x_{1} < r < x_{2}$ when 
+  $\Delta \leq 1$.
 
   Consider the case when $\Delta \leq 1$ and $x_{1} \in \Q$ or $x_{2} \in \Q$:
   \begin{itemize}
     \item If $x_{1} \in \Q$, and we let $S = \{ 1/n : n \in \N, n > 0 \}$ and
       $0 < \eps < \Delta$, then $\exists s \in S$ such that 
-      $x_{1} < x_{1} + s < x_{1} + \inf S + \eps = x_{1} + \eps < x_{2}$ (by the definition 
+      $x_{1} < x_{1} + s < x_{1} + (\inf S + \eps) < x_{2}$ (by the definition 
       of the infimum). Notice that $x_1 + s \in \Q$, so we have some rational 
       $r = x_{1} + s$ such that $x_{1} < r < x_{2}$. 
     \item A similar argument can be made when $x_{2} \in \Q$. Let $-S = \{ -1/n : n \in \N, n > 0 \}$
       and $0 < \eps < \Delta$: $\exists s \in -S$ such that 
-      $x_{1} < x_{2} + \sup(-S) - \eps = x_{2} - \eps < x_{2} + s < x_{2}$ 
+      $x_{1} < x_{2} + (\sup(-S) - \eps) < x_{2} + s < x_{2}$ 
       (by the definition of the supremum). So, $\Q \ni r = x_{2} + s$ satisfies $x_{1} < r < x_{2}$.
   \end{itemize}
 
@@ -303,7 +304,7 @@
   (since $r \in \Z$), so the remainder of the proof concerns itself with the
   last subcase (i.e., when $\lceil x_{2} \rceil - \lfloor x_{1} \rfloor = 1$).
 
-  Let $n \in \N$ so that $\frac{1}{n} < \Delta$ (such a $n$ exists by the Archimedean property). 
+  Let $n \in \N$ so that $\frac{1}{n} < \Delta$ (such an $n$ exists by the Archimedean property). 
   Then, $\exists k \in \Z$ such that $x_{1} < \frac{k}{n} < x_{2}$ because $nx_{1} < k < nx_{2}$, 
   where $k$ is some integer (owing to the fact that $n \cdot \Delta > 1$). 
   Since $\frac{k}{n} \in \Q$, we have found some rational $r = \frac{k}{n}$ such that $x_{1} < r < x_{2}$. 
@@ -368,7 +369,7 @@
     \footnotetext{$\I$ is defined as $\R \setminus \Q$.}
 
     \begin{subproof}[Proof of \lemref{lem:rational-irrational-addition-multiplication}]
-      Let $\Q \ni a \neq 0$ and $b \in \I$ be arbitrary. 
+      Let $a \in \Q$ with $a \neq 0$ and $b \in \I$ be arbitrary. 
       First, suppose (to find a contradiction) that $a + b \in \Q$. By \lemref{lem:rationals-closed-under-addition-multiplication}:
       \[
         (a + b) - a = b \implies b \in \Q,
