@@ -181,29 +181,30 @@
   \begin{enumerate}[label=(\alph*)]
     \item A finite, nonempty set always contains its supremum. 
 
-      True
+      True.
 
     \item If $a < L$ for every element $a \in A$, then $\sup a < L$.
 
-      True
+      False. It could be the case that $\sup A = L$. For example, let
+      \[
+        A = \{ a : a < 1 \}.
+      \]
 
     \item If $A$ and $B$ are sets with the property that $a < b$ for every $a
       \in A$ and $b \in B$, then it follows that $\sup A < \sup B$.
 
-      True
+      True.
 
     \item If $\sup A = s$ and $\sup B = t$, then $\sup (A + B) = \sup A + \sup B$.
       The set $A + B$ is defined as $A + B = \{a + b : a \in A \text{ and } b \in B\}$.
 
-      False. Consider $A = \{ a : a < -3 \}$ and $B = \{ b : b < 0 \}$, so
-      $\sup A = -3$ and $\sup B = 0$. Then $\sup(A + B) = 0 \neq -3 = \sup(A) +
-      \sup(B)$.
+      True. 
 
     \item If $\sup A \leq \sup B$, then there exists an element of $b \in B$
       that is an upper bound for $A$. 
 
       False. Consider $A = B = \{ x : 0 < x < 1 \}$. Then $\sup A = \sup B = 1$,
-      but no element of $b \in B$ is an upper bound for $A$ because no element
+      but no element $b \in B$ is an upper bound for $A$ because no element
       in $b$ is greater than or equal to $1$.
 
   \end{enumerate}
