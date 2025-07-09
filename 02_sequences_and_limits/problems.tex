@@ -7,7 +7,7 @@
   \begin{enumerate}[label=(\alph*)]
     \item $\lim\limits_{n \to \infty} \frac{1}{6n^{2} + 1} = 0$.
 
-      Let $\eps > 0$ be given. We need to find $N$ such that for all $n > N$, we have 
+      Let $\eps > 0$ be given. We need to find $N \in \N$ such that for all $n > N$, we have 
       \[
         \abs{\frac{1}{6n^{2} + 1}} < \eps.
       \]
@@ -18,7 +18,7 @@
 
     \item $\lim\limits_{n \to \infty} \frac{3n + 1}{2n + 5} = \frac{3}{2}$.
 
-      Let $\eps > 0$ be given. We need to find $N$ such that for all $n > N$, we have 
+      Let $\eps > 0$ be given. We need to find $N \in \N$ such that for all $n > N$, we have 
       \[
         \abs{\frac{3n + 1}{2n + 5} - \frac{3}{2}} < \eps.
       \]
@@ -51,7 +51,7 @@
     Since $\lim\limits_{n \to \infty} \abs{a_{n}} = 0$, for every $\eps > 0$, there exists $N$ 
     such that for all $n > N$, we have
     \[
-      \abs{\lvert a_{n} \rvert} = \abs{a_{n}} < \eps,
+      \abs{ \abs{ a_{n} } } = \abs{a_{n}} < \eps,
     \]
     which is precisely the definition of convergence of the sequence $(a_{n})$ to $0$, i.e., 
     $\lim\limits_{n \to \infty} a_{n} = 0$.
@@ -89,21 +89,36 @@
   Let $(a_{n})$ be a sequence and $L$ be a real number. Prove that
   $\lim\limits_{n \to \infty} a_{n} = L$ iff $\lim\limits_{n \to \infty} \abs{a_{n} - L} = 0$.
 
-\begin{proof}
-  Recall that $\lim\limits_{n \to \infty} a_n = L$ means that for all $\eps > 0$, there exists $N \in \N$ such that for all $n > N$,
-  \[
-    \abs{a_{n} - L} < \eps.
-  \]
-  But this is exactly the definition of $\lim\limits_{n \to \infty} |a_n - L| = 0$, since
-  \[
-    \abs{\abs{a_{n} - L} - 0} = \abs{a_{n} - L}.
-  \]
-  Thus, the two statements are equivalent.
-\end{proof}
-
+  \begin{proof}
+    Recall that $\lim\limits_{n \to \infty} a_n = L$ means that for all $\eps > 0$, there exists $N \in \N$ such that for all $n > N$,
+    \[
+      \abs{a_{n} - L} < \eps.
+    \]
+    But this is exactly the definition of $\lim\limits_{n \to \infty} |a_n - L| = 0$, since
+    \[
+      \abs{\abs{a_{n} - L} - 0} = \abs{a_{n} - L}.
+    \]
+    Thus, the two statements are equivalent.
+  \end{proof}
 \end{problem}
 
 \begin{problem}
   If $(a_{n})$ is a convergent sequence, with $\lim\limits_{n \to \infty} a_{n} = L$, prove that
   $\abs{a_{n}}$ converges as well. Does $\abs{a_{n}}$ necessarily converge to $\abs{L}$?
+
+  \begin{proof}
+    Since $\lim\limits_{n \to \infty} a_n = L$, for every $\eps > 0$, there exists $N \in \N$ such that for all $n > N$,
+    \[
+      \abs{a_{n} - L} < \eps.
+    \]
+    By the reverse triangle inequality, we have
+    \[
+    \abs{\abs{a_{n}} - \abs{L}} \leq \abs{a_{n} - L} < \eps.
+    \]
+    Therefore, $\lim\limits_{n \to \infty} \abs{a_{n}} = \abs{L}$, and so $(\abs{a_{n}})$ converges to $\abs{L}$\footnotemark.
+  \end{proof}
+  \footnotetext{
+    This result is consistent with the fact that $f(x) = \abs{x}$ is continuous everywhere in $\R$ and
+    by continuity, $\lim\limits_{n \to \infty} \abs{a_{n}} = \lim\limits_{n \to \infty} f(a_n) = f(\lim\limits_{n \to \infty} a_n) = \abs{L}$.
+  }
 \end{problem}
