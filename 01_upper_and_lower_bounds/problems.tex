@@ -379,10 +379,17 @@
       which contradicts our assumption, so (when $a \neq 0$), $ab \not\in \Q \implies ab \in \I$.
     \end{subproof}
 
-    Take the real numbers $a < b$ to be arbitrary. Suppose, to the contrary, that $\forall t.\ a < t < b \implies t \in \Q$. 
-    Let $t' = t - \sqrt{2}$, so by \lemref{lem:rational-irrational-addition-multiplication}, $t' \in \I$ for all $t'$ where 
-    $a - \sqrt{2} < t' < b - \sqrt{2}$, which contradicts the result from \probref{prob:density-rationals-in-reals}.
+    Take arbitrary real numbers $a < b$. Suppose, for the sake of contradiction, that every real number between $a$ and $b$ 
+    is rational; that is,
+    \[
+    \forall t \in (a, b),\ t \in \Q.
+    \]
+    Now consider the interval $(a - \sqrt{2}, b - \sqrt{2})$. For any real number $t'$ in this interval, define 
+    $t = t' + \sqrt{2}$. Then $t \in (a, b)$, and by assumption, $t \in \Q$. By \lemref{lem:rational-irrational-addition-multiplication}, 
+    since $\sqrt{2} \notin \Q$, it follows that $t' \in \I$. Therefore, every point in the interval $(a - \sqrt{2}, b - \sqrt{2})$ 
+    must be irrational. This contradicts \probref{prob:density-rationals-in-reals}, which states that the rationals are dense 
+    in $\R$: every open interval contains a rational number.
 
-    Therefore, there must exist an irrational number between any two distinct real numbers.
+    Therefore, our assumption must be false and there must exist an irrational number between any two distinct real numbers.
 
 \end{proof}

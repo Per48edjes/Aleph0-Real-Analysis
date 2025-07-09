@@ -5,7 +5,7 @@
   sequences converge to the proposed limit.
 
   \begin{enumerate}[label=(\alph*)]
-    \item $\lim\limits_{n \to \infty} \frac{1}{6n^{2} + 1} = 0$.
+    \item $\lim\limits_{n \to \infty} \dfrac{1}{6n^{2} + 1} = 0$
 
       Let $\eps > 0$ be given. We need to find $N \in \N$ such that for all $n > N$, we have 
       \[
@@ -16,7 +16,7 @@
         \abs{\frac{1}{6n^{2} + 1}} = \frac{1}{6n^{2} + 1} < \frac{1}{6 \left( \sqrt{\frac{1}{6}(\frac{1}{\eps} - 1)} \right)^{2} + 1} = \eps.
       \]
 
-    \item $\lim\limits_{n \to \infty} \frac{3n + 1}{2n + 5} = \frac{3}{2}$.
+    \item $\lim\limits_{n \to \infty} \dfrac{3n + 1}{2n + 5} = \dfrac{3}{2}$
 
       Let $\eps > 0$ be given. We need to find $N \in \N$ such that for all $n > N$, we have 
       \[
@@ -121,4 +121,22 @@
     This result is consistent with the fact that $f(x) = \abs{x}$ is continuous everywhere in $\R$ and
     by continuity, $\lim\limits_{n \to \infty} \abs{a_{n}} = \lim\limits_{n \to \infty} f(a_n) = f(\lim\limits_{n \to \infty} a_n) = \abs{L}$.
   }
+\end{problem}
+
+\begin{problem}
+  Verify, using the definition of convergence, that the following sequences converge to the proposed limit.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item $\lim\limits_{n \to \infty} \dfrac{n^{2} + 1}{2n^{2} + 3} = \dfrac{1}{2}$
+    \item $\lim\limits_{n \to \infty} \dfrac{3^{n}}{3^{n} + 2^{n}} = 1$
+    \item $\lim\limits_{n \to \infty} \dfrac{\sin n}{n} = 0$
+  \end{enumerate}
+
+\end{problem}
+
+\begin{problem}
+  % WARN: Typesetting in the problem set is not yet confirmed. This is the best guess!
+  Consider the sequence $a_{n}$ defined by $a_{n} = \dfrac{(-1)^{n} n}{n + 1}$.
+  Determine whether this sequence converges or diverges. If it converges, find
+  its limit.
 \end{problem}
