@@ -1,0 +1,109 @@
+\section{Sequences and Limits}
+
+\begin{problem}
+  Verify, using the definition of convergence of a sequence, that the following
+  sequences converge to the proposed limit.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item $\lim\limits_{n \to \infty} \frac{1}{6n^{2} + 1} = 0$.
+
+      Let $\eps > 0$ be given. We need to find $N$ such that for all $n > N$, we have 
+      \[
+        \abs{\frac{1}{6n^{2} + 1}} < \eps.
+      \]
+      Choose $N > \sqrt{\frac{1}{6}(\frac{1}{\eps} - 1)}$. Then for all $n > N$,
+      \[
+        \abs{\frac{1}{6n^{2} + 1}} = \frac{1}{6n^{2} + 1} < \frac{1}{6 \left( \sqrt{\frac{1}{6}(\frac{1}{\eps} - 1)} \right)^{2} + 1} = \eps.
+      \]
+
+    \item $\lim\limits_{n \to \infty} \frac{3n + 1}{2n + 5} = \frac{3}{2}$.
+
+      Let $\eps > 0$ be given. We need to find $N$ such that for all $n > N$, we have 
+      \[
+        \abs{\frac{3n + 1}{2n + 5} - \frac{3}{2}} < \eps.
+      \]
+      Simplifying the expression, we have
+      \[
+        \abs{\frac{3n + 1}{2n + 5} - \frac{3}{2}} = \abs{\frac{6n + 2 - 6n - 15}{2(2n + 5)}} = \abs{\frac{-13}{2(2n + 5)}} = \frac{13}{2(2n + 5)},
+      \]
+      so having $N$ large enough such that
+      \[
+        \frac{13}{2(2N + 5)} < \eps
+      \]
+      is sufficient. Rearranging the inequality gives 
+      \[
+        2(2N + 5) > \frac{13}{\eps} \implies N > \frac{13}{4\eps} - \frac{5}{2}.
+      \]
+      Thus, we can choose $N > \max\left(0, \frac{13}{4\eps} - \frac{5}{2}\right)$ to 
+      guarantee that for all $n > N$,
+      \[
+        \abs{\frac{3n + 1}{2n + 5} - \frac{3}{2}} < \eps.
+      \]
+  \end{enumerate}
+
+\end{problem}
+
+\begin{problem}
+  Let $(a_{n})$ be a sequence. Prove that if $\lim\limits_{n \to \infty} \abs{a_{n}} = 0$, 
+  then $\lim\limits_{n \to \infty} a_{n} = 0$.
+
+  \begin{proof}
+    Since $\lim\limits_{n \to \infty} \abs{a_{n}} = 0$, for every $\eps > 0$, there exists $N$ 
+    such that for all $n > N$, we have
+    \[
+      \abs{\lvert a_{n} \rvert} = \abs{a_{n}} < \eps,
+    \]
+    which is precisely the definition of convergence of the sequence $(a_{n})$ to $0$, i.e., 
+    $\lim\limits_{n \to \infty} a_{n} = 0$.
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Let $(a_{n})$ be a sequence. Prove that if $\lim\limits_{n \to \infty} a_{n} = L$ 
+  and $\lim\limits_{n \to \infty} a_{n+1} = M$, then $L = M$.
+
+  \begin{proof}
+    Suppose to the contrary that $L \neq M$. Without loss of generality, assume $L < M$. Then
+    we can choose $\eps = \frac{M - L}{2} > 0$. By the definition of convergence, there exists $N_{1}$ such that for all $n > N_{1}$,
+    \[
+      \abs{a_{n} - L} < \frac{M - L}{2},
+    \]
+    and there exists $N_{2}$ such that for all $n > N_{2}$,
+    \[
+      \abs{a_{n+1} - M} < \frac{M - L}{2}.
+    \]
+    Let $N = \max(N_{1}, N_{2})$. For all $n > N$, we have
+    \begin{equation}
+      a_{n} < L + \frac{M - L}{2} = \frac{L + M}{2} \quad \text{and} \quad a_{n+1} > M - \frac{M - L}{2} = \frac{L + M}{2}. \label{eqn:contradiction-limits-are-unique}
+    \end{equation}
+    Since $\{ a_{n} : n > N \}$ and $\{ a_{n+1} : n > N \}$ are tails of the same sequence, they must share some common element,
+    but \eqref{eqn:contradiction-limits-are-unique} implies that $\{ a_{n} : n > N \} \cap \{ a_{n+1} : n > N \} = \emptyset$.
+
+    Having reached a contradiction, our assumption that $L \neq M$ must be false, and we conclude that $L = M$.
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Let $(a_{n})$ be a sequence and $L$ be a real number. Prove that
+  $\lim\limits_{n \to \infty} a_{n} = L$ iff $\lim\limits_{n \to \infty} \abs{a_{n} - L} = 0$.
+
+\begin{proof}
+  Recall that $\lim\limits_{n \to \infty} a_n = L$ means that for all $\eps > 0$, there exists $N \in \N$ such that for all $n > N$,
+  \[
+    \abs{a_{n} - L} < \eps.
+  \]
+  But this is exactly the definition of $\lim\limits_{n \to \infty} |a_n - L| = 0$, since
+  \[
+    \abs{\abs{a_{n} - L} - 0} = \abs{a_{n} - L}.
+  \]
+  Thus, the two statements are equivalent.
+\end{proof}
+
+\end{problem}
+
+\begin{problem}
+  If $(a_{n})$ is a convergent sequence, with $\lim\limits_{n \to \infty} a_{n} = L$, prove that
+  $\abs{a_{n}}$ converges as well. Does $\abs{a_{n}}$ necessarily converge to $\abs{L}$?
+\end{problem}
