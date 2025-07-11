@@ -128,15 +128,83 @@
 
   \begin{enumerate}[label=(\alph*)]
     \item $\lim\limits_{n \to \infty} \dfrac{n^{2} + 1}{2n^{2} + 3} = \dfrac{1}{2}$
+
+      Let $\eps > 0$ be given. We need to find $N \in \N$ such that for all $n > N$, we have 
+      \[
+        \abs{\frac{n^{2} + 1}{2n^{2} + 3} - \frac{1}{2}} < \eps.
+      \]
+      Simplifying the expression, we have
+      \[
+        \abs{\frac{n^{2} + 1}{2n^{2} + 3} - \frac{1}{2}} = \abs{\frac{2n^{2} + 2 - 2n^{2} - 3}{2(2n^{2} + 3)}} = \abs{\frac{-1}{4n^{2} + 6}} = \frac{1}{4n^{2} + 6},
+      \]
+      so having $N$ large enough such that
+      \[
+        \frac{1}{4N^{2} + 6} < \eps
+      \]
+      is sufficient. Rearranging the inequality gives 
+      \[
+        N > \sqrt{\frac{1}{4}(\frac{1}{\eps} - 6)}.
+      \]
+      Thus, we can choose $N > \sqrt{\frac{1}{4}(\frac{1}{\eps} - 6)}$ to 
+      guarantee that for all $n > N$,
+      \[
+        \abs{\frac{n^{2} + 1}{2n^{2} + 3} - \frac{1}{2}} < \eps.
+      \]
+
     \item $\lim\limits_{n \to \infty} \dfrac{3^{n}}{3^{n} + 2^{n}} = 1$
+
+      Let $\eps > 0$ be given. We need to find $N \in \N$ such that for all $n > N$, we have 
+      \[
+        \abs{\frac{3^{n}}{3^{n} + 2^{n}} - 1} < \eps.
+      \]
+      Simplifying the expression, we have
+      \[
+        \abs{\frac{3^{n}}{3^{n} + 2^{n}} - 1} = \abs{\frac{1 - (1 + \left( \frac{2}{3} \right)^{n})}{1 + \left( \frac{2}{3} \right)^{n}}} = \frac{\left( \frac{2}{3} \right)^{n}}{1 + \left( \frac{2}{3} \right)^{n}} < \eps.
+      \]
+      Notice that if $\eps \geq 1$, $N = 1$ is sufficient, so we restrict our attention to when $\eps < 1$.
+      
+      If we can find some $N$ satisfying
+      \[
+        \left(\frac{2}{3}\right)^{N} < \eps,
+      \]
+      we are done because for all $N \in \N$,
+      \[
+        \frac{\left( \frac{2}{3} \right)^{N}}{1 + \left( \frac{2}{3} \right)^{N}} < \left(\frac{2}{3}\right)^{N}.
+      \]
+      Taking the natural logarithm of both sides, we obtain
+      \[ 
+        N \ln{ \left( \frac{2}{3} \right) } < \ln{\eps} \implies N > \frac{\ln (\eps)}{\ln \left( \frac{2}{3} \right)}.
+      \]
+      Thus, we can choose $N > \frac{\ln (\eps)}{\ln \left( \frac{2}{3} \right)}$ to guarantee that for all $n > N$,
+      \[
+        \abs{\frac{3^{n}}{3^{n} + 2^{n}} - 1} < \eps.
+      \]
+
     \item $\lim\limits_{n \to \infty} \dfrac{\sin n}{n} = 0$
+
+      Let $\eps > 0$ be given. We need to find $N \in \N$ such that for all $n > N$, we have 
+      \[
+        \abs{\frac{\sin n}{n}} < \eps.
+      \]
+      If we can find some $N$ satisfying
+      \[
+        \frac{1}{N} < \eps,
+      \]
+      we are done because for all $N \in \N$,
+      \[
+        \abs{\frac{\sin N}{N}} < \dfrac{1}{N}.
+      \]
+      Choosing $N > \dfrac{1}{\eps}$ guarantees that for all $n > N$,
+      \[
+        \abs{\frac{\sin n}{n}} < \eps.
+      \]
+
   \end{enumerate}
 
 \end{problem}
 
 \begin{problem}
-  % WARN: Typesetting in the problem set is not yet confirmed. This is the best guess!
-  Consider the sequence $a_{n}$ defined by $a_{n} = \dfrac{(-1)^{n} n}{n + 1}$.
+  Consider the sequence $(a_{n})$ defined by $a_{n} = \dfrac{(-1)^{n} n}{n + 1}$.
   Determine whether this sequence converges or diverges. If it converges, find
   its limit.
 \end{problem}
