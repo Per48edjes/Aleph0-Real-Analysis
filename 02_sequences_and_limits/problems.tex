@@ -207,4 +207,26 @@
   Consider the sequence $(a_{n})$ defined by $a_{n} = \dfrac{(-1)^{n} n}{n + 1}$.
   Determine whether this sequence converges or diverges. If it converges, find
   its limit.
+
+  \vspace{\baselineskip}
+
+  This sequence diverges because there are at least two, distinct accumulation points: $-1$ and
+  $1$, which are made evident when considering the following two subsequences
+  of $(a_{n})$:
+  \begin{enumerate}[label=(\roman*)]
+    \item $(a_{2k - 1}) = (-\frac{1}{2}, -\frac{3}{4}, -\frac{5}{6}, \ldots)$, i.e., the odd-indexed terms of the $(a_{n})$
+    \item $(a_{2k}) = (\frac{2}{3}, \frac{4}{5}, \frac{6}{7} \ldots)$, i.e., the even-indexed terms of the $(a_{n})$
+  \end{enumerate}
+  By the definition of convergence, it can be shown that $(a_{2k - 1})$
+  converges to $-1$ and $(a_{2k})$ converges to $1$. Thus, there does not 
+  exist a unique $L \in \R$ such that 
+  \[
+    \forall \eps > 0.\, \exists N \in \N.\, n > N \implies \abs{a_{n} - L} < \eps.
+  \]
+  To demonstrate this, let $\eps = \frac{1}{10}$ and suppose $L = 1$. But, it is clear that no $N \in \N$ satisfies
+  $\abs{a_{n} - 1} < \frac{1}{10}$ because, for any choice of $N$, we can always find some term of $(a_{2k - 1})$ 
+  not in $(1 - \frac{1}{10}, 1 + \frac{1}{10})$. (Equivalently, for any choice of $N$, there exists some 
+  $n = 2k - 1 > N$ such that $\abs{a_{n} - 1} \nless \eps$.) Thus, $L \neq 1$. A similar argument can be made 
+  (i.e., no satisfying $N$ exists) if we were to let $\eps = -\frac{1}{10}$ and suppose $L = -1$.
+
 \end{problem}
