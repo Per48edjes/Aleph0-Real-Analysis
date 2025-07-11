@@ -342,19 +342,18 @@
 
       \begin{subproof}[Proof of \lemref{lem:rationals-closed-under-addition-multiplication}]
         Let $a, b \in \Q$ be arbitrary. We may express $a = \frac{p_{a}}{q_{a}}$ and $b = \frac{p_{b}}{q_{b}}$, 
-        where $p_{a}, p_{b} \in \Z$ and $q_{a}, q_{b} \in \N$ such that $\gcd(p_{a}, q_{a}) = 1$ and $\gcd(p_{b}, q_{b}) = 1$.
+        where $p_{a}, p_{b} \in \Z$ and $q_{a}, q_{b} \in \N$.
         First, we can show that $ab \in \Q$:
         \[
           ab = \frac{p_{a}p_{b}}{q_{a}q_{b}},
         \]
-        and $p_{a}p_{b} \in \Z$ and $q_{a}q_{b} \in \N$ with $\gcd(p_{a}p_{b}, q_{a}q_{b}) = 1$, so $ab \in \Q$.
+        because $p_{a}p_{b} \in \Z$ and $q_{a}q_{b} \in \N$, so $ab \in \Q$.
 
         Secondly, we can show that $a + b \in \Q$:
         \[
           a + b = \frac{p_{a}}{q_{b}} + \frac{p_{b}}{q_{a}} = \frac{p_{a}q_{b} + p_{b}q_{a}}{q_{a}q_{b}}
         \]
-        and $p_{a}q_{b} + p_{b}q_{a} \in \Z$ and $q_{a}q_{b} \in \N$ with 
-        $\gcd(p_{a}q_{b} + p_{b}q_{a}, q_{a}q_{b}) = 1$, so $a + b \in \Q$.
+        because $p_{a}q_{b} + p_{b}q_{a} \in \Z$ and $q_{a}q_{b} \in \N$.
 
         Therefore, the rationals are closed under addition and multiplication. 
       \end{subproof}
