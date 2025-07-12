@@ -3,12 +3,19 @@
 \begin{problem}
   Let $P_{n} = \{ 1, 2, \dots, n \}$, and for any nonempty subset $S \subseteq P_{n}$, define
   \[
-    v(S) = \dfrac{1}{\abs{S}} \sum_{s \in S} s, \quad \Scal_{n} = \{ v(A) - v(B) : A \cup B = P_n,\ A \cap B = \emptyset,\ A, B \neq \emptyset \},
+    v(S) = \dfrac{1}{|S|} \sum_{s \in S} s. 
   \]
-  and $\diam{\Scal_{n}} = \sup \Scal_{n} - \inf \Scal_{n}.$
+  Also, define 
+  \[
+    \Scal_{n} = \{ v(A) - v(B) : A \cup B = P_n,\ A \cap B = \emptyset,\ A, B \neq \emptyset \},
+  \]
+  and 
+  \[
+    \diam{\Scal_{n}} = \sup \Scal_{n} - \inf \Scal_{n}.
+  \]
   Show that $\lim\limits_{n \to \infty} \frac{\diam{\Scal_{n}}}{n} = 1$.
 
-  \begin{callout}[Note]
+  \begin{callout}
     This is a slightly modified version of the problem posted by the user \texttt{chris\_34203}
     on the \href{https://discord.com/channels/1381996954237800608/1381996954673745932/1393174128432906357}{Aleph 0 Math Membership} Discord server.
   \end{callout}
@@ -42,9 +49,8 @@
   \]
   Therefore, we have the desired upper bound for $\sup \Scal_{n}$ since $A, B$ were arbitrary:
   \[
-    v(A) - v(B) = \frac{S_A}{k} - \frac{S_B}{n - k} \le \frac{2n - k + 1}{2} - \frac{n - k + 1}{2} = \frac{n}{2},
+    v(A) - v(B) = \frac{S_A}{k} - \frac{S_B}{n - k} \le \frac{2n - k + 1}{2} - \frac{n - k + 1}{2} = \frac{n}{2} \implies \sup \Scal_{n} \le \frac{n}{2}.
   \]
-  so $\sup \Scal_{n} \le \frac{n}{2}$. 
 
   Thus, we have shown $\frac{n}{2} \leq \sup \Scal_{n} \leq \frac{n}{2} \implies \diam{\Scal_{n}} = n$, and consequently,
   the limit follows.
