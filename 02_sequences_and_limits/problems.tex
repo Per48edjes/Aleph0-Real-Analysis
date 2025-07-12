@@ -11,6 +11,7 @@
       \[
         \abs{\frac{1}{6n^{2} + 1}} < \eps.
       \]
+      Notice that if $\eps \geq 1$, then $N = 1$ is sufficient, so we restrict our attention to when $\eps < 1$.
       Choose $N > \sqrt{\frac{1}{6}(\frac{1}{\eps} - 1)}$. Then for all $n > N$,
       \[
         \abs{\frac{1}{6n^{2} + 1}} = \frac{1}{6n^{2} + 1} < \frac{1}{6 \left( \sqrt{\frac{1}{6}(\frac{1}{\eps} - 1)} \right)^{2} + 1} = \eps.
@@ -141,7 +142,8 @@
       \[
         \frac{1}{4N^{2} + 6} < \eps
       \]
-      is sufficient. Rearranging the inequality gives 
+      is sufficient. Notice that if $\eps \geq \frac{1}{6}$, then $N = 1$ is sufficient, so we restrict our 
+      attention to when $\eps < \frac{1}{6}$. Rearranging the inequality gives 
       \[
         N > \sqrt{\frac{1}{4}(\frac{1}{\eps} - 6)}.
       \]
