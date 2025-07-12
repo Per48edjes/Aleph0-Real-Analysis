@@ -208,25 +208,46 @@
   Determine whether this sequence converges or diverges. If it converges, find
   its limit.
 
-  \vspace{\baselineskip}
+  \begin{proof}
+    We will show that $(a_{n})$ diverges. To begin, we will establish the following lemma:
+    
+    \begin{lemma} \label{lem:convergence-of-subsequences-iff-convergence-of-sequence}
+      Sequence $(a_{n})$ converges to $L$ if and only if all subsequences of $(a_{n})$ converge to $L$.
+    \end{lemma}
 
-  This sequence diverges because there are at least two, distinct accumulation points: $-1$ and
-  $1$, which are made evident when considering the following two subsequences
-  of $(a_{n})$:
-  \begin{enumerate}[label=(\roman*)]
-    \item $(a_{2k - 1}) = (-\frac{1}{2}, -\frac{3}{4}, -\frac{5}{6}, \ldots)$, i.e., the odd-indexed terms of the $(a_{n})$
-    \item $(a_{2k}) = (\frac{2}{3}, \frac{4}{5}, \frac{6}{7} \ldots)$, i.e., the even-indexed terms of the $(a_{n})$
-  \end{enumerate}
-  By the definition of convergence, it can be shown that $(a_{2k - 1})$
-  converges to $-1$ and $(a_{2k})$ converges to $1$. Thus, there does not 
-  exist a unique $L \in \R$ such that 
-  \[
-    \forall \eps > 0.\, \exists N \in \N.\, n > N \implies \abs{a_{n} - L} < \eps.
-  \]
-  To demonstrate this, let $\eps = \frac{1}{10}$ and suppose $L = 1$. But, it is clear that no $N \in \N$ satisfies
-  $\abs{a_{n} - 1} < \frac{1}{10}$ because, for any choice of $N$, we can always find some term of $(a_{2k - 1})$ 
-  not in $(1 - \frac{1}{10}, 1 + \frac{1}{10})$. (Equivalently, for any choice of $N$, there exists some 
-  $n = 2k - 1 > N$ such that $\abs{a_{n} - 1} \nless \eps$.) Thus, $L \neq 1$. A similar argument can be made 
-  (i.e., no satisfying $N$ exists) if we were to let $\eps = -\frac{1}{10}$ and suppose $L = -1$.
+    \begin{subproof}
+      We will begin by proving the left-to-right implication. Let $(a_{n}) \to L$ 
+      and $(a_{n_{k}})$ be an arbitrary subsequence of $(a_{n})$.
+      Let $\eps > 0$ be given. We want to show that 
+      \[
+        \forall \eps > 0.\, \exists K \in \N.\,  k > K \implies \abs{a_{n_{k}} - L} < \eps.
+      \]
+      By convergence, there exists some $N \in \N$ such that for all $n > N$ we have
+      \[
+        \abs{a_{n} - L} < \eps.
+      \]
+      Now, for any point in $(a_{n_{k}})$, it can be shown (via induction) that 
+      its index $k$ (in the subsequence) is always less than or equal to its
+      corresponding index $n_{k}$ in the parent sequence $(a_{n})$. Let $K = N$. Then, 
+      $k > K = N \implies n_{k} \geq k > N$, so we have found a $K \in \N$ satisfying 
+      \[
+        \abs{a_{n_{k}} - L} < \eps
+      \]
+      whenever $k > K$.
+
+      Finally, the right-to-left implication is proven by using the fact that
+      $(a_{n})$ is a subsequence of itself and the hypothesis that all
+      subsequences of $(a_{n})$ converge to $L$. Hence, $a_{n}$ converges to $L$.
+    \end{subproof}
+
+    Consider the following subsequences:
+    \begin{enumerate}[label=(\roman*)]
+      \item $(a_{2k - 1}) = (-\frac{1}{2}, -\frac{3}{4}, -\frac{5}{6}, \ldots)$, i.e., the odd-indexed terms of the $(a_{n})$
+      \item $(a_{2k}) = (\frac{2}{3}, \frac{4}{5}, \frac{6}{7} \ldots)$, i.e., the even-indexed terms of the $(a_{n})$
+    \end{enumerate}
+    By the definition of convergence, it can be shown that $(a_{2k - 1}) \to -1$ and $(a_{2k}) \to 1$.
+    Hence, by \lemref{lem:convergence-of-subsequences-iff-convergence-of-sequence}, $(a_{n})$ does not converge.
+  \end{proof}
+
 
 \end{problem}
