@@ -1,0 +1,51 @@
+\section{Community Problems}
+
+\begin{problem}
+  Let $P_{n} = \{ 1, 2, \dots, n \}$, and for any nonempty subset $S \subseteq P_{n}$, define
+  \[
+    v(S) = \dfrac{1}{\abs{S}} \sum_{s \in S} s, \quad \Scal_{n} = \{ v(A) - v(B) : A \cup B = P_n,\ A \cap B = \emptyset,\ A, B \neq \emptyset \},
+  \]
+  and $\diam{\Scal_{n}} = \sup \Scal_{n} - \inf \Scal_{n}.$
+  Show that $\lim\limits_{n \to \infty} \frac{\diam{\Scal_{n}}}{n} = 1$.
+
+  \begin{callout}[Note]
+    This is a slightly modified version of the problem posted by the user \texttt{chris\_34203}
+    on the \href{https://discord.com/channels/1381996954237800608/1381996954673745932/1393174128432906357}{Aleph 0 Math Membership} Discord server.
+  \end{callout}
+
+\end{problem}
+
+\begin{proof}
+  We will show $\diam{\Scal_{n}} = n$ for all $n \ge 2$, which immediately implies the limit.
+
+  First, notice the symmetry inherent in $\diam{\Scal_{n}}$: swapping $A$ and $B$ in any partition negates $v(A)-v(B)$, so
+  \[
+    \sup \Scal_{n} = -\inf \Scal_{n} \implies \diam{\Scal_{n}} = 2\sup \Scal_{n}.
+  \]
+
+  Next, we will bound $\sup \Scal_{n}$. Taking $A = \{ n \}$ and $B = P_n \setminus \{ n \}$ gives
+  \[
+    v(A) = n, \quad v(B) = \frac{1 + 2 + \cdots + (n-1)}{n - 1} = \frac{n}{2},
+  \]
+  which provides a lower bound for $\sup \Scal_{n}$ since $A, B$ were fixed:
+  \[
+    v(A) - v(B) = \frac{n}{2} \implies \sup \Scal_{n} \ge \frac{n}{2}.
+  \]
+  To show $\sup \Scal_{n} \le \frac{n}{2}$, choose any disjoint partition $A \cup B = P_{n}$ with $|A| = k$, so $1 \le k \le n - 1$.
+  Let $S_A = \sum_{a \in A} a$ and $S_B = \sum_{b \in B} b$. Then,
+  \[
+    S_{A} \le n + (n-1) + \cdots + (n - k + 1) = \frac{k(2n - k + 1)}{2},
+  \]
+  and
+  \[
+    S_{B} \ge 1 + 2 + \cdots + (n - k) = \frac{(n - k)(n - k + 1)}{2}.
+  \]
+  Therefore, we have the desired upper bound for $\sup \Scal_{n}$ since $A, B$ were arbitrary:
+  \[
+    v(A) - v(B) = \frac{S_A}{k} - \frac{S_B}{n - k} \le \frac{2n - k + 1}{2} - \frac{n - k + 1}{2} = \frac{n}{2},
+  \]
+  so $\sup \Scal_{n} \le \frac{n}{2}$. 
+
+  Thus, we have shown $\frac{n}{2} \leq \sup \Scal_{n} \leq \frac{n}{2} \implies \diam{\Scal_{n}} = n$, and consequently,
+  the limit follows.
+\end{proof}
