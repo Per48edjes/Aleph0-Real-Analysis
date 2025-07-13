@@ -1,4 +1,4 @@
-\section{Community Problems}
+\section{Miscellaneous Problems}
 
 \begin{problem}
   Let $P_{n} = \{ 1, 2, \dots, n \}$, and for any nonempty subset $S \subseteq P_{n}$, define
@@ -55,3 +55,44 @@
   Thus, we have shown $\frac{n}{2} \leq \sup \Scal_{n} \leq \frac{n}{2} \implies \diam{\Scal_{n}} = n$, and consequently,
   the limit follows.
 \end{proof}
+
+\begin{problem}
+  
+  If $\lim\limits_{n \to \infty} a_n = L > 0$, then show that $\lim\limits_{n \to \infty} \sqrt{a_n} = \sqrt{L}$. Be sure to discuss
+  the issue when $\sqrt{a_{n}}$ makes sense.
+
+  \begin{proof}
+    Since $a_{n} \to L > 0$, there exists $N' \in \N$ such that
+    $a_{n} \ge 0$ for all $n > N'$.  Hence every $\sqrt{a_{n}}$ that appears
+    below is real, and $\sqrt{L}$ is real because $L > 0$.
+
+    Let $\eps > 0$ be given. By convergence of $a_{n}$, choose $N \ge N'$ such that
+    for all $n > N$,
+    \[
+      \abs{a_{n} - L}< \eps^{2}.
+    \]
+    Notice that 
+    \begin{align*}
+      \abs{a_{n} - L} &= \abs{(\sqrt{a_n} - \sqrt{L})(\sqrt{a_n} + \sqrt{L})} \\
+                      &= \abs{\sqrt{a_n} - \sqrt{L}}\abs{\sqrt{a_n} + \sqrt{L}} \quad < \eps^{2},
+    \end{align*}
+    and that
+    \[
+      \abs{\sqrt{a_{n}} + \sqrt{L}} \geq \abs{\sqrt{a_n} - \sqrt{L}}.
+    \]
+    Taken together
+    \[
+      \abs{\sqrt{a_{n}} - \sqrt{L}}^{2} \leq \abs{\sqrt{a_{n}} - \sqrt{L}}\abs{\sqrt{a_{n}} + \sqrt{L}} < \eps^{2},
+    \]
+    which implies
+    \[
+      \abs{\sqrt{a_{n}} - \sqrt{L}} < \eps.
+    \]
+
+    Because $\eps > 0$ was arbitrary, we conclude
+    \[
+      \lim_{n \to \infty} \sqrt{a_{n}} = \sqrt{L}.
+    \]
+  \end{proof}
+
+\end{problem}
