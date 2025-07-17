@@ -1,0 +1,111 @@
+\section{Key Theorems about Sequences}
+
+\begin{problem}
+Prove the limit laws for sequences. That is, prove that if
+$(a_{n})_{n=1}^{\infty}$ and $(b_{n})_{n=1}^{\infty}$ are convergent, then:
+
+  \begin{enumerate}[label=(\alph*)]
+    \item $\lim\limits_{n \to \infty} {(a_{n})} + \lim\limits_{n \to \infty} {(b_{n})} = \lim\limits_{n \to \infty} {(a_{n} + b_{n})}$
+
+      \begin{proof}
+
+      \end{proof}
+
+    \item $\lim\limits_{n \to \infty} {(a_{n})} - \lim\limits_{n \to \infty} {(b_{n})} = \lim\limits_{n \to \infty} {(a_{n} - b_{n})}$
+    \item $\lim\limits_{n \to \infty} {(a_{n})} \cdot \lim\limits_{n \to \infty} {(b_{n})} = \lim {(a_{n} \cdot b_{n})}$
+    \item $\lim\limits_{n \to \infty} {(a_{n})} / \lim\limits_{n \to \infty} {(b_{n})} = \lim\limits_{n \to \infty} {(a_{n} / b_{n})}$, provided that $\lim\limits_{n \to \infty} {b_{n}} \neq 0$
+      and $b_{n} \neq 0$ for all $n$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Argue that the sequence $(1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, \ldots)$ does not converge to zero. For what values of $\eps > 0$
+  does there exist a response $N$? For which values of $\eps < 0$ is there no
+  suitable response? 
+
+  \vspace{\baselineskip}
+
+    We see that the definition of convergence (to suggest that the limit of the
+    given sequence equals $0$) is satisfied when $\eps > 1$. However, no $N$
+    exists such that, for all $n > N$, $\abs{a_{n}} < \eps$ whenever $0 < \eps \leq 1$. 
+    (Alternatively, this sequence does not converge because there exists at least
+    two different accumulation points: $1$ and $0$.)
+\end{problem}
+
+\begin{problem}
+  Informally speaking, the sequence $(\sqrt{n})_{n=1}^{\infty}$ ``converges to infinity.''
+
+  \begin{enumerate}[label=(\alph*)]
+      \item Create a rigorous definition for the mathematical statement $\lim\limits_{n \to \infty} x_{n} = \infty$. Use this
+        definition to prove $\lim_{n \to \infty} (\sqrt{n}) = \infty$.
+
+        \begin{definition}[Convergence to $\infty$]
+          \label{def:convergence-to-infty}
+          The sequence $(x_{n})_{n=1}^{\infty}$ converges to $\infty$ if and only if
+          for all $M > 0$, there exists $N \in \N$ such that $x_{n} > M$ 
+          for all $n > N$.
+        \end{definition}
+
+        \begin{proof}
+          Note that $(\sqrt{n})_{n=1}^{\infty}$ is strictly increasing with no upper bound. 
+          Hence, for any $M > 0$, we can always find $N \in \N$ such that $x_{n} > M$ for all $n > N$. 
+          Therefore, by \ref{def:convergence-to-infty}, the sequence $(\sqrt{n})_{n=1}^{\infty}$ 
+          converges to infinity.
+        \end{proof}
+
+      \item What does \defref{def:convergence-to-infty} say about a particular sequence
+        $(1, 0, 2, 0, 3, 0, 4, 0, 5, 0, \ldots)$?
+
+        The subsequence $(0, 0, 0, 0, \ldots)$ is constantly $0$, which means
+        the sequence does not satisfy \defref{def:convergence-to-infty}. Thus
+        the sequence $(1, 0, 2, 0, 3, 0, 4, 0, 5, 0, \ldots)$ does not converge 
+        to infinity. (We can, however, say that this sequence diverges.)
+
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Create a rigorous definition for the mathematical statement $\lim\limits_{n \to \infty} x_{n} = -\infty$.
+  Give an example of a sequence that satisfies this definition. 
+
+    \begin{definition}[Convergence to $-\infty$]
+      \label{def:convergence-to-neg-infty}
+      The sequence $(x_{n})_{n=1}^{\infty}$ converges to $-\infty$ if and only if
+      for all $M < 0$, there exists $N \in \N$ such that $x_{n} < M$ 
+      for all $n > N$.
+    \end{definition}
+
+    An example of a sequence that satisfies \defref{def:convergence-to-neg-infty} is
+    $(-e^{n})_{n=1}^{\infty}$.
+\end{problem}
+
+\begin{problem}
+  Construct a sequence $(a_{n})$ such that $a_{n} > 0$ for all $n \in \N$, $\lim\limits_{n \to \infty} a_{n} = 0$, but
+  $\lim\limits_{n \to \infty} \dfrac{1}{a_{n}} = \infty$.
+
+  \vspace{\baselineskip}
+
+    Let $(a_{n}) = \left( \frac{1}{n} \right)_{n=1}^{\infty}$.
+
+\end{problem}
+
+\begin{problem}
+  Prove or disprove: if $\lim\limits_{n \to \infty} a_{n} = 0$ and $(b_{n})$ is a bounded sequence,
+  then $\lim\limits_{n \to \infty} a_{n}b_{n} = 0$.
+
+  \begin{proof} 
+  \end{proof}
+
+\end{problem}
+
+
+\begin{problem}
+  Let $(a_{n})$ be a sequence such that $a_{n} \geq 0$ for all $n \in \N$. 
+  Prove that if $\sum\limits_{n=1}^{\infty} a_{n}$ converges, then
+  $\lim\limits_{n \to \infty} a_{n} = 0$. Give an example to show that the 
+  converse is false.
+
+  \begin{proof} 
+  \end{proof}
+
+\end{problem}
