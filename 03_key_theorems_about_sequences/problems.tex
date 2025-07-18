@@ -34,14 +34,13 @@ $(a_{n})_{n=1}^{\infty}$ and $(b_{n})_{n=1}^{\infty}$ are convergent, then:
           \begin{align*}
             \abs{x_{n} - L} < \frac{\eps}{\abs{c}} \iff & \abs{c}\abs{x_{n} - L} \\
                                                         &= \abs{c(x_{n} - L)} \\
-                                                        &= \abs{cx_{n} - cL)} < \eps,
+                                                        &= \abs{cx_{n} - cL} < \eps,
           \end{align*}
-          which shows that $N$ satifies the definition of convergence for our arbitrarily chosen 
-          $\eps$.
+          which shows that there exists an $N$ satisfying the definition of convergence (i.e., $(x_{n}) \to cL$) for our arbitrarily chosen $\eps$.
         \end{subproof}
 
         Combining the result of \ref{prob:sum-limit-law} and
-        \lemref{lem:constant-multiplication-limit-law} completes the proof.
+        \lemref{lem:constant-multiplication-limit-law} (viz., letting $c = -1$) completes the proof.
       \end{proof}
 
     \item $\lim\limits_{n \to \infty} {(a_{n})} \cdot \lim\limits_{n \to \infty} {(b_{n})} = \lim\limits_{n \to \infty} {(a_{n}b_{n})}$ 
@@ -69,7 +68,7 @@ $(a_{n})_{n=1}^{\infty}$ and $(b_{n})_{n=1}^{\infty}$ are convergent, then:
           First, we establish that $\abs{\dfrac{1}{(x_{n})}}$ is bounded for
           sufficiently large $n$. Since convergent\footnotemark{} sequences are
           bounded, we have $M' \leq \abs{x_{n}} \leq M$ for sufficiently large $n$
-          (where $M', M > 0$), we have 
+          (where $M', M > 0$), hence, 
           \footnotetext{Note that $\abs{x_{n}}$ converges from the result of
           \probref{prob:abs-value-of-convergent-sequence}.}
           \[
@@ -84,14 +83,14 @@ $(a_{n})_{n=1}^{\infty}$ and $(b_{n})_{n=1}^{\infty}$ are convergent, then:
           $\dfrac{1}{M'} > \abs{\dfrac{1}{x_{n}}}$. By convergence of
           $(x_{n})$, we know that there exists an $N_{2} \in \N$ such that
           \[
-            n > N_{2} \implies \abs{x_{n} - L} < \eps \abs{L} M'.
+            n > N_{2} \implies \abs{x_{n} - L} < \abs{L} (M') \eps.
           \]
           Set $N = \max(N_{1}, N_{2})$, demonstrating that for all $n > N$, we have
           \begin{align*}
             \abs{\dfrac{1}{x_{n}} - \dfrac{1}{L}} &= \abs{\dfrac{L - x_{n}}{x_{n}L}} \\
                                                   &= \abs{\dfrac{1}{L}} \abs{\dfrac{x_{n} - L}{x_{n}}} \\
                                                   &= \abs{\dfrac{1}{L}} \abs{\dfrac{1}{x_{n}}} \abs{x_{n} - L} \\
-                                                  &\leq \abs{\dfrac{1}{L}} \dfrac{1}{M'} \abs{x_{n} - L} \\
+                                                  &\leq \abs{\dfrac{1}{L}} \left( \dfrac{1}{M'} \right) \abs{x_{n} - L} \\
                                                   &< \eps.
           \end{align*}
         \end{subproof}
@@ -104,8 +103,9 @@ $(a_{n})_{n=1}^{\infty}$ and $(b_{n})_{n=1}^{\infty}$ are convergent, then:
 \end{problem}
 
 \begin{problem}
-  Argue that the sequence $(1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, \ldots)$ does not converge to zero. For what values of $\eps > 0$
-  does there exist a response $N$? For which values of $\eps < 0$ is there no
+  Argue that the sequence $(1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, \ldots)$ 
+  does not converge to zero. For what values of $\eps > 0$ does there exist a
+  response $N$? For which values of $\eps < 0$ is there no
   suitable response? 
 
   \vspace{\baselineskip}
@@ -142,7 +142,7 @@ $(a_{n})_{n=1}^{\infty}$ and $(b_{n})_{n=1}^{\infty}$ are convergent, then:
         $(1, 0, 2, 0, 3, 0, 4, 0, 5, 0, \ldots)$?
 
         The subsequence $(0, 0, 0, 0, \ldots)$ is constantly $0$, which means
-        the sequence does not satisfy \defref{def:convergence-to-infty}. Thus
+        the sequence cannot satisfy \defref{def:convergence-to-infty}. So,
         the sequence $(1, 0, 2, 0, 3, 0, 4, 0, 5, 0, \ldots)$ does not converge 
         to infinity. (We can, however, say that this sequence diverges.)
 
