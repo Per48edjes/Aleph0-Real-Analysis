@@ -52,7 +52,7 @@
           This proof was \href{https://youtu.be/Q7MzeAaL7bU?si=uc3L6lvpQXdKwMGI&t=691}{provided}.
         \end{callout}
 
-      \item $\lim\limits_{n \to \infty} {(a_{n})} / \lim\limits_{n \to \infty} {(b_{n})} = \lim\limits_{n \to \infty} {(a_{n} / b_{n})}$, provided that $\lim\limits_{n \to \infty} {b_{n}} \neq 0$
+      \item $\lim\limits_{n \to \infty} {(a_{n})} / \lim\limits_{n \to \infty} {(b_{n})} = \lim\limits_{n \to \infty} {(a_{n} / b_{n})}$, provided that $\lim\limits_{n \to \infty} ({b_{n}}) \neq 0$
         and $b_{n} \neq 0$ for all $n$.
         \label{prob:division-limit-law}
 
@@ -61,7 +61,7 @@
 
           \begin{lemma}
             \label{lem:reciprocals-limit-law}
-            If $x_{n} \neq 0$ for all $n$ and $\lim\limits_{n \to \infty} (x_{n}) = L$ (with $L \neq 0$), then
+            If $x_{n} \neq 0$ for all $n \in \N$ and $\lim\limits_{n \to \infty} (x_{n}) = L$ (with $L \neq 0$), then
             \[
               \lim\limits_{n \to \infty} \dfrac{1}{(x_{n})} = \dfrac{1}{\lim\limits_{n \to \infty} (x_{n})} = \dfrac{1}{L}.
             \]
@@ -70,8 +70,8 @@
           \begin{subproof}[Proof of \lemref{lem:reciprocals-limit-law}]
             First, we establish that $\abs{\dfrac{1}{(x_{n})}}$ is bounded for
             sufficiently large $n$. Since convergent\footnotemark{} sequences are
-            bounded, we have $M' \leq \abs{x_{n}} \leq M$ for sufficiently large $n$
-            (where $M', M > 0$), hence, 
+            bounded and $\abs{L} > 0$ (by the hypothesis), we have $M' \leq \abs{x_{n}} \leq M$
+            for sufficiently large $n$ (where $M', M > 0$). Therefore, 
             \footnotetext{Note that $\abs{x_{n}}$ converges from the result of
             \probref{prob:abs-value-of-convergent-sequence}.}
             \[
@@ -144,8 +144,30 @@
       \item What does \defref{def:convergence-to-infty} say about a particular sequence
         $(1, 0, 2, 0, 3, 0, 4, 0, 5, 0, \ldots)$?
 
-        The subsequence $(0, 0, 0, 0, \ldots)$ is constantly $0$, which means
-        the sequence cannot satisfy \defref{def:convergence-to-infty}. So,
+      
+        We can state a corollary of \defref{def:convergence-to-infty} and use it directly to answer
+        the question.
+
+        \begin{corollary}
+          \label{cor:sequence-to-infty-iff-all-subeq-to-infty}
+          A sequence converges to $\infty$ if and only if every subsequence also
+          converges to $\infty$.
+        \end{corollary}
+
+        \begin{proof}[Proof of \corref{cor:sequence-to-infty-iff-all-subeq-to-infty}]
+          Let $(x_{n})_{n=1}^{\infty}$ be a sequence that converges to $\infty$.
+          Then, for any subsequence $(x_{k_{n}})_{n=1}^{\infty}$, we have
+          \[
+            \forall M > 0, \exists N \in \N.\, x_{k_{n}} > M
+          \]
+          for all $n > N$, which shows that the subsequence also converges to $\infty$.
+
+          Conversely, if every subsequence converges to $\infty$, then we can take the
+          subsequence $(x_{n})$ itself, which must also converge to $\infty$.
+        \end{proof}
+
+        The subsequence $(0, 0, 0, 0, \ldots)$ is constantly $0$, in contradiction to 
+        \corref{cor:sequence-to-infty-iff-all-subeq-to-infty}. So,
         the sequence $(1, 0, 2, 0, 3, 0, 4, 0, 5, 0, \ldots)$ does not converge 
         to infinity. (We can, however, say that this sequence diverges.)
 
@@ -204,7 +226,7 @@
 \begin{problem}
   Let $(a_{n})$ be a sequence such that $a_{n} \geq 0$ for all $n \in \N$. 
   Prove that if $\sum\limits_{n=1}^{\infty} a_{n}$ converges, then
-  $\lim\limits_{n \to \infty} a_{n} = 0$. Give an example to show that the 
+  $\lim\limits_{n \to \infty} (a_{n}) = 0$. Give an example to show that the 
   converse is false.
 
   \begin{proof} 
@@ -213,7 +235,7 @@
     Then, the result of \probref{prob:limit-of-shifted-sequence-equal} and \probref{prob:limit-laws}\ref{prob:subtraction-limit-law}
     gives us
     \[
-      L - L = \lim\limits_{n \to \infty} (s_{n} - s_{n - 1}) = \lim\limits_{n \to \infty} a_{n} = 0.
+      \lim\limits_{n \to \infty} (s_{n} - s_{n - 1}) = L - L = 0 = \lim\limits_{n \to \infty} (a_{n}).
     \]
   \end{proof}
 
