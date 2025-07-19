@@ -70,8 +70,9 @@
           \begin{subproof}[Proof of \lemref{lem:reciprocals-limit-law}]
             First, we establish that $\abs{\dfrac{1}{(x_{n})}}$ is bounded for
             sufficiently large $n$. Since convergent\footnotemark{} sequences are
-            bounded and $\abs{L} > 0$ (by the hypothesis), we have $M' \leq \abs{x_{n}} \leq M$
-            for sufficiently large $n$ (where $M', M > 0$). Therefore, 
+            bounded and $\abs{L} > 0$ (by the hypothesis), there exists $M', M > 0$ 
+            such that $M' \leq \abs{x_{n}} \leq M$ for sufficiently large $n$ (where $M', M > 0$). 
+            Therefore, 
             \footnotetext{Note that $\abs{x_{n}}$ converges from the result of
             \probref{prob:abs-value-of-convergent-sequence}.}
             \[
@@ -137,7 +138,7 @@
         \begin{proof}
           Note that $(\sqrt{n})_{n=1}^{\infty}$ is strictly increasing with no upper bound. 
           Hence, for any $M > 0$, we can always find $N \in \N$ such that $x_{n} > M$ for all $n > N$. 
-          Therefore, by \ref{def:convergence-to-infty}, the sequence $(\sqrt{n})_{n=1}^{\infty}$ 
+          Therefore, by \defref{def:convergence-to-infty}, the sequence $(\sqrt{n})_{n=1}^{\infty}$ 
           converges to infinity.
         \end{proof}
 
@@ -198,7 +199,7 @@
   \vspace{\baselineskip}
 
     Consider $(a_{n}) = \left( \frac{1}{n} \right)_{n=1}^{\infty}$. It is clear that
-    $\lim\limits_{n \to \infty} (a_{n}) = 0$ and that $(1, 2, 3, \ldots)$ ``converges to infinity''.
+    $\lim\limits_{n \to \infty} (a_{n}) = 0$ and that $(1, 2, 3, \ldots)$ converges to infinity.
 
 \end{problem}
 
