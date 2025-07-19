@@ -14,18 +14,23 @@
 % Problem environment with local numbering per section
 \newcounter{problem}[section]
 \renewcommand{\theproblem}{\thesection.\arabic{problem}}
-\newenvironment{problem}{%
-  \refstepcounter{problem}%
-  \paragraph{Problem \theproblem.}%
+\newenvironment{problem}{
+  \refstepcounter{problem}
+  \setcounter{subtheorem}{0} % Reset subtheorem counter at the start of each problem
+  \paragraph{Problem \theproblem.}
 }{}
+
+% Theorem styles within problems
+\newcounter{subtheorem}
+\renewcommand{\thesubtheorem}{\theproblem.\arabic{subtheorem}}
 
 % Theorem styles
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[subtheorem]{Lemma}
+\newtheorem{corollary}[subtheorem]{Corollary}
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
+\newtheorem{definition}[subtheorem]{Definition}
 
 % Reference convenience
 \newcommand{\eqnref}[1]{Equation~(\ref{#1})}
