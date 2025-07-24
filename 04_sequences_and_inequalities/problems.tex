@@ -1,0 +1,220 @@
+\section{Sequences and Inequalities}
+
+\begin{callout}
+  We take the following theorem to be given (as the proof has been \href{https://youtu.be/qmvUCX6vU-E?si=jZBNzDi757yGhokl&t=516}{provided}).
+  \begin{theorem}[Monotone Convergence Theorem]
+  \label{thm:monotone-convergence}
+  Let $(a_n)$ be a sequence of real numbers.
+    \begin{enumerate}[label=(\alph*)]
+      \item If $(a_n)$ is increasing and bounded above, then $(a_n)$ converges, and
+      \[
+        \lim_{n \to \infty} a_n = \sup \{ a_n : n \in \mathbb{N} \}.
+      \]
+      
+      \item If $(a_n)$ is decreasing and bounded below, then $(a_n)$ converges, and
+      \[
+        \lim_{n \to \infty} a_n = \inf \{ a_n : n \in \mathbb{N} \}.
+      \]
+    \end{enumerate}
+  \end{theorem}
+\end{callout}
+
+\begin{problem}
+  Let $c$ be a real number with $\abs{c} < 1$. Use the monotone convergence theorem to show that $c^{n} \to 0$. 
+
+  \begin{proof}
+    Let $(a_{n}) = \abs{c^{n}}$ for some $\abs{c} < 1$. We see that $(a_{n})$ is a monotonically decreasing 
+    sequence, since for all $n \in \N$,
+    \[
+      \frac{a_{n+1}}{a_{n}} = \abs{c} < 1 \implies a_{n+1} < a_{n},
+    \]
+    and that $a_{n} > 0$ for all $n \in \N$, so $0$ is a lower bound for $(a_{n})$. By \thmref{thm:monotone-convergence}, we have 
+    \[
+      \lim_{n \to \infty} (a_{n}) = L \geq 0.
+    \]
+
+    Using the result from \probref{prob:limit-of-shifted-sequence-equal} and \lemref{lem:constant-multiplication-limit-law}, we can write
+    \[
+      L = \lim_{n \to \infty} (a_{n+1}) = \lim_{n \to \infty} (\abs{c}a_{n}) = \abs{c} L.
+    \]
+    Rearranging gives us
+    \[
+      L(1 - \abs{c}) = 0 \implies L = 0,
+    \]
+    so, $(a_{n}) = \abs{c^{n}} \to 0$. 
+
+    Finally, by the result of \probref{prob:seq-converges-iff-abs-diff-converges}, we conclude that $c^{n} \to 0$.
+  \end{proof}
+\end{problem}
+
+\begin{problem}
+  Use the monotone convergence theorem to show that the following sequence is convergent:
+  \[
+    a_{n} = 1 + \frac{1}{2!} + \frac{1}{3!} + \cdots + \frac{1}{n!}.
+  \]
+
+  \begin{proof}
+    We can see that $(a_{n})$ is an increasing sequence, since for all $n \in \N$,
+    \[
+      a_{n+1} = a_{n} + \frac{1}{(n+1)!} > a_{n}.
+    \]
+    We also note that $(a_{n})$ is bounded above by $e$, since
+    \[
+      a_{n} < e = 1 + \frac{1}{2!} + \frac{1}{3!} + \cdots.
+    \]
+    By \thmref{thm:monotone-convergence}, we have
+    \[
+      \lim_{n \to \infty} a_{n} = L \leq e,
+    \]
+    where $L = \sup \{ a_{n} : n \in \N\}$.
+  \end{proof}
+\end{problem}
+
+\begin{problem}
+  Let $(a_{n})$ be the sequence defined by $a_{1} = \sqrt{2}$ and $a_{n+1} = \sqrt{2 + a_{n}}$ for all $n \in \N$.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Show that the sequence is increasing.
+      
+      \begin{proof}
+        We can show that $(a_{n})$ is increasing by induction. Namely, we will show
+        that $a_{n} < a_{n+1}$ for all $n \in \N$. The base case is $n = 1$, where we have
+        \[
+          a_{1} = \sqrt{2} < a_{2} = \sqrt{2 + \sqrt{2}}.
+        \] 
+        In the inductive step, we assume that $a_{n} < a_{n+1}$ for arbitrary $n \in \N$ to show
+        that $a_{n+1} < a_{n+2}$. This gives
+        \[
+          a_{n+1} = \sqrt{2 + a_{n}} < \sqrt{2 + a_{n+1}} = a_{n+2},
+        \]
+      because $f(x) = \sqrt{2 + x}$ is strictly increasing on $[0, \infty)$. Thus, by induction, we have shown that $(a_{n})$ is increasing.
+      \end{proof}
+
+    \item Show that the sequence is bounded above.
+
+      \begin{proof}
+        We can show by induction that $a_{n} < 2$ for all $n \in \N$. The base case is $n = 1$, where we have
+        \[
+          a_{1} = \sqrt{2} < 2.
+        \]
+        In the inductive step, we assume that $a_{n} < 2$ for arbitrary $n \in \N$ to show that $a_{n+1} < 2$. Then,
+        \[
+          a_{n+1} = \sqrt{2 + a_{n}} < \sqrt{2 + 2} = 2,
+        \]
+        so by induction, $a_{n} < 2$ for all $n \in \N$.
+      \end{proof}
+
+    \item Prove that the sequence converges and find its limit. 
+
+      \begin{proof}
+        By \thmref{thm:monotone-convergence}, since $(a_{n})$ is increasing and bounded above, it converges to some limit $L \leq 2$,
+        which we know to be nonnegative since $a_{n} > 0$ for all $n \in \N$.
+
+        First, we can show that $\sqrt{2 + (a_{n})} \to \sqrt{2 + L}$, which will be useful later in the proof.
+        For convenience, we define $\Delta_{n} = \sqrt{2 + a_{n}} - \sqrt{2 + L}$. Then, we want to show
+        that $\lim\limits_{n \to \infty} \Delta_{n} = 0$. Notice that
+        \[
+          \abs{\Delta_{n}} = \frac{\abs{a_{n} - L}}{\sqrt{2 + a_{n}} + \sqrt{2 + L}}.
+        \]
+        The denominator is bounded away from $0$ because
+        \[
+          \sqrt{2 + a_{n}} + \sqrt{2 + L} \geq \sqrt{2 + \sqrt{2}} + \sqrt{2 + L} > 2\sqrt{2} > 0 
+        \]
+        for all $n \in \N$. We can make the numerator arbitrarily small by taking $n$ large enough, since $(a_{n}) \to L$. Thus, we have
+        \[
+          \lim_{n \to \infty} \Delta_{n} = 0 \implies \lim_{n \to \infty} \sqrt{2 + a_{n}} = \sqrt{2 + L}
+        \]
+        by the result of \probref{prob:seq-converges-iff-abs-diff-converges}.
+
+        Finally, leveraging the result of \probref{prob:limit-of-shifted-sequence-equal}, we have
+        \[
+          L = \lim_{n \to \infty} (a_{n}) =  \lim_{n \to \infty} (a_{n+1}) = \lim_{n \to \infty} \sqrt{2 + (a_{n})} = \sqrt{2 + L}.
+        \]
+        Thus, we have $L^{2} = 2 + L$, which rearranges to a quadratic equation: $L^{2} - L - 2 = 0 = (L - 2)(L + 1)$. Since $L \geq 0$, we obtain $L = 2$.
+      \end{proof}
+
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Consider the sequence $(a_{n})$ such that $\abs{a_{n+1} - a_{n}} \leq \dfrac{1}{2^{n}}$ 
+  for all $n \in \N$. Prove that $(a_{n})$ converges.
+
+  \begin{proof}
+    Let $b_{n} = a_{n} - \frac{1}{2^{n-1}}$ and $c_{n} = a_{n} + \frac{1}{2^{n-1}}$
+    for all $n \in \N$. Then we have, for all $n \in \N$,
+    \[
+      b_{n} \leq a_{n} \leq c_{n}.
+    \]
+    We can show that $(b_{n})$ is monotonically increasing:
+    \begin{align*}
+      b_{n+1} - b_{n} &= \left( a_{n+1} - \frac{1}{2^{n}} \right) - \left( a_{n} - \frac{1}{2^{n-1}} \right) \\
+      &= (a_{n+1} - a_{n}) - \left( \frac{1}{2^{n}} - \frac{1}{2^{n-1}} \right) \\
+      &\geq -\frac{1}{2^{n}} + \frac{1}{2^{n}} = 0,
+    \end{align*}
+    and that $(c_{n})$ is monotonically decreasing:
+    \begin{align*}
+      c_{n+1} - c_{n} &= \left( a_{n+1} + \frac{1}{2^{n}} \right) - \left( a_{n} + \frac{1}{2^{n-1}} \right) \\
+      &= (a_{n+1} - a_{n}) + \left( \frac{1}{2^{n}} - \frac{1}{2^{n-1}} \right) \\
+      &\leq \frac{1}{2^{n}} - \frac{1}{2^{n}} = 0.
+    \end{align*}
+    Notice that $(b_{n})$ is bounded above and $(c_{n})$ is bounded below because
+    \[
+      b_{n} \leq c_{1} = a_{1} + 1,
+    \]
+    and 
+    \[
+      c_{n} \geq b_{1} = a_{1} - 1.
+    \]
+    for all $n \in \N$.
+
+    By \thmref{thm:monotone-convergence}, since $(b_{n})$ is increasing and
+    bounded above, it converges to some limit $L_{1} \in \R$, and since $(c_{n})$ is
+    decreasing and bounded below, it converges to some limit $L_{2} \in \R$. Since it can be shown that
+    \[
+      \lim_{n \to \infty} (c_{n} - b_{n}) = \lim_{n \to \infty} \frac{1}{2^{n-2}} = 0 = \lim_{n \to \infty} c_{n} - \lim_{n \to \infty} b_{n} = L_{2} - L_{1}, 
+    \]
+    we know that $L_{1} = L_{2}$. 
+
+    Lastly, we introduce a theorem that will help us complete the proof.
+
+    \begin{theorem}{Squeeze Theorem}
+      \label{thm:squeeze-theorem}
+      Let $(a_{n})$, $(l_{n})$, and $(u_{n})$ be sequences such that for sufficiently large $n \in \N$,
+      \[
+        l_{n} \leq a_{n} \leq u_{n}.
+      \]
+      Also, suppose $\lim\limits_{n \to \infty} l_{n} = L = \lim\limits_{n \to \infty} u_{n}$. 
+      Then, $\lim_{n \to \infty} a_{n} = L$.
+    \end{theorem}
+
+    \begin{subproof}[Proof of \thmref{thm:squeeze-theorem}]
+      For sufficiently large $n \in \N$, we have
+      \[
+        0 \leq a_{n} - l_{n} \leq u_{n} - l_{n} \implies \abs{a_{n} - l_{n}} \leq u_{n} - l_{n}.
+      \]
+      Then, by the result of \probref{prob:limit-laws}\ref{prob:subtraction-limit-law}, 
+      $\lim\limits_{n \to \infty} (u_{n} - l_{n}) = \lim\limits_{n \to \infty} (u_{n}) - \lim\limits_{n \to \infty} (l_{n}) = L - L = 0$.
+      Now, to show that $\lim\limits_{n \to \infty} (a_{n} - l_{n}) = 0$, we
+      can start by letting $\eps > 0$ be abitrary. Since $n$ can be made
+      sufficiently large to satisfy $\abs{u_{n} - l_{n}} < \eps$, we
+      immediately see that
+      \[
+        \abs{a_{n} - l_{n}} \leq \abs{u_{n} - l_{n}} < \eps.
+      \]
+      Therefore, we have $\lim\limits_{n \to \infty} (a_{n} - l_{n}) = 0$.
+      Lastly, we can recover $a_{n} = l_{n} + (a_{n} - l_{n})$, so by the result of \probref{prob:limit-laws}\ref{prob:sum-limit-law}, we have 
+      \[
+        \lim_{n \to \infty} (a_{n}) = \lim_{n \to \infty} (l_{n}) + \lim_{n \to \infty} (a_{n} - l_{n}) = L + 0 = L.
+      \]
+    \end{subproof}
+
+    Hence, by \thmref{thm:squeeze-theorem}, we have $\lim\limits_{n \to \infty} a_{n} = L_{1} = L_{2}$, so $(a_{n})$ converges.
+
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Define the sequence $(a_{n})$ recursively by $a_{n} = 1$ and $a_{n+1} = \dfrac{1}{2} \left( a_{n} + \dfrac{2}{a_{n}} \right)$ for all $n \in \N$. Prove that the sequence converges and find its limit.
+\end{problem}
