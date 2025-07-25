@@ -30,12 +30,12 @@
     \]
     and that $a_{n} > 0$ for all $n \in \N$, so $0$ is a lower bound for $(a_{n})$. By \thmref{thm:monotone-convergence}, we have 
     \[
-      \lim_{n \to \infty} (a_{n}) = L \geq 0.
+      \lim_{n \to \infty} a_{n} = L \geq 0.
     \]
 
     Using the result from \probref{prob:limit-of-shifted-sequence-equal} and \lemref{lem:constant-multiplication-limit-law}, we can write
     \[
-      L = \lim_{n \to \infty} (a_{n+1}) = \lim_{n \to \infty} (\abs{c}a_{n}) = \abs{c} L.
+      L = \lim_{n \to \infty} a_{n+1} = \lim_{n \to \infty} (\abs{c}a_{n}) = \abs{c} L.
     \]
     Rearranging gives us
     \[
@@ -128,7 +128,7 @@
 
         Finally, leveraging the result of \probref{prob:limit-of-shifted-sequence-equal}, we have\footnotemark{}
         \[
-          L = \lim_{n \to \infty} (a_{n}) =  \lim_{n \to \infty} (a_{n+1}) = \lim_{n \to \infty} \sqrt{2 + (a_{n})} = \sqrt{2 + L}.
+          L = \lim_{n \to \infty} a_{n} =  \lim_{n \to \infty} a_{n+1} = \lim_{n \to \infty} \sqrt{2 + (a_{n})} = \sqrt{2 + L}.
         \]
         \footnotetext{
           This result is consistent with the fact that $f(x) = \sqrt{2 + x}$ is continuous on $[0, \infty)$, so
@@ -188,8 +188,8 @@
       \[
         l_{n} \leq a_{n} \leq u_{n}.
       \]
-      Also, suppose $\lim\limits_{n \to \infty} (l_{n}) = L = \lim\limits_{n \to \infty} (u_{n})$. 
-      Then, $\lim\limits_{n \to \infty} (a_{n}) = L$.
+      Also, suppose $\lim\limits_{n \to \infty} l_{n} = L = \lim\limits_{n \to \infty} u_{n}$. 
+      Then, $\lim\limits_{n \to \infty} a_{n} = L$.
     \end{theorem}
 
     \begin{subproof}[Proof of \thmref{thm:squeeze-theorem}]
@@ -198,9 +198,9 @@
         0 \leq a_{n} - l_{n} \leq u_{n} - l_{n} \implies \abs{a_{n} - l_{n}} \leq u_{n} - l_{n}.
       \]
       Then, by the result of \probref{prob:limit-laws}\ref{prob:subtraction-limit-law}, 
-      $\lim\limits_{n \to \infty} (u_{n} - l_{n}) = \lim\limits_{n \to \infty} (u_{n}) - \lim\limits_{n \to \infty} (l_{n}) = L - L = 0$.
+      $\lim\limits_{n \to \infty} (u_{n} - l_{n}) = \lim\limits_{n \to \infty} u_{n} - \lim\limits_{n \to \infty} l_{n} = L - L = 0$.
       Now, to show that $\lim\limits_{n \to \infty} (a_{n} - l_{n}) = 0$, we
-      can start by letting $\eps > 0$ be abitrary. Since $n$ can be made
+      can start by letting $\eps > 0$ be arbitrary. Since $n$ can be made
       sufficiently large to satisfy $\abs{u_{n} - l_{n}} < \eps$, we
       immediately see that
       \[
@@ -209,7 +209,7 @@
       Therefore, we have $\lim\limits_{n \to \infty} (a_{n} - l_{n}) = 0$.
       Lastly, we can recover $a_{n} = l_{n} + (a_{n} - l_{n})$, so by the result of \probref{prob:limit-laws}\ref{prob:sum-limit-law}, we have 
       \[
-        \lim_{n \to \infty} (a_{n}) = \lim_{n \to \infty} (l_{n}) + \lim_{n \to \infty} (a_{n} - l_{n}) = L + 0 = L.
+        \lim_{n \to \infty} a_{n} = \lim_{n \to \infty} l_{n} + \lim_{n \to \infty} (a_{n} - l_{n}) = L + 0 = L.
       \]
     \end{subproof}
 
@@ -220,5 +220,72 @@
 \end{problem}
 
 \begin{problem}
-  Define the sequence $(a_{n})$ recursively by $a_{n} = 1$ and $a_{n+1} = \dfrac{1}{2} \left( a_{n} + \dfrac{2}{a_{n}} \right)$ for all $n \in \N$. Prove that the sequence converges and find its limit.
+  Define the sequence $(a_{n})$ recursively by $a_{1} = 1$ and $a_{n+1} = \dfrac{1}{2} \left( a_{n} + \dfrac{2}{a_{n}} \right)$ for all $n \in \N$. Prove that the sequence converges and find its limit.
+
+  \begin{proof}
+    We claim that for all $n \geq 2$, the sequence satisfies
+    \[
+      \sqrt{2} \leq a_{n+1} \leq a_{n} \leq 2.
+    \]
+    We will prove this by induction on $n$.
+    This result justifies the use of \thmref{thm:monotone-convergence} to show that the sequence converges.
+
+    For the base case $(n = 2)$, we explicitly compute
+    \[
+      a_{2} = \frac{1}{2} \left(1 + \frac{2}{1} \right) = \frac{3}{2}, \qquad
+      a_{3} = \frac{1}{2} \left( \frac{3}{2} + \frac{2}{\frac{3}{2}} \right) = \frac{17}{12},
+    \]
+    and note that
+    \[
+      \sqrt{2} < \frac{17}{12} < \frac{3}{2} < 2,
+    \]
+    verifying that the base case holds.
+
+    Next, in the inductive step, we assume for some $n \geq 2$ that
+    \[
+      \sqrt{2} \leq a_{n+1} \leq a_n \leq 2.
+    \]
+    From the recurrence, we have
+    \[
+      a_{n+2} = \frac{1}{2} \left( a_{n+1} + \frac{2}{a_{n+1}} \right)
+      \implies
+      \frac{a_{n+2}}{a_{n+1}} = \frac{1}{2} \left( 1 + \frac{2}{a_{n+1}^2} \right).
+    \]
+    Since $2 \geq a_{n+1} \geq \sqrt{2} \implies a_{n+1}^{2} \geq 2$, we have 
+    \[
+      \frac{2}{a_{n+1}^2} \leq 1 \implies \frac{a_{n+2}}{a_{n+1}} \leq 1 \implies a_{n+2} \leq a_{n+1} \leq 2.
+    \]
+    To show that $a_{n+2} \geq \sqrt{2}$, we can equivalently show that
+    \[
+      a_{n+2} - \sqrt{2} \geq 0.
+    \]
+    This is demonstrated by
+    \begin{align*}
+      a_{n+2} - \sqrt{2} &= \frac{1}{2} \left( a_{n+1} + \frac{2}{a_{n+1}} \right) - \sqrt{2} \\
+                         &= \frac{a_{n+1}^{2} + 2}{2a_{n+1}} - \sqrt{2} \\ 
+                         &= \frac{a_{n+1}^{2} + 2 - 2\sqrt{2} a_{n+1}}{2 a_{n+1}} \\
+                         &= \frac{(a_{n+1} - \sqrt{2})^2}{2 a_{n+1}} \\
+                         &\geq 0,
+    \end{align*}
+    where the last step follows from the fact that $a_{n+1} \geq \sqrt{2}$.
+    Thus, the induction step holds, and we have shown that for all $n \geq 2$,
+    \[
+      \sqrt{2} \leq a_{n+1} \leq a_n \leq 2.
+    \]
+
+    Finally, applying \thmref{thm:monotone-convergence} gives us that the
+    sequence converges to some $L \geq \sqrt{2}$. Taking the limit of both
+    sides of the recurrence and applying the various results of
+    \probref{prob:limit-laws} gives
+    \[
+      L = \lim_{n \to \infty} a_{n+1} = \lim_{n \to \infty} \frac{1}{2} \left( a_n + \frac{2}{a_n} \right)
+      = \frac{1}{2} \left( L + \frac{2}{L} \right),
+    \]
+    which simplifies to
+    \[
+      2L = L + \frac{2}{L} \implies L = \frac{2}{L} \implies L^2 = 2 \implies L = \sqrt{2}.
+    \]
+
+    Therefore, the sequence $(a_n)$ converges to $\sqrt{2}$.
+  \end{proof}
 \end{problem}
