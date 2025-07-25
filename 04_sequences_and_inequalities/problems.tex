@@ -174,7 +174,8 @@
 
     By \thmref{thm:monotone-convergence}, since $(b_{n})$ is increasing and
     bounded above, it converges to some limit $L_{1} \in \R$, and since $(c_{n})$ is
-    decreasing and bounded below, it converges to some limit $L_{2} \in \R$. Since it can be shown that
+    decreasing and bounded below, it converges to some limit $L_{2} \in \R$. Using the result from 
+    \probref{prob:limit-laws}\ref{prob:subtraction-limit-law}, it can be shown that
     \[
       \lim_{n \to \infty} (c_{n} - b_{n}) = \lim_{n \to \infty} \frac{1}{2^{n-2}} = 0 = \lim_{n \to \infty} c_{n} - \lim_{n \to \infty} b_{n} = L_{2} - L_{1}, 
     \]
@@ -274,8 +275,9 @@
     \]
 
     Finally, applying \thmref{thm:monotone-convergence} gives us that the
-    sequence converges to some $L \geq \sqrt{2}$. Taking the limit of both
-    sides of the recurrence and applying the various results of
+    sequence converges to some $L \geq \sqrt{2}$. Taking the limit of $(a_{n+1})$,
+    using the result of \probref{prob:limit-of-shifted-sequence-equal},
+    and applying the various results of
     \probref{prob:limit-laws} gives
     \[
       L = \lim_{n \to \infty} a_{n+1} = \lim_{n \to \infty} \frac{1}{2} \left( a_n + \frac{2}{a_n} \right)
