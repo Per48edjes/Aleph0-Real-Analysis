@@ -313,17 +313,16 @@
     \]
 
     Therefore, the sequence $(a_n)$ converges to $\sqrt{2}$.
-
-    \begin{callout}[Newton’s Method approximating root of \(x^2 - 2\)]
-      If you set \(f(x)=x^2-2\), then Newton’s iteration
-      \[
-        x_{n+1}
-        = x_n - \frac{f(x_n)}{f'(x_n)}
-        = x_n - \frac{x_n^2 - 2}{2x_n}
-        = \frac{x_n + \tfrac{2}{x_n}}{2}
-      \]
-      is exactly the same as our recurrence.  Hence $(a_n)$ is Newton’s method converging quadratically to $\sqrt2$.
-    \end{callout}
-
   \end{proof}
+
+  \begin{callout}[Newton’s Method approximating root of \(x^2 - 2\)]
+    If you set \(f(x)=x^2-2\), then Newton’s iteration
+    \[
+      x_{n+1}
+      = x_n - \frac{f(x_n)}{f'(x_n)}
+      = x_n - \frac{x_n^2 - 2}{2x_n}
+      = \frac{x_n + \tfrac{2}{x_n}}{2}
+    \]
+    is exactly the same as our recurrence.  Hence $(a_n)$ is Newton’s method converging quadratically to $\sqrt2$.
+  \end{callout}
 \end{problem}
