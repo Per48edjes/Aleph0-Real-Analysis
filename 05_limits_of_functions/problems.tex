@@ -1,0 +1,31 @@
+\section{Limits of Functions}
+
+\begin{problem}
+  Prove the following limits:
+
+  \begin{enumerate}[label=(\alph*)]
+    \item $\lim\limits_{x \to 2} 2x + 4 = 8$ 
+      
+      \begin{proof}
+        Let $f(x) = 2x + 4$ and $\eps > 0$ be given. Let $\delta = \frac{\eps}{2}$. Then, it follows that: 
+        \[
+          \abs{x - 2} < \frac{\eps}{2} \implies \abs{f(x) - 8} = \abs{2x + 4 - 8} = \abs{2x - 4} = 2\abs{x - 2} < 2\cdot\frac{\eps}{2} = \eps.
+        \]
+        Thus, we have shown that $f(x) \to 8$ as $x \to 2$. 
+      \end{proof}
+
+    \item $\lim\limits_{x \to 0} x^{3} = 0$ 
+      \begin{proof}
+        Let $f(x) = x^{3}$ and $\eps > 0$ be given. Let $\delta = \sqrt[3]{\eps}$. Then, it follows that: 
+        \[
+          \abs{x - 0} < \sqrt[3]{\eps} \implies \abs{f(x) - 0} = \abs{x^{3}} < (\sqrt[3]{\eps})^{3} = \eps.
+        \]
+        Thus, we have shown that $f(x) \to 0$ as $x \to 0$. 
+      \end{proof} 
+
+    \item $\lim\limits_{x \to 2} x^{3} = 8$ 
+
+    \item $\lim\limits_{x \to \pi} \lfloor x \rfloor = 3$ 
+
+  \end{enumerate}
+\end{problem}
