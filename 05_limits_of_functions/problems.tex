@@ -24,8 +24,59 @@
       \end{proof} 
 
     \item $\lim\limits_{x \to 2} x^{3} = 8$ 
+      \begin{proof}
+        Let $f(x) = x^{3}$ and $\eps > 0$ be given. We can show that $\delta = \min{(1, \frac{\eps}{19})}$
+        satisfies the definition of the limit. Consider the two cases:
+        \begin{itemize} 
+          \item When $\eps \leq 19$, then $\delta = \frac{\eps}{19} \leq 1$. Assuming
+            $\abs{x - 2} < \frac{\eps}{19}$, we can show that
+              \begin{align*}
+                \abs{f(x) - 8} &= \\
+                \abs{(x-2)(x^{2} +2x + 4)} &= \\
+                \abs{x-2} \abs{x^{2} + 2x + 4} &< \frac{\eps}{19} \abs{x^{2} + 2x + 4} \\ 
+                                               &< \eps.
+              \end{align*}
+
+              The last inequality holds because $x^{2} + 2x + 4 \le 19$ for all
+              $x$ such that $\abs{x - 2} < \delta \leq 1$,
+
+            \item When $\eps > 19$, then $\delta = 1$. Then, for all $x$
+              such that $\abs{x - 2} < 1$, it follows that
+              \begin{align*}
+                \abs{f(x) - 8} &= \\
+                \abs{(x-2)(x^{2} +2x + 4)} &= \\
+                \abs{x-2} \abs{x^{2} + 2x + 4} &< \abs{x^{2} + 2x + 4} \\ 
+                                               &\leq 19 \\ 
+                                               &< \eps
+              \end{align*}
+              because for all $x \in (1, 3)$, the expression $x^{2} + 2x + 4$ is bounded above by $19$.
+
+        \end{itemize}
+        Thus, we have shown that $f(x) \to 8$ as $x \to 2$. 
+      \end{proof}
 
     \item $\lim\limits_{x \to \pi} \lfloor x \rfloor = 3$ 
+      \begin{proof}
+        Let $f(x) = \lfloor x \rfloor$ and $\eps > 0$ be given. We then fix $\delta = 0.1$ to show
+        that $\abs{f(x) - 3} < \eps$. For all $x \in (\pi - 0.1, \pi + 0.1)$, we immediately observe
+        \[
+          \abs{f(x) - 3} = \abs{3 - 3} = 0 < \eps.
+        \]
+        Thus, we have shown that $f(x) \to 3$ as $x \to \pi$.
+      \end{proof}
 
   \end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+  Prove the following statement:
+    \begin{displayquote}
+      Assume a particular $\delta > 0$ has been constructed as a suitable response to
+      a particular $\eps > 0$ challenge. Then, any smaller $\delta$ will also suffice.
+    \end{displayquote}
+
+  \begin{proof}
+    TBD.
+  \end{proof}
 \end{problem}
