@@ -70,6 +70,7 @@
 
 
 \begin{problem}
+  \label{prob:smaller-delta-sufficient}
   Prove the following statement:
     \begin{displayquote}
       Assume a particular $\delta > 0$ has been constructed as a suitable response to
@@ -113,10 +114,10 @@
     and that $(x_{n}) \to 0$ as $n \to \infty$, so the domain conditions for 
     \defref{def:limit-to-infty-x-to-finite-real} are met.)
 
-    Now let $M > 0$ be given and fix $\delta = \dfrac{1}{M}$. 
-    Then, for all $x \in (-\delta, 0) \cup (0, +\delta)$,
+    Now let $M > 0$ be given and fix $\delta = \dfrac{1}{\sqrt{M}}$. 
+    Then, for all $x \in S$,
     \[
-        f(x) > M^{2} > M.
+      0 < \abs{x} < \delta \implies x^{2} < \frac{1}{M} \implies  f(x) = \frac{1}{x^{2}} > M.
     \]
   \end{proof}
 
@@ -143,7 +144,7 @@
     \defref{def:limit-to-finite-real-x-to-infinite} are met.)
 
     Now let $\eps > 0$ be given and fix $N = \dfrac{1}{\eps}$. 
-    Then,
+    Then, for all $x \in S$,
     \[
       x > N = \frac{1}{\eps} \implies f(x) = \frac{1}{x} < \eps,
     \]
@@ -184,8 +185,8 @@
       \forall x \in A.\, 0 < \abs{x - c} < \delta \implies \abs{g(x) - L} < \eps.
     \]
 
-    By the hypothesis, we know there exists
-    $\delta_{1}$ and $\delta_{2}$ such that, for all $x \in A$ where $0 < \abs{x - c} < \delta$,
+    By the hypothesis and the result of \probref{prob:smaller-delta-sufficient}, we know there exists
+    $\delta_{1}$ and $\delta_{2}$ such that, for all $x \in A$ where $0 < \abs{x - c} < \min{(\delta_{1}, \delta_{2})}$,
     $\abs{f(x) - L} < \eps$ and $\abs{h(x) - L} < \eps$, respectively. Set $\delta = \min{(\delta_{1}, \delta_{2})}$. 
     Then, we have
     \[
@@ -193,7 +194,6 @@
     \]
     for all $x \in A$ where $0 < \abs{x - c} < \delta$, so, by definition, we have 
     shown $\lim\limits_{x \to c} g(x) = L$.
-    
   \end{proof}
   
 \end{problem}
