@@ -28,8 +28,8 @@
         Let $f(x) = x^{3}$ and $\eps > 0$ be given. We can show that $\delta = \min{(1, \frac{\eps}{19})}$
         satisfies the definition of the limit. Consider the two cases:
         \begin{itemize} 
-          \item When $\eps \leq 19$, then $\delta = \frac{\eps}{19} \leq 1$. Assuming
-            $\abs{x - 2} < \frac{\eps}{19}$, we can show that
+          \item When $\eps \leq 19$, then $\delta = \frac{\eps}{19} \leq 1$. For all $x \in \R$ 
+            such that $0 < \abs{x - 2} < \frac{\eps}{19}$, we can show that
               \begin{align*}
                 \abs{f(x) - 8} &= \\
                 \abs{(x-2)(x^{2} +2x + 4)} &= \\
@@ -37,20 +37,19 @@
                                                &< \eps.
               \end{align*}
 
-              The last inequality holds because $x^{2} + 2x + 4 \le 19$ for all
-              $x$ such that $\abs{x - 2} < \delta \leq 1$,
+              The last inequality holds because $\abs{x^{2} + 2x + 4} < 19$ for all
+              $x$ such that $0 < \abs{x - 2} < \delta \leq 1$.
+              (We leverage this fact for the second case as well.)
 
             \item When $\eps > 19$, then $\delta = 1$. Then, for all $x$
-              such that $\abs{x - 2} < 1$, it follows that
+              such that $0 < \abs{x - 2} < 1$, it follows that
               \begin{align*}
                 \abs{f(x) - 8} &= \\
                 \abs{(x-2)(x^{2} +2x + 4)} &= \\
                 \abs{x-2} \abs{x^{2} + 2x + 4} &< \abs{x^{2} + 2x + 4} \\ 
                                                &\leq 19 \\ 
-                                               &< \eps
+                                               &< \eps.
               \end{align*}
-              because for all $x \in (1, 2) \cup (2, 3)$, the expression $x^{2} + 2x + 4$ is bounded above by $19$.
-
         \end{itemize}
         Thus, we have shown that $f(x) \to 8$ as $x \to 2$. 
       \end{proof}
@@ -80,7 +79,7 @@
   \begin{proof}
     Given an $\eps > 0$ and some $\delta > 0$ satisfying the definition of a
     limit (say, for a function $f(x)$ whereby the limit $L \in \R$), we can let
-    $0 < \delta' < \delta$. Then, we know, for all $x \in (c - \delta, c) \cup (c, x + \delta)$, that
+    $0 < \delta' < \delta$. Then, we know, for all $x \in (c - \delta, c) \cup (c, c + \delta)$, that
     $\abs{f(x) - L} < \eps$. Since $\delta' < \delta$, we also have $\abs{f(x) - L} < \eps$ whenever
     $x \in (c - \delta', c) \cup (c, c + \delta')$ because 
     $(c - \delta', c) \cup (c, c + \delta') \subset (c - \delta, c) \cup (c, c + \delta)$.
@@ -131,7 +130,7 @@
     \label{def:limit-to-finite-real-x-to-infinite}
     Let function $f : S \to \R$ where $S \subseteq \R$ and, for any $N > 0$, there 
     exists some $x \in S$.
-    Then, we say $\lim\limits_{x \to c} f(x) = \infty$ if and only if for any
+    Then, we say $\lim\limits_{x \to \infty} f(x) = L$ if and only if for any
     $\eps > 0$, there exists some $N > 0$ such that
     \[
       \forall x \in S.\, x > N \implies \abs{f(x) - L} < \eps.
