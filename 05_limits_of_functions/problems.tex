@@ -80,7 +80,7 @@
   \begin{proof}
     Given an $\eps > 0$ and some $\delta > 0$ satisfying the definition of a
     limit (say, for a function $f(x)$ whereby the limit $L \in \R$), we can let
-    $\delta' < \delta$. Then, we know, for all $x \in (c - \delta, c) \cup (c, x + \delta)$, that
+    $0 < \delta' < \delta$. Then, we know, for all $x \in (c - \delta, c) \cup (c, x + \delta)$, that
     $\abs{f(x) - L} < \eps$. Since $\delta' < \delta$, we also have $\abs{f(x) - L} < \eps$ whenever
     $x \in (c - \delta', c) \cup (c, c + \delta')$ because 
     $(c - \delta', c) \cup (c, c + \delta') \subset (c - \delta, c) \cup (c, c + \delta)$.
@@ -190,7 +190,7 @@
     $\abs{f(x) - L} < \eps$ and $\abs{h(x) - L} < \eps$, respectively. Set $\delta = \min{(\delta_{1}, \delta_{2})}$. 
     Then, we have
     \[
-      L - \eps < f(x) \leq g(x) \leq h(x) < L + \eps \implies \abs{g(x) - L} < \eps.
+      L - \eps < f(x) \leq g(x) \leq h(x) < L + \eps \implies \abs{g(x) - L} < \eps,
     \]
     for all $x \in A$ where $0 < \abs{x - c} < \delta$, so, by definition, we have 
     shown $\lim\limits_{x \to c} g(x) = L$.
