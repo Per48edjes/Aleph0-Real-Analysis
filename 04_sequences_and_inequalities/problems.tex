@@ -183,8 +183,8 @@
 
     Lastly, we introduce a theorem that will help us complete the proof.
 
-    \begin{theorem}{Squeeze Theorem}
-      \label{thm:squeeze-theorem}
+    \begin{theorem}[Squeeze Theorem for Sequences]
+      \label{thm:squeeze-theorem-sequences}
       Let $(a_{n})$, $(l_{n})$, and $(u_{n})$ be sequences such that for sufficiently large $n \in \N$,
       \[
         l_{n} \leq a_{n} \leq u_{n}.
@@ -193,7 +193,7 @@
       Then, $\lim\limits_{n \to \infty} a_{n} = L$.
     \end{theorem}
 
-    \begin{subproof}[Proof of \thmref{thm:squeeze-theorem}]
+    \begin{subproof}[Proof of \thmref{thm:squeeze-theorem-sequences}]
       For sufficiently large $n \in \N$, we have
       \[
         0 \leq a_{n} - l_{n} \leq u_{n} - l_{n} \implies \abs{a_{n} - l_{n}} \leq u_{n} - l_{n}.
@@ -214,7 +214,7 @@
       \]
     \end{subproof}
 
-    Hence, by \thmref{thm:squeeze-theorem}, we have $\lim\limits_{n \to \infty} a_{n} = L_{1} = L_{2}$, so $(a_{n})$ converges.
+    Hence, by \thmref{thm:squeeze-theorem-sequences}, we have $\lim\limits_{n \to \infty} a_{n} = L_{1} = L_{2}$, so $(a_{n})$ converges.
 
   \end{proof}
 

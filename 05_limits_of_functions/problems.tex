@@ -89,14 +89,14 @@
 
 \begin{problem}
   The statement $\lim\limits_{x \to 0} \dfrac{1}{x^{2}} = \infty$ certainly makes
-  intuitive sense. Construct a rigorous definition in the "challenge-response"
+  intuitive sense. Construct a rigorous definition in the ``challenge-response''
   style for a limit statement of the form
     \[
       \lim_{x \to c} f(x) = \infty
     \]
   and use it to prove the previous statement.
 
-  \begin{definition}[Vertical Limit]
+  \begin{definition}[Infinite Limits]
     \label{def:limit-to-infty-x-to-finite-real}
     Let function $f : S \to \R$ where $S \subseteq \R$ and, for some $c \in \R$, there exists a
     sequence $(x_{n}) \subseteq S \setminus \{ c \}$ such that $(x_{n}) \to c$ as $n \to \infty$.
@@ -109,7 +109,7 @@
 
   \begin{proof}
     Let $f(x) = \dfrac{1}{x^{2}}$. (Certainly, it is clear that
-    $(x_{n})_{n}^{\infty} = \frac{1}{n}$ is contained by $S \setminus \{ 0 \}$
+    $(\frac{1}{n})_{n=1}^{\infty}$ is contained by $\R \setminus \{ 0 \}$
     and that $(x_{n}) \to 0$ as $n \to \infty$, so the domain conditions for 
     \defref{def:limit-to-infty-x-to-finite-real} are met.)
 
@@ -126,7 +126,7 @@
   Construct a definition for the statement $\lim\limits_{x \to \infty} f(x) = L$.
   Show $\lim\limits_{x \to \infty} \dfrac{1}{x} = 0$.
 
-  \begin{definition}[Horizontal Limit]
+  \begin{definition}[Limits at Infinity]
     \label{def:limit-to-finite-real-x-to-infinite}
     Let function $f : S \to \R$ where $S \subseteq \R$ and, for any $N > 0$, there 
     exists some $x \in S$.
@@ -157,7 +157,7 @@
   $\lim\limits_{x \to \infty} f(x) = \infty$ look like? 
   Give an example of such a limit.
 
-  \begin{definition}[Horizontal Divergence]
+  \begin{definition}[Divergence to Infinity at Infinity]
     \label{def:limit-to-infty-x-to-infinite}
     Let function $f : S \to \R$ where $S \subseteq \R$ and, for any $N > 0$, there 
     exists some $x \in S$.
@@ -173,7 +173,7 @@
 \end{problem}
 
 \begin{problem}
-  \label{prob:squeeze-theorem}
+  \label{prob:squeeze-theorem-functions}
   Let $f(x) \leq g(x) \leq h(x)$ for all $x$ in some common domain $A$. Suppose $\lim\limits_{x \to c} f(x) = L$ and
   $\lim\limits_{x \to c} h(x) = L$ at some $c \in A$. Use the $\eps$-$\delta$  definition of the limit
   to show  that $\lim\limits_{x \to c} g(x) = L$ as well.
