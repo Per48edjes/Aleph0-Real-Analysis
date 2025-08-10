@@ -122,8 +122,37 @@
         First, let $c \neq 0$ and let $\eps > 0$ be given. We must demonstrate that there exists a $\delta > 0$ such that
         \[
           \forall x \in \R.\, \abs{x - c} < \delta \implies \abs{\sqrt[3]{x} - \sqrt[3]{c}} < \eps.
-        \].
+        \]
 
+        We start by bounding $x$ away from $0$, since when
+        \[
+          \abs{x - c} < \frac{\abs{c}}{2} \implies \abs{\abs{x} - \abs{c}} < \frac{\abs{c}}{2} \implies \abs{c} - \frac{\abs{c}}{2} < \abs{x} < \abs{c} + \frac{\abs{c}}{2},
+        \]
+        we have $\abs{x} > \frac{\abs{c}}{2} > 0$.
+        
+        Notice that
+        \[
+          \abs{\sqrt[3]{x} - \sqrt[3]{c}} = \abs{x - c} \abs{ \frac{1}{\sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}}} }.
+        \]
+        Under the assumption that $\abs{x - c} < \frac{\abs{c}}{2}$, we can find
+        an $m \leq \abs{ \sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}} }$ in
+        terms of $c$, which will allow us to make $\abs{\sqrt[3]{x} - \sqrt[3]{c}}$
+        arbitrarily small via $\abs{x - c} < \delta$. Bounding $x$ away from
+        $0$ ensures that $x$ and $c$ share the same sign (for any $x$ such
+        that $\abs{x - c} < \dfrac{\abs{c}}{2}$), thus
+        \[
+          0 < \abs{ \sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}} } =  \sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}}.
+        \]
+        By AM-GM\footref{fn:AM-GM}, we have
+        \[
+          \frac{ \sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}} }{3} \geq \sqrt[3]{ \sqrt[3]{x^{2}} \cdot \sqrt[3]{xc} \cdot \sqrt[3]{c^{2}} } \implies \sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}} \geq 3 \sqrt[3]{xc},
+        \]
+        hence, we can set $m = 3 \sqrt[3]{\dfrac{c^{2}}{2}}$ whenever $\abs{x - c} < \dfrac{\abs{c}}{2}$.
+
+        Therefore, picking $\delta = \min{\left( \dfrac{\abs{c}}{2}, \eps m \right)}$ for the given $\eps$ satisfies
+        \[
+          \forall x \in \R.\, \abs{x - c} < \delta \implies \abs{\sqrt[3]{x} - \sqrt[3]{c}} < \eps.
+        \]
       \end{proof}
 
   \end{enumerate}
