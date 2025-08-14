@@ -125,9 +125,10 @@
         \]
 
         We start by bounding $x$ away from $0$, since when
-        \[
+        \begin{equation}
+          \label{eq:factored-cbrts}
           \abs{x - c} < \frac{\abs{c}}{2} \implies \abs{\abs{x} - \abs{c}} < \frac{\abs{c}}{2} \implies \abs{c} - \frac{\abs{c}}{2} < \abs{x} < \abs{c} + \frac{\abs{c}}{2},
-        \]
+        \end{equation}
         we have $\abs{x} > \frac{\abs{c}}{2} > 0$.
         
         Notice that
@@ -135,19 +136,21 @@
           \abs{\sqrt[3]{x} - \sqrt[3]{c}} = \abs{x - c} \abs{ \frac{1}{\sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}}} }.
         \]
         Under the assumption that $\abs{x - c} < \frac{\abs{c}}{2}$, we can find
-        an $m \leq \abs{ \sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}} }$ in
-        terms of $c$, which will allow us to make $\abs{\sqrt[3]{x} - \sqrt[3]{c}}$
-        arbitrarily small via $\abs{x - c} < \delta$. Bounding $x$ away from
-        $0$ ensures that $x$ and $c$ share the same sign (for any $x$ such
-        that $\abs{x - c} < \dfrac{\abs{c}}{2}$), thus
+        a constant $m$ that depends on $c$ (but, importantly, not $x$) such that 
+        for all $x$ sufficiciently close to $c$, we have 
+        $m \leq \abs{ \sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}} }$.
+        From this, it will follow that $\lim\limits_{x \to c} \abs{\sqrt[3]{x} - \sqrt[3]{c}} = 0$
+        as $\abs{ \frac{1}{\sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}}} }$ is bounded in \eqref{eq:factored-cbrts}.
+        Bounding $x$ away from $0$ also ensures that $x$ and $c$ share the same sign
+        (for any $x$ such that $\abs{x - c} < \dfrac{\abs{c}}{2}$), thus
         \[
           0 < \abs{ \sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}} } =  \sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}}.
         \]
         By AM-GM\footref{fn:AM-GM}, we have
         \[
-          \frac{ \sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}} }{3} \geq \sqrt[3]{ \sqrt[3]{x^{2}} \cdot \sqrt[3]{xc} \cdot \sqrt[3]{c^{2}} } \implies \sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}} \geq 3 \sqrt[3]{xc},
+          \frac{ \sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}} }{3} \geq \sqrt[3]{ \sqrt[3]{x^{2}} \cdot \sqrt[3]{xc} \cdot \sqrt[3]{c^{2}} } \implies \sqrt[3]{x^{2}} + \sqrt[3]{xc} + \sqrt[3]{c^{2}} \geq 3 \sqrt[3]{xc}.
         \]
-        hence, we can set $m = 3 \sqrt[3]{\dfrac{c^{2}}{2}}$ whenever $\abs{x - c} < \dfrac{\abs{c}}{2}$.
+        Hence, we can set $m = 3 \sqrt[3]{\dfrac{c^{2}}{2}}$ whenever $\abs{x - c} < \dfrac{\abs{c}}{2}$.
 
         Therefore, picking $\delta = \min{\left( \dfrac{\abs{c}}{2}, \eps m \right)}$ for the given $\eps$ satisfies
         \[
@@ -161,6 +164,91 @@
 
 \begin{problem}
   Prove that there does not exist a continuous function $f$ defined on $\R$ which takes on every value exactly twice.
+
+  \begin{proof}
+    Before proceeding with the proof, we will first establish the following
+    theorem, which will aid us greatly in the remainder of the proof.
+
+    \begin{theorem}[Intermediate Value Theorem]
+      \label{thm:intermediate-value-theorem}
+      Suppose function $f : [u, v] \to \R$ is continuous. When 
+      \begin{enumerate}[label=(\alph*)]
+        \item $f(u) < y < f(v)$ or
+        \item $f(u) > y > f(v)$,
+      \end{enumerate}
+      then, there exists some $c \in [u, v]$ such that $f(c) = y$.
+    \end{theorem}
+
+    \begin{subproof}[Proof of \thmref{thm:intermediate-value-theorem}]
+      We will only prove the case of $f(u) < y < f(v)$ as the second case is similar.
+
+      Let $A = \{ x \in [u,v] : f(x) < y \}$ and $s = \sup{A}$.
+      Note that $s \neq u$ because if it were the case that $s = u$, then $u$ would be both a lower and upper bound for $A$,
+      giving $A = \{ u \}$. But, by continuity of $f$, for $\eps = y - f(u)$ there exists a $\delta$
+      such that
+      \[
+        \forall x \in \R.\, \abs{x - u} < \delta \implies \abs{f(x) - f(u)} < \eps = y - f(u) \implies f(x) < y,
+      \]
+      so $\exists x \in \R$ such that $u < x < u + \delta$ and $f(u) < f(x) < y$, contradicting the fact that $u$
+      is an upperbound of $A$ (and $|A| = 1$).
+      Also, $s \neq v$ since $f(v) > y$ and $s \in A$, according to the result
+      of \probref{prob:sup-inf-claims}\ref{prob:finite-set-max-sup}. 
+      Therefore, $s \in (u, v)$.
+
+      We claim that $f(s) = y$. To show this, suppose to the contrary, the following two cases:
+      \begin{itemize}
+        \item Assume $f(s) < y$. Let $\eps = \dfrac{y - f(s)}{2}$. By continuity of $f$, there exists $\delta > 0$ 
+          such that
+          \[
+            \forall x \in \R.\, \abs{x - s} < \delta \implies \abs{f(x) - f(s)} < \eps \implies f(x) < f(s) + \eps = \frac{f(s)}{2} + \frac{y}{2} < y,
+          \]
+          suggesting that $\exists x \in \R$ such that $s < x < \min{(s + \delta, v)}$ and $f(x) < y$.
+          This yields a contradiction since $s$ is an upperbound for $A$.
+
+        \item Assume $f(s) > y$. Let $\eps = \dfrac{f(s) - y}{2}$. By continuity of $f$, there exists $\delta > 0$ 
+          such that
+          \[
+            \forall x \in \R.\, \abs{x - s} < \delta \implies \abs{f(x) - f(s)} < \eps \implies f(x) > f(s) - \eps = \frac{f(s)}{2} + \frac{y}{2} > y,
+          \]
+          suggesting that $\forall x \in \R$, if $\max{(s - \delta, u)} < x < s$, then $f(x) > y$. This is contrary to the fact that
+          $s$ is the \textit{least} upperbound of $A$.
+
+      \end{itemize}
+
+      Thus, setting $c = s$ gives us $c \in [u, v]$ such that $f(c) = y$.
+    \end{subproof}
+
+    Now suppose, for contradiction's sake, that there exists a function $f : \R \to \R$
+    that is continuous and takes on every value exactly twice. Our initial
+    observation is that $f$ cannot be strictly increasing or decreasing over 
+    $\R$ as $f$ would be injective, contradicting the hypothesis that $f$ maps 
+    to each real number exactly twice. 
+
+    First, we will show that such a function changes monotonicity exactly once.
+    Suppose that $f$ changed monotonicity at least twice. Then, without loss of generality, we will
+    assume the domain can be partitioned into $3$ intervals:
+    \begin{enumerate}[label=(\roman*)]
+      \item $A = (-\infty, x_{1})$, so $f(A)$ is strictly increasing,
+      \item $B = [x_{1}, x_{2}]$, so $f(B)$ is strictly decreasing,
+      \item $C = (x_{2}, \infty)$, so $f(C)$ is stictly increasing,
+    \end{enumerate}
+    for some $x_{1} < x_{1}$ in the reals.
+    By \thmref{thm:intermediate-value-theorem}, there exists some $y \in f(B)$ 
+    such that $|f^{-1}(y)| \geq 3$, contradicting the hypothesis that $f$ takes on every 
+    value exactly twice.
+
+    Next, having established that $f$ changes monotonicity exactly once,
+    we can partition the domain into $2$ intervals (without loss of generality):
+    \begin{enumerate}[label=(\roman*)]
+      \item $A = (-\infty, m)$, so $f(A)$ is strictly increasing and
+      \item $B = [m, \infty)$, so $f(B)$ is strictly decreasing,
+    \end{enumerate}
+    for some $m \in \R$.
+    Thus, $f(m)$ must be a global maximum. However, for any $y > f(m)$, there
+    does not exist an $x \in \R$ such that $f(x) = y$, contradicting the hypothesis that 
+    $f$ takes on every value exactly twice.
+
+  \end{proof}
 
 \end{problem}
 
