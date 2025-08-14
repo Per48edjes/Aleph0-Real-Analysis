@@ -225,7 +225,7 @@
     to each real number exactly twice. 
 
     First, we will show that such a function changes monotonicity exactly once.
-    Suppose that $f$ changed monotonicity at least twice. Then, without loss of generality, we will
+    Suppose that $f$ change monotonicity twice. Then, without loss of generality, we will
     assume the domain can be partitioned into $3$ intervals:
     \begin{enumerate}[label=(\roman*)]
       \item $A = (-\infty, x_{1})$, so $f(A)$ is strictly increasing,
@@ -233,9 +233,10 @@
       \item $C = (x_{2}, \infty)$, so $f(C)$ is stictly increasing,
     \end{enumerate}
     for some $x_{1} < x_{1}$ in the reals.
-    By \thmref{thm:intermediate-value-theorem}, there exists some $y \in f(B)$ 
-    such that $|f^{-1}(y)| \geq 3$, contradicting the hypothesis that $f$ takes on every 
-    value exactly twice.
+    By \thmref{thm:intermediate-value-theorem}, there exists some $y \in f(B)$
+    such that $|f^{-1}(y)| \geq 3$, contradicting the hypothesis that $f$ takes
+    on every value exactly twice. (Similar reasoning holds when $f$ changes
+    monotonicity more than twice.)
 
     Next, having established that $f$ changes monotonicity exactly once,
     we can partition the domain into $2$ intervals (without loss of generality):
