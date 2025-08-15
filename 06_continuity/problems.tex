@@ -190,9 +190,12 @@
         \forall x \in \R.\, \abs{x - u} < \delta \implies \abs{f(x) - f(u)} < \eps = y - f(u) \implies f(x) < y,
       \]
       so $\exists x \in \R$ such that $u < x < u + \delta$ and $f(u) < f(x) < y$, contradicting the fact that $u$
-      is an upperbound of $A$ (and $|A| = 1$).
-      Also, $s \neq v$ since $f(v) > y$ and $s \in A$, according to the result
-      of \probref{prob:sup-inf-claims}\ref{prob:finite-set-max-sup}. 
+      is an upperbound of $A$ and that $A = \{ u \}$).
+
+      Also, $s \neq v$ for a similar reason: contintuity of $f$ guarantees that a sufficiently small $\delta$-neighborhood of $v$
+      (not containing $s$) can be found in response to the $\eps$-neighbhoorhood where $\eps = f(v) - y$. Then, for all $x \in [u, v]$,
+      $x$ being a member of said $\delta$-neighborhood implies that $x > s$ and $f(x) > y$, so $s \neq v$.
+
       Therefore, $s \in (u, v)$.
 
       We claim that $f(s) = y$. To show this, suppose to the contrary, the following two cases:
@@ -218,6 +221,7 @@
       Thus, setting $c = s$ gives us $c \in [u, v]$ such that $f(c) = y$.
     \end{subproof}
 
+    % FIX: This proof presupposes $f$ being continuous implies $f$ has intervals over which it is monotonic. 
     Now suppose, for contradiction's sake, that there exists a function $f : \R \to \R$
     that is continuous and takes on every value exactly twice. Our initial
     observation is that $f$ cannot be strictly increasing or decreasing over 
