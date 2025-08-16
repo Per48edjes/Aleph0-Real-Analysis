@@ -26,21 +26,28 @@
   $f$ must have a fixed point; that is, show thaat $f(x) = x$ for at least one value of $x \in [0, 1]$.
 
   \begin{proof}
-    Suppose to the contrary that $\forall x \in [0, 1].\, f(x) \neq x$.
-
-    It cannot be the case that $f(x) > x$ for all $x \in [0, 1]$ because $f(1)
-    \leq 1$. Similarly, $f(x) < x$ is not possible because $f(0) \geq 0$.
-    Therefore, without loss of generality, there exists $x_{1} < x_{2}$ such
-    that $f(x_{1}) \geq x_{1}$ and $f(x_{2}) \leq x_{2}$. Under our assumption,
-    we have
+    Define $g(x) = f(x) - x$, which is continuous on $[0,1]$.
+    Since $f([0,1]) \subseteq [0,1]$, we have
     \[
-      f(x_{1}) > x_{1}, \qquad f(x_{2}) < x_{2}.
+      g(0) = f(0) - 0 \geq 0, \qquad g(1) = f(1) - 1 \leq 0.
     \]
-    Let $g(x) = f(x) - x$. Then, by \thmref{thm:intermediate-value-theorem},
-    \[
-      \exists x' \in [x_{1}, x_{2}].\, g(x') = 0 \implies f(x') = x'.
-    \]
-    Having reached a contradiction, we have shown that $f$ must have a fixed point.
+    If either $g(0) = 0$ or $g(1) = 0$, then $f$ has a fixed point at $0$ or $1$, respectively.
+    Otherwise, $g(0) > 0$ and $g(1) < 0$. By \thmref{thm:intermediate-value-theorem},
+    there exists $x \in (0,1)$ with $g(x) = 0$, i.e. $f(x) = x$.
+    Thus $f$ has a fixed point in $[0,1]$.
   \end{proof}
 \end{problem}
 
+\begin{problem}
+  A function $f : \R \to \R$ is increasing if $f(x) \leq f(y)$ for all $x < y$. Show the following converse to the IVT:
+
+  \begin{quote}
+    Suppose that $f$ is increasing and satisfies the conclusion of the IVT (i.e., for all $x < y$ and all $L$ between $f(x)$ and $f(y)$, there exists $c \in (x, y)$ where $f(c) = L$.
+    Then $f$ is continuous.
+  \end{quote}
+
+  \begin{proof}
+    TBD.
+  \end{proof}
+
+\end{problem}
