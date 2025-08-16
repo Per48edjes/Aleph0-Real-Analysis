@@ -80,15 +80,14 @@
     \]
     Similarly, by the definition of infimum, there exists $x_{2} > b$ such that
     \[
-      L < u - \eps < f(x_{2}) \le u < u + \eps.
+      L < u - \eps < u \leq f(x_{2}) < u + \eps.
     \]
     Thus, $f(x_{1}) < L < f(x_{2})$.
 
     Now, for any $x'\in(x_{1},x_{2})$, if $x' < b$ then $f(x') \leq l < L$, and if
     $x' > b$ then $f(x') \geq u>L$. Hence no $x' \in (x_{1}, x_{2})$ satisfies
     $f(x') = L$.
-
-    Therefore, the IVT conclusion fails. This proves the contrapositive.
+    Therefore, the IVT conclusion fails, which completes the proof of the contrapositive.
   \end{proof}
 
 \end{problem}
