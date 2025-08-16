@@ -59,12 +59,38 @@
   A function $f : \R \to \R$ is increasing if $f(x) \leq f(y)$ for all $x < y$. Show the following converse to the IVT:
 
   \begin{quote}
-    Suppose that $f$ is increasing and satisfies the conclusion of the IVT (i.e., for all $x < y$ and all $L$ between $f(x)$ and $f(y)$, there exists $c \in (x, y)$ where $f(c) = L$.
-    Then, $f$ is continuous.
+    Suppose that $f$ is increasing and satisfies the conclusion of the IVT
+    (i.e., for all $x < y$ and all $L$ between $f(x)$ and $f(y)$, there exists
+    $c \in (x, y)$ where $f(c) = L$. Then, $f$ is continuous.
   \end{quote}
 
   \begin{proof}
-    TBD.
+    We prove the contrapositive. Suppose $f$ is increasing but not continuous
+    at some $b \in \R$. We show that the conclusion of the IVT does not hold.
+
+    Define
+    \[
+      l = \sup \{ f(x) : x < b \}, \qquad u = \inf \{ f(x) : x > b \}.
+    \]
+    (These sets are well defined since $f$ is increasing, hence, the sets are
+    bounded above and below, respectively).
+    Since $f$ is not continuous at $b$, we must have $l<u$.
+    Let $L = \dfrac{l+u}{2}$, so $l < L < u$.
+
+    By the definition of supremum, for any $\eps > 0$ there exists
+    $x_{1} < b$ with $l - \eps < f(x_{1})$, and hence, $f(x_{1}) < L$.
+    Similarly, by the definition of infimum, for any $\eps > 0$ there
+    exists $x_{2} > b$ with $f(x_{2}) < u + \eps$, and in particular $f(x_{2})>L$. 
+    Thus,
+    \[
+      f(x_{1}) < L < f(x_{2}).
+    \]
+
+    Now, for any $x'\in(x_{1},x_{2})$, if $x' < b$ then $f(x') \leq l < L$, and if
+    $x' > b$ then $f(x') \geq u>L$. Hence no $x' \in (x_{1}, x_{2})$ satisfies
+    $f(x') = L$.
+
+    Therefore, the IVT conclusion fails. This proves the contrapositive.
   \end{proof}
 
 \end{problem}
