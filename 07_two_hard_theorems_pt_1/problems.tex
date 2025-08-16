@@ -5,7 +5,24 @@
 
   \vspace{\baselineskip}
 
-  No.
+  No such function exists for either case.
+
+  \begin{proof}
+    Suppose $f : \R \to \R$ is continuous and $f(\R) \subseteq \Q$. 
+
+    If $f$ is not constant, then there exist $a<b$ with $f(a) \neq f(b)$. By
+    \thmref{thm:intermediate-value-theorem}, $f([a,b])$ contains every real
+    number between $f(a)$ and $f(b)$. But any such interval contains irrational
+    values, contradicting $f([a,b]) \subseteq \Q$. Therefore $f$ must be
+    constant, so $f(\R)$ is a singleton. This cannot equal $\Q$, hence no such
+    function exists.
+
+    The same reasoning applies if we assume $f(\R) \subseteq \Z$. If $f$ takes
+    two distinct integer values, \thmref{thm:intermediate-value-theorem} forces
+    $f$ to take all real values between them, which are not integers. Thus $f$
+    must again be constant, so $f(\R)$ is a singleton and cannot equal $\Z$.
+    Therefore, no such function exists in this case either.
+  \end{proof}
 
 \end{problem}
 
@@ -33,8 +50,8 @@
     \]
     If either $g(0) = 0$ or $g(1) = 0$, then $f$ has a fixed point at $0$ or $1$, respectively.
     Otherwise, $g(0) > 0$ and $g(1) < 0$. By \thmref{thm:intermediate-value-theorem},
-    there exists $x \in (0,1)$ with $g(x) = 0$, i.e. $f(x) = x$.
-    Thus $f$ has a fixed point in $[0,1]$.
+    there exists $x \in (0,1)$ with $g(x) = 0$, so $f(x) = x$.
+    Thus, $f$ has a fixed point in $[0,1]$.
   \end{proof}
 \end{problem}
 
@@ -43,7 +60,7 @@
 
   \begin{quote}
     Suppose that $f$ is increasing and satisfies the conclusion of the IVT (i.e., for all $x < y$ and all $L$ between $f(x)$ and $f(y)$, there exists $c \in (x, y)$ where $f(c) = L$.
-    Then $f$ is continuous.
+    Then, $f$ is continuous.
   \end{quote}
 
   \begin{proof}
