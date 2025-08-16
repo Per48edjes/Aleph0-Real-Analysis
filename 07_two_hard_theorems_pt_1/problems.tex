@@ -17,11 +17,7 @@
     constant, so $f(\R)$ is a singleton. This cannot equal $\Q$, hence no such
     function exists.
 
-    The same reasoning applies if we assume $f(\R) \subseteq \Z$. If $f$ takes
-    two distinct integer values, \thmref{thm:intermediate-value-theorem} forces
-    $f$ to take all real values between them, which are not integers. Thus $f$
-    must again be constant, so $f(\R)$ is a singleton and cannot equal $\Z$.
-    Therefore, no such function exists in this case either.
+    The same reasoning applies if we assume $f(\R) \subseteq \Z$.
   \end{proof}
 
 \end{problem}
@@ -77,14 +73,16 @@
     Since $f$ is not continuous at $b$, we must have $l<u$.
     Let $L = \dfrac{l+u}{2}$, so $l < L < u$.
 
-    By the definition of supremum, for any $\eps > 0$ there exists
-    $x_{1} < b$ with $l - \eps < f(x_{1})$, and hence, $f(x_{1}) < L$.
-    Similarly, by the definition of infimum, for any $\eps > 0$ there
-    exists $x_{2} > b$ with $f(x_{2}) < u + \eps$, and in particular $f(x_{2})>L$. 
-    Thus,
+    Since $l < L < u$ and $L - l = u - L$, set $\eps = \frac{L - l}{2} > 0$.
+    By the definition of supremum, there exists $x_{1} < b$ such that
     \[
-      f(x_{1}) < L < f(x_{2}).
+      l - \eps < f(x_{1}) \le l < l + \eps < L.
     \]
+    Similarly, by the definition of infimum, there exists $x_{2} > b$ such that
+    \[
+      L < u - \eps < f(x_{2}) \le u < u + \eps.
+    \]
+    Thus, $f(x_{1}) < L < f(x_{2})$.
 
     Now, for any $x'\in(x_{1},x_{2})$, if $x' < b$ then $f(x') \leq l < L$, and if
     $x' > b$ then $f(x') \geq u>L$. Hence no $x' \in (x_{1}, x_{2})$ satisfies
@@ -93,4 +91,15 @@
     Therefore, the IVT conclusion fails. This proves the contrapositive.
   \end{proof}
 
+\end{problem}
+
+\begin{problem}
+  Imagine a clock where the hour hand and the minute hand are indistinguishable
+  from each other. Assuming the hands move continuously around the face of the
+  clock, and assuming their positions can be measured with perfect accuracy, is
+  it always possible to determine the time?
+
+  \vspace{\baselineskip}
+
+  No, it is not always possible to determine the time.
 \end{problem}
