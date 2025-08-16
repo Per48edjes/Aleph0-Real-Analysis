@@ -1,0 +1,46 @@
+\section{Two Hard Theorems (Part 1)}
+
+\begin{problem}
+  Is there a continuous function $f : \R \to \R$ where $f(\R) = \Q$? What about $f(\R) = \Z$?
+
+  \vspace{\baselineskip}
+
+  No.
+
+\end{problem}
+
+\begin{problem}
+  Show the following more general consequence of the IVT:
+
+  Suppose $f: \R \to \R$ is continuous, and $f(a) < f(b)$ for some $a < b$. Let
+  $u \in (f(a), f(b))$ be a real number. Then there exists a real number $c \in
+  (a, b)$ such that $f(c) = u$.
+
+  \begin{proof} 
+    See proof of \thmref{thm:intermediate-value-theorem}.
+  \end{proof} 
+\end{problem}
+
+\begin{problem}
+  Let $f : \R \to \R$ be continuous. Suppose that $f([0, 1])$ is contained in $[0, 1]$. Prove that 
+  $f$ must have a fixed point; that is, show thaat $f(x) = x$ for at least one value of $x \in [0, 1]$.
+
+  \begin{proof}
+    Suppose to the contrary that $\forall x \in [0, 1].\, f(x) \neq x$.
+
+    It cannot be the case that $f(x) > x$ for all $x \in [0, 1]$ because $f(1)
+    \leq 1$. Similarly, $f(x) < x$ is not possible because $f(0) \geq 0$.
+    Therefore, without loss of generality, there exists $x_{1} < x_{2}$ such
+    that $f(x_{1}) \geq x_{1}$ and $f(x_{2}) \leq x_{2}$. Under our assumption,
+    we have
+    \[
+      f(x_{1}) > x_{1}, \qquad f(x_{2}) < x_{2}.
+    \]
+    Let $g(x) = f(x) - x$. Then, by \thmref{thm:intermediate-value-theorem},
+    \[
+      \exists x' \in [x_{1}, x_{2}].\, g(x') = 0 \implies f(x') = x'.
+    \]
+    Having reached a contradiction, we have shown that $f$ must have a fixed point.
+  \end{proof}
+\end{problem}
+
