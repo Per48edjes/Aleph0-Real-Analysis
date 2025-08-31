@@ -131,6 +131,57 @@
   Show that $f$ is differentiable at $x = 0$, but $f'$ is not continuous at $x = 0$.
 
   \begin{proof}
+    We will first determine how $f'$ is defined. As a consequence of this definition, we will be able to establish
+    that $f'(0)$ is well-defined. We then will demonstrate that $f'$ is not continuous.
+    (Before we proceed, we will prove the analogue of \thmref{thm:squeeze-theorem-sequences} for 
+    functional limits.)
+
+    \begin{theorem}[Squeeze Theorem for Functional Limits]
+      \label{thm:squeeze-theorem-fn-limits}
+      Let $f, g, h$ satisfy $f(x) \leq g(x) \leq h(x)$ for all $x$ in some common domain $A$. If
+      \[
+        \lim_{x \to c} f(x) = L = \lim_{x \to c} h(x)
+      \]
+      at some limit point $c \in A$, then
+      \[
+        \lim_{x \to c} g(x) = L.
+      \]
+    \end{theorem}
+
+    \begin{subproof}
+      Let $(x_{n})$ be an arbitrary sequence taken from $A$ that converges to
+      $c$ with $x_{n} \neq c$ for any $n \geq 1$. Then, by the Order Limit
+      Theorem, \thmref{thm:squeeze-theorem-sequences}, and the hypothesis, we
+      have
+      \[
+        L = \lim_{n \to \infty} f(x_{n}) \leq \lim_{n \to \infty} g(x_{n}) \leq \lim_{n \to \infty} h(x_{n}) = L,
+      \]
+      therefore $\lim\limits_{n \to \infty} g(x_{n}) = L$. Since $(x_{n})$ was
+      an arbitrary sequence tending to $c$, by the definition of a functional limit,
+      we conclude:
+      \[
+        \lim_{x \to c} g(x) = L.
+      \]
+    \end{subproof}
+
+    Returning to showing that $f'(0)$ exists, we can leverage the limit
+    definition of the derivative to evaluate $f'(0)$:
+    \[
+      f'(0) = \lim_{h \to 0} \frac{f(0+h) - f(0)}{h} = \lim_{h \to 0} \frac{h^2 \sin \left( \frac{1}{h} \right) - 0}{h} = \lim_{h \to 0} h \sin \left( \frac{1}{h} \right).
+    \]
+    Since $\abs{\sin \left( \frac{1}{h} \right)} \leq 1$ for all $h \neq 0$,
+    \[
+      0 \leq \abs{h \sin \left( \frac{1}{h} \right)} \leq \abs{h}.
+    \]
+    As $h \to 0$, $\abs{h} \to 0$. Therefore, by \thmref{thm:squeeze-theorem-fn-limits},
+    \[
+      f'(0) = \lim_{h \to 0} h \sin\left(\frac{1}{h}\right) = 0.
+    \]
+    Hence, $f$ is differentiable at $x = 0$.
+
+    To show that $f'$ is not continuous everywhere, it is sufficient to prove
+    that $f'$  is not continuous at $x = 0$.
+
   \end{proof}
 \end{problem}
 
