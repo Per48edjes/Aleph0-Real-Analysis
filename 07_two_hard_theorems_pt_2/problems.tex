@@ -13,6 +13,13 @@
     for all $x \in [a, b]$. In other words, $f$ attains its minimum value at
     $c$ and its maximum value at $d$.
   \end{theorem}
+
+  An immediate consequence of \thmref{thm:extreme-value-theorem} is the following:
+
+  \begin{theorem}[Boundedness Theorem]
+  \label{thm:boundedness-theorem}
+    If $f : [a, b] \to \R$ is continuous, then $f$ is bounded.
+  \end{theorem}
 \end{callout}
 
 \begin{problem}
@@ -28,6 +35,7 @@
   Second, let $g : \R \to \R$ with $g(x) = x$. While $g$ is continuous everywhere, it is
   unbounded below, so $g$ never attains a minimum on $\R$. Furthermore, $g$
   never attains a maximum on $\R$.
+
 \end{problem}
 
 \begin{problem}
@@ -59,10 +67,38 @@
 
 \begin{problem}
   Which part (or parts) of the proof of \thmref{thm:extreme-value-theorem} fails for open intervals $(a, b)$?
+  \vspace{\baselineskip}
+
+  If we change the domain of $f$ from $[a,b]$ to $(a,b)$, then the following issues arise:
+  \begin{itemize}
+    \item The image of $f$ is not guaranteed to be bounded above (or below).
+      \begin{itemize}
+        \item In the contradiction argument, the subsequence $(x_{n_{k}})$ may
+        converge to $a$ or $b$, which are not in the domain of $f$. In that case,
+        continuity cannot be invoked to reach a contradiction.
+      \end{itemize}
+    \item The supremum (or infimum) of $f$ may not be in the image of $f$.
+  \end{itemize}
 \end{problem}
 
 \begin{problem}
   Which part (or parts) of the proof of \thmref{thm:extreme-value-theorem} fails for unbounded intervals? 
+  \vspace{\baselineskip}
+
+  If we change the domain of $f$ from $[a,b]$ to one that is unbounded, then the following issues arise:
+  \begin{itemize}
+    \item The image of $f$ is not guaranteed to be bounded above (or below).
+      \begin{itemize}
+        \item In the contradiction argument, not every sequence in $\R$ has a
+          convergent subsequence. In particular, the subsequence $(x_{n_{k}})$ may
+          diverge to $\infty$ or $-\infty$. Then Bolzano-Weierstrass does not
+          apply, and continuity cannot be invoked to reach a contradiction.
+      \end{itemize}
+    \item The supremum (or infimum) of $f$ may not be in the image of $f$.
+        \item A maximizing (or minimizing) point may occur ``at $\pm \infty$'' or
+          at the finite endpoint of a half-open inverval, neither of which is
+          in the domain of $f$ . 
+  \end{itemize}
 \end{problem}
 
 \begin{problem}

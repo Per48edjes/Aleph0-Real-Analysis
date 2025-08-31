@@ -184,12 +184,12 @@
 
       Let $A = \{ x \in [u,v] : f(x) < y \}$ and $s = \sup{A}$.
       Note that $s \neq u$ because if it were the case that $s = u$, then $u$ would be both a lower and upper bound for $A$,
-      giving $A = \{ u \}$. But, by continuity of $f$, for $\eps = y - f(u)$ there exists a $\delta$
+      giving $A = \{ u \}$. But, by continuity of $f$, for $\eps = y - f(u)$ there exists a $\delta > 0$
       such that
       \[
-        \forall x \in \R.\, \abs{x - u} < \delta \implies \abs{f(x) - f(u)} < \eps = y - f(u) \implies f(x) < y,
+        \forall x \in [u, v].\, \abs{x - u} < \delta \implies \abs{f(x) - f(u)} < \eps = y - f(u) \implies f(x) < y,
       \]
-      so $\exists x \in \R$ such that $u < x < u + \delta$ and $f(u) < f(x) < y$, contradicting the fact that $u$
+      so $\exists x \in [u, v]$ such that $u < x < u + \delta$ and $f(u) < f(x) < y$, contradicting the fact that $u$
       is an upperbound of $A$ and that $A = \{ u \}$).
 
       Also, $s \neq v$ for a similar reason: contintuity of $f$ guarantees that a sufficiently small $\delta$-neighborhood of $v$
@@ -203,7 +203,7 @@
         \item Assume $f(s) < y$. Let $\eps = \dfrac{y - f(s)}{2}$. By continuity of $f$, there exists $\delta > 0$ 
           such that
           \[
-            \forall x \in \R.\, \abs{x - s} < \delta \implies \abs{f(x) - f(s)} < \eps \implies f(x) < f(s) + \eps = \frac{f(s)}{2} + \frac{y}{2} < y,
+            \forall x \in [u,v].\, \abs{x - s} < \delta \implies \abs{f(x) - f(s)} < \eps \implies f(x) < f(s) + \eps = \frac{f(s)}{2} + \frac{y}{2} < y,
           \]
           suggesting that $\exists x \in \R$ such that $s < x < \min{(s + \delta, v)}$ and $f(x) < y$.
           This yields a contradiction since $s$ is an upperbound for $A$.
@@ -211,7 +211,7 @@
         \item Assume $f(s) > y$. Let $\eps = \dfrac{f(s) - y}{2}$. By continuity of $f$, there exists $\delta > 0$ 
           such that
           \[
-            \forall x \in \R.\, \abs{x - s} < \delta \implies \abs{f(x) - f(s)} < \eps \implies f(x) > f(s) - \eps = \frac{f(s)}{2} + \frac{y}{2} > y,
+            \forall x \in [u,v].\, \abs{x - s} < \delta \implies \abs{f(x) - f(s)} < \eps \implies f(x) > f(s) - \eps = \frac{f(s)}{2} + \frac{y}{2} > y,
           \]
           suggesting that $\forall x \in \R$, if $\max{(s - \delta, u)} < x < s$, then $f(x) > y$. This is contrary to the fact that
           $s$ is the \textit{least} upperbound of $A$.
