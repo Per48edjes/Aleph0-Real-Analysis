@@ -91,13 +91,15 @@
       \begin{itemize}
         \item In the contradiction argument, not every sequence in $\R$ has a
           convergent subsequence. In particular, the subsequence $(x_{n_{k}})$ may
-          diverge to $\infty$ or $-\infty$. Then Bolzano-Weierstrass does not
-          apply, and continuity cannot be invoked to reach a contradiction.
+          diverge to $\infty$ or $-\infty$. Then, Bolzano-Weierstrass does not
+          apply (precluding continuity from being invoked to reach a contradiction).
       \end{itemize}
     \item The supremum (or infimum) of $f$ may not be in the image of $f$.
+      \begin{itemize}
         \item A maximizing (or minimizing) point may occur ``at $\pm \infty$'' or
           at the finite endpoint of a half-open inverval, neither of which is
           in the domain of $f$ . 
+      \end{itemize}
   \end{itemize}
 \end{problem}
 
@@ -106,5 +108,13 @@
   $\abs{f(x) - y} \geq m$ for all $x \in [a, b]$.
 
   \begin{proof}
+    Define $g(x) = \abs{x - y}$. Since $f$ is continuous on $[a,b]$ and $g$ 
+    is continuous on $\R$, the composition $g \circ f$ is continuous on $[a,b]$
+    by the result of \probref{prob:composition-continuous}.
+    Then by \thmref{thm:extreme-value-theorem}, $g \circ f$ attains a minimum $m$ on $[a,b]$.
+    Since $g \circ f$ is nonnegative, $m \geq 0$, giving
+    \[
+      \forall x \in [a,b].\, g(f(x)) = \abs{f(x) - y} \geq m \geq 0.
+    \]
   \end{proof}
 \end{problem}
