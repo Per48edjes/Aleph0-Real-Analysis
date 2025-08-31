@@ -2,32 +2,59 @@
 
 
 \begin{callout}
-  We take the following theorem to be given (as the proof has been \href{https://youtu.be/39ntUHbmXpc}{provided}).
+  We take the following theorem to be given (as the proof has been
+  \href{https://youtu.be/39ntUHbmXpc}{provided}).
   \begin{theorem}[Extreme Value Theorem]
   \label{thm:extreme-value-theorem}
     Suppose that $f : [a, b] \to \R$ is continuous. Then there exist points $c, d \in [a, b]$ such that
     \[
       f(c) \leq f(x) \leq f(d)
     \]
-    for all $x \in [a, b]$. In other words, $f$ attains its minimum value at $c$ and its maximum value at $d$.
+    for all $x \in [a, b]$. In other words, $f$ attains its minimum value at
+    $c$ and its maximum value at $d$.
   \end{theorem}
 \end{callout}
 
 \begin{problem}
   Give a counterexample to \thmref{thm:extreme-value-theorem} on the open
   interval $(a, b)$ and on the unbounded domain $\R$. 
+  
+  \vspace{\baselineskip}
 
+  First, consider $f = \ln(x - a)$ on $(a, b)$.  Clearly, $f$ is
+  continuous, however, it is unbounded below, so $f$ never attains a minimum on
+  $(a, b)$.
+  
+  Second, let $g : \R \to \R$ with $g(x) = x$. While $g$ is continuous everywhere, it is
+  unbounded below, so $g$ never attains a minimum on $\R$. Furthermore, $g$
+  never attains a maximum on $\R$.
 \end{problem}
 
 \begin{problem}
   Show that if $f$ is continuous on $[a,b]$ with $f(x) > 0$ for all $a \leq x \leq b$,
   then $\dfrac{1}{f}$ is bounded on $[a,b]$. 
 
+  \begin{proof}
+    From \thmref{thm:extreme-value-theorem}, we know that $f$ attains a maximum
+    $M > 0$ and a minimum $m > 0$ on $[a,b]$. Then, $\dfrac{1}{f}$ is bounded
+    below by $1/M$ and above by $1/m$.
+  \end{proof}
+
 \end{problem}
 
 \begin{problem}
-  In the video, we showed the ``maximum'' statement of \thmref{thm:extreme-value-theorem}. From thsi maximum statement, deduce the ``minimum'' statement
-  (i.e., if $f : [a,b] \to \R$ is continuous, then $f$ attains a minimum value). 
+  In the video, we showed the ``maximum'' statement of
+  \thmref{thm:extreme-value-theorem}. From this ``maximum'' statement, deduce
+  the ``minimum'' statement (i.e., if $f : [a,b] \to \R$ is continuous, then
+  $f$ attains a minimum value). 
+
+  \begin{proof}
+    We will show that if $f$ is continuous on $[a,b]$, then $f$ attains a minimum
+    value on $[a,b]$.
+    First, define $g(x) = -f(x)$. Then by the ``maximum'' statement of \thmref{thm:extreme-value-theorem},
+    $g$ attains a maximum value at some point $c \in [a,b]$. Then $f(c) \leq f(x)$ for all $x \in [a,b]$.
+  \end{proof}
+
 \end{problem}
 
 \begin{problem}
