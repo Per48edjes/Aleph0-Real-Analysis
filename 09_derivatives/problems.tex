@@ -1,0 +1,161 @@
+\section{Derivatives}
+
+\begin{callout}
+  We take the following theorem to be given (as the proof has been
+  \href{https://youtu.be/Av210fDPukY}{provided}).
+  \begin{theorem}[Product Rule for Derivatives]
+  \label{thm:prod-rule-deriv}
+    Let $f$ and $g$ be differentiable functions. Then the product $f \cdot g$ is differentiable, and
+    \[
+      (f \cdot g)'(x) = f'(x) \cdot g(x) + f(x) \cdot g'(x).
+    \]
+  \end{theorem}
+
+\end{callout}
+
+\begin{problem}
+  Using the definition of the derivative, compute $f'(x)$ for $f(x) = 3x + 5$.
+  \vspace{\baselineskip}
+
+  By the definition of the derivative:
+    \begin{align*}
+    f'(x) &= \lim_{h \to 0}\frac{f(x+h)-f(x)}{h}\\
+          &= \lim_{h \to 0}\frac{3(x+h)+5-(3x+5)}{h}\\
+          &= \lim_{h \to 0}\frac{3x+3h+5-3x-5}{h}\\
+          &= \lim_{h \to 0}\frac{3h}{h}\\
+          &= \lim_{h \to 0}3\\
+          &= 3.
+    \end{align*}
+\end{problem}
+
+\begin{problem}
+  Find the derivative of $f(x) = x^{4} - 2x^{3} + 7x - 1$.
+  \vspace{\baselineskip}
+
+  By the definition of the derivative, we have
+    \begin{align*}
+      f'(x) &= \lim_{h \to 0}\frac{f(x+h)-f(x)}{h}\\
+            &= \lim_{h \to 0}\frac{(x+h)^4-2(x+h)^3+7(x+h)-1 - (x^4-2x^3+7x-1)}{h}. \\
+    \end{align*}
+  Expanding, using the binomial theorem, the higher degree terms produces
+  \[
+    (x+h)^4 = x^4 + 4x^3h + 6x^2h^2 + 4xh^3 + h^4, \quad
+    (x+h)^3 = x^3 + 3x^2h + 3xh^2 + h^3.
+  \]
+  Substituting, simplifying, and evaluating the limit gives us the desired result:
+  \[
+    f'(x) = 4x^3 - 6x^2 + 7.
+  \]
+\end{problem}
+
+\begin{problem}
+  Compute $\deriv{}{x} \left( \dfrac{1}{x^{2}} \right)$.
+  \vspace{\baselineskip}
+
+  Let $f(x) = \left( \dfrac{1}{x^{2}} \right)$. Using the definition of the derivative:
+    \begin{align*}
+      f'(x) &= \lim_{h \to 0}\frac{\frac{1}{(x+h)^2} - \frac{1}{x^2}}{h}\\
+            &= \lim_{h \to 0}\frac{x^2 - (x+h)^2}{h(x+h)^2x^2}\\
+            &= \lim_{h \to 0}\frac{x^2 - (x^2 + 2xh + h^2)}{h(x+h)^2x^2}\\
+            &= \lim_{h \to 0}\frac{-2xh - h^2}{h(x+h)^2x^2}\\
+            &= \lim_{h \to 0}\frac{-2x - h}{(x+h)^2x^2}\\
+            &= -\frac{2}{x^3}.
+    \end{align*}
+\end{problem}
+
+\begin{problem}
+  Using the definition of the derivative, show that if $f(x) = c$ (a constant), then $f'(0) = 0$.
+  \vspace{\baselineskip}
+
+  By the definition of the derivative:
+    \begin{align*}
+      f'(x) &= \lim_{h \to 0}\frac{f(x+h)-f(x)}{h}\\
+            &= \lim_{h \to 0}\frac{c-c}{h} = \lim_{h \to 0}\frac{0}{h}\\
+            &= 0.
+    \end{align*}
+\end{problem}
+
+\begin{problem}
+  Use the product rule to find the derivative of $f(x) = (x^{2} + 1)(x^{3} - 2x)$.
+  \vspace{\baselineskip}
+
+  Let $u(x) = x^2 + 1$ and $v(x) = x^3 - 2x$. First, we compute the derivatives:
+  \[
+    u'(x) = 2x, \quad v'(x) = 3x^2 - 2.
+  \]
+  Next, we substitute into \thmref{thm:prod-rule-deriv}:
+    \begin{align*}
+    f'(x) &= u'(x)v(x) + u(x)v'(x)\\
+          &= 2x(x^3 - 2x) + (x^2 + 1)(3x^2 - 2)\\
+          &= 2x^4 - 4x^2 + 3x^4 + 3x^2 - 2x^2 - 2\\
+          &= 5x^4 - 3x^2 - 2.
+    \end{align*}
+\end{problem}
+
+\begin{problem}
+  Compute the derivative of $f(x) = \sqrt{x}$ at $x = 9$ using the definition of the derivative.
+  \vspace{\baselineskip}
+
+  Let $f(x) = \sqrt{x}$. Then, by the definition of the derivative:
+    \begin{align*}
+      f'(x) &= \lim_{h \to 0}\frac{\sqrt{x+h} - \sqrt{x}}{h}\\
+            &= \lim_{h \to 0}\frac{(\sqrt{x+h} - \sqrt{x})(\sqrt{x+h} + \sqrt{x})}{h(\sqrt{x+h} - \sqrt{x})}\\
+            &= \lim_{h \to 0}\frac{(x + h) - x}{h(\sqrt{x+h} - \sqrt{x})}\\
+            &= \frac{1}{2 \sqrt{x}}.
+    \end{align*}
+\end{problem}
+
+\begin{problem}
+  If $f(x) = x^{n}$ where $n$ is a positive integer, prove (using the definition of the derivative) that 
+  $f'(x) = nx^{n-1}$.
+
+  \begin{proof}
+    By the definition of the limit and the binomial theorem, we have:
+    \begin{align*}
+       \deriv{}{x} x^n = \lim_{h \to 0} \frac{(x + h)^{n} - x^{n}}{h} &= \lim_{h \to \infty} \frac{\sum_{k=0}^{n}\binom{n}{k}x^{k}h^{n-k}}{h}\\
+                                                     &= \lim_{h \to \infty} \sum_{k=0}^{n-1}\binom{n}{k}x^{k}h^{n-k-1}\\
+                                                     &= nx^{n-1}.
+    \end{align*}
+  \end{proof}
+\end{problem}
+
+\begin{problem}
+  Consider the function
+    \begin{equation*}
+      f(x) = 
+      \begin{cases}
+        x^2 \sin(1/x) & \text{if } x \neq 0 \\
+        0 & \text{if } x = 0
+      \end{cases}
+    \end{equation*}
+  Show that $f$ is differentiable at $x = 0$, but $f'$ is not continuous at $x = 0$.
+
+  \begin{proof}
+  \end{proof}
+\end{problem}
+
+\begin{problem}
+  % TODO: Prove the power rule for negative exponents, chain rule first
+  Let $f$ and $g$ be differentiable functions. Prove the quotient rule:
+    \begin{equation*}
+      \left(\frac{f}{g}\right)' (x) = \frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}
+    \end{equation*}
+  provided $g(x) \neq 0$.
+
+  \begin{proof}
+    Notice that $\frac{f(x)}{g(x)} = f(x) \cdot g(x)^{-1}$.
+    Let $h(x) = g(x)^{-1}$. By the \thmref{thm:prod-rule-deriv}, chain rule, and the power
+    rule, we have:
+    \begin{align*}
+        \deriv{}{x} \left( f(x) \cdot {h(x)} \right) &= f'(x)h(x) + h'(x)f(x)\\
+                                                    &= \frac{f'(x)}{g(x)} -\frac{g'(x) f(x)}{g(x)^{2}}\\
+                                                    &= \frac{f'(x) g(x) - f(x) g'(x)} {g(x)^2}.
+    \end{align*}
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Suppose $f$ has a local maximum at $x = a$ and $f$ is differentiable at $x = a$.
+  Prove that $f'(a) = 0$. (This is Fermat's theorem.)
+\end{problem}
