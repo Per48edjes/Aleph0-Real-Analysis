@@ -96,3 +96,24 @@
   \end{proof}
 
 \end{problem}
+
+\begin{problem}
+  Suppose functions $f : \R \to \R$ and $g : \R \to \R$ are continuous and $f(p) = g(p)$ for all all $p \in \Q$. Prove that
+  $f = g$.
+
+  \begin{proof}
+    We already know $f = g$ over the rationals, so it is sufficient to show $f = g$ for all irrational numbers.
+
+    Let $x \in \I$ be arbitrary. Consider the sequence $(a_{n})_{n=1}^{\infty}$. Because
+    $\Q$ is dense in $\R$ (by the result of \probref{prob:infinite-rationals-in-reals}), we have
+    \[
+      \forall n \in \N.\, \exists q_{n} \in \Q.\, x < q_{n} < x + a_{n},
+    \]
+    and $(q_{n}) \to x$ as $n \to \infty$. By continuity, we obtain
+    \[
+      f(x) = \lim_{n \to \infty} f(q_{n}) = \lim_{n \to \infty} g(q_{n}) = g(x).
+    \]
+    Thus, $f(x) = g(x)$ for all $x \in \I$ (since $x \in \I$ was arbitrary), and $f = g$ for all real numbers.
+  \end{proof}
+\end{problem}
+
