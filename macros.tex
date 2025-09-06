@@ -55,5 +55,18 @@
   {\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}\begin{proof}[#1]}
   {\end{proof}}
 
+% Environments for iff proof directions
+\newenvironment{forwardimplication}{%
+  \par\noindent\textbf{($\Rightarrow$)} \hspace{0.5em}\ignorespaces%
+}{%
+  \par%
+}
+
+\newenvironment{backwardimplication}{%
+  \par\noindent\textbf{($\Leftarrow$)} \hspace{0.5em}\ignorespaces%
+}{%
+  \par%
+}
+
 % "Callout" box
 \newtcolorbox{callout}[1][]{colback=yellow!10!white, colframe=red!50!black, fonttitle=\bfseries, title=#1}

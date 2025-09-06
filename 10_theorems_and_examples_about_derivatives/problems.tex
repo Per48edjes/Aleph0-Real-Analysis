@@ -1,0 +1,68 @@
+\section{Theorems / Examples about Derivatives}
+
+\setcounter{problem}{6}
+
+\begin{callout}
+  The first several problems for this unit were derivative calculations with multiple choice
+  answers and are omitted here.
+\end{callout}
+
+\begin{problem}
+  \begin{enumerate}[label=(\alph*)]
+    \item Prove that if $f$ is differentiable at $a$ and $f(a) \neq 0$, then $\abs{f}$
+      is differentiable at $a$.
+
+      \begin{proof}
+        Let $g(x) = \abs{f(x)}$. Then, by \thmref{thm:chain-rule}, we have
+        \[
+          g'(a) = 
+          \begin{cases}
+            -f'(a) & \text{if } f(a) < 0 \\
+            f(a) & \text{if } f(a) > 0,
+          \end{cases}
+        \]
+        because $g$ is differentiable at $f(a) \neq 0$ (since the absolute
+        value function is differentiable everywhere except $0$) and $f$ is
+        differentiable at $a$ (by the hypothesis). Thus, $\abs{f}$ is
+        differentiable at $a$ so long as $f(a) \neq 0$.
+      \end{proof}
+
+    \item Give a counterexample if $f(a) = 0$.
+      \vspace{\baselineskip}
+
+      Consider $f(x) = x$ and let $a = 0$. Clearly, $f(a) = 0$ and $\abs{f}$ is not differentiable at $a$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Show that a number $a$ is a double root of a polynomial $f$ if and only if $a$ is a root of both $f$ and $f'$.
+
+  \begin{proof}
+    We assume that $f$ and $f'$ are polynomials in $x$ and that $a$ is a root of $f$.
+    \vspace{\baselineskip}
+
+    \begin{forwardimplication}
+      Suppose $a$ is a double root of $f$. Then, we may express $f(x) = (x - a)^{2}P(x)$ where $P$ is any polynomial in $x$.
+      Trivially, $a$ is a root of $f$. \thmref{thm:prod-rule-deriv} gives
+      \[
+        f'(x) = 2(x - a)P(x) + P'(x)(x - a)^{2},
+      \]
+      a polynomial having $a$ as a root as well.
+    \end{forwardimplication}
+    \vspace{\baselineskip}
+
+    \begin{backwardimplication}
+      Suppose $a$ is a root of $f$ and $f'$. Then, by \thmref{thm:prod-rule-deriv},
+      \[
+        f(x) = (x-a)P(x) \implies f'(x) = (x-a)P'(x) + P(x),
+      \]
+      for some polynomial $P$ in $x$.
+      Since $f'(a) = 0$, it must be the case that $(x - a)$ divides $P(x)$. Let
+      $Q(x) = P(x) / (x-a)$. We can rewrite $f$:
+      \[
+        f(x) = (x-a)^{2}Q(x).
+      \]
+      Hence, $a$ is a double root of $f$.
+    \end{backwardimplication}
+  \end{proof}
+\end{problem}
