@@ -64,6 +64,7 @@
 \end{problem}
 
 \begin{problem}
+  \label{prob:derivative-constant}
   Using the definition of the derivative, show that if $f(x) = c$ (a constant), then $f'(0) = 0$.
   \vspace{\baselineskip}
 
@@ -106,6 +107,7 @@
 \end{problem}
 
 \begin{problem}
+  \label{prob:derivative-power-rule-positive-integers}
   If $f(x) = x^{n}$ where $n$ is a positive integer, prove (using the definition of the derivative) that 
   $f'(x) = nx^{n-1}$.
 
@@ -179,14 +181,76 @@
     \]
     Hence, $f$ is differentiable at $x = 0$.
 
-    To show that $f'$ is not continuous everywhere, it is sufficient to prove
-    that $f'$  is not continuous at $x = 0$.
+    Before we show that $f'$  is not continuous at $x = 0$, we will prove a very 
+    very important theorem that will allow us to easily take the derivative
+    of a composite function.
 
+    \begin{theorem}[Chain Rule]
+      \label{thm:chain-rule}
+      Let $A, B \subseteq \R$. Suppose
+      \begin{enumerate}[label=(\alph*)]
+        \item $g : A \to B$ and $f : B \to \R$,
+        \item $g$ is differentiable at $x \in A$ and $f$ is differentiable at $y = g(x) \in B$.
+      \end{enumerate}
+      Then $f \circ g : D \to \R$ is differentiable at $x$, and
+      \[
+        (f \circ g)'(x) = f'(g(x)) \cdot g'(x).
+      \]
+    \end{theorem}
+
+    \begin{subproof}
+      By differentiability of $f$ at $y$, there exists $\alpha(v) \to 0$ as $v \to 0$ with
+      \[
+        f(y+v) - f(y) = \bigl( f'(y) + \alpha(v) \bigr)\, v.
+      \]
+      Likewise, since $g$ is differentiable at $x$, there exists $\beta(h) \to 0$ as $h \to 0$ with
+      \[
+        g(x+h) - g(x) = \bigl( g'(x) + \beta(h) \bigr)\, h.
+      \]
+      Put $v = g(x+h) - g(x)$. Since $g$ is continuous at $x$, we have $v \to 0$ as $h \to 0$. Substituting,
+      \begin{align*}
+        f(g(x+h)) - f(g(x))
+        &= \bigl( f'(y) + \alpha(v) \bigr)\, \bigl( g(x+h) - g(x) \bigr) \\
+        &= \bigl( f'(y) + \alpha(v) \bigr)\, \bigl( g'(x) + \beta(h) \bigr)\, h.
+      \end{align*}
+      Dividing by $h$ gives
+      \[
+        \frac{f(g(x+h)) - f(g(x))}{h} = \bigl( f'(y) + \alpha(v) \bigr)\, \bigl( g'(x) + \beta(h) \bigr).
+      \]
+      Taking $h \to 0$ yields
+      \[
+        (f \circ g)'(x) = f'(y)\, g'(x) = f'(g(x))\, g'(x).
+      \]
+    \end{subproof}
+
+    \begin{callout}[One-sided Derivatives]
+      If $g(x)$ lies on the boundary of $E$, the same reasoning works with
+      one-sided derivatives of $f$ provided $g(x+h)$ approaches $g(x)$ from
+      within $E$. In that case, $(f \circ g)'(x)$ exists with
+      $(f \circ g)'(x) = f'_\pm(g(x)) \cdot g'(x)$, where $f'_\pm$ is the
+      appropriate one-sided derivative.
+    \end{callout}
+
+    By \thmref{thm:chain-rule}, we have
+    \begin{equation*}
+      f'(x) = 
+      \begin{cases}
+        2x \sin\left(\frac{1}{x}\right) - \cos\left(\frac{1}{x}\right) & \text{if } x \neq 0 \\
+        0 & \text{if } x = 0.
+      \end{cases}
+    \end{equation*}
+    Now, we construct two sequences, both of which converge to $0$:
+    \[
+      (a_{n}) = \frac{1}{2 \pi n}, \quad (b_{n}) = \frac{1}{\pi + 2 \pi n}.
+    \]
+    We have $f'(a_{n}) \to -1$ as $n \to \infty$ and $f'(b_{n}) \to 1$ as $n \to \infty$. 
+    If $f'$ were continuous at $x = 0$, we would expect that the images (under $f'$) of every sequence
+    (in the domain $(-\infty, 0) \cup (0, \infty)$) converging to $x =0$ would all converge to the same value (in $\R$).
+    Having found a counterexample, we have shown that $f'$ cannot be continuous at $x = 0$.
   \end{proof}
 \end{problem}
 
 \begin{problem}
-  % TODO: Prove the power rule for negative exponents, chain rule first
   Let $f$ and $g$ be differentiable functions. Prove the quotient rule:
     \begin{equation*}
       \left(\frac{f}{g}\right)' (x) = \frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}
@@ -194,9 +258,28 @@
   provided $g(x) \neq 0$.
 
   \begin{proof}
+    First, we generalize the result from \probref{prob:derivative-power-rule-positive-integers}.
+    \begin{theorem}
+      \label{thm:derivative-power-rule-integers}
+      If $f(x) = x^{n}$ where $n \in \Z$, then $f'(x) = nx^{n-1}$.
+    \end{theorem}
+
+    \begin{subproof}
+      Since \probref{prob:derivative-power-rule-positive-integers} covers the case when $n \in \N$
+      and \probref{prob:derivative-constant} covers the case when $n = 0$, we just have to show that
+      $f'(x) = nx^{n-1}$ when $n < 0$.
+
+      Consider $n = -1$. Then, by the limit definition of the derivative, we have
+      \[
+        f'(x) = \lim_{h \to 0} \frac{(x + h)^{-1} - x^{-1}}{h} = \lim_{h \to 0} \frac{\frac{-h}{x(x + h)}}{h} = nx^{n-1} = -x^{-1}.
+      \]
+      Finally, using the result of the $n = -1$ case in conjunction with \thmref{thm:chain-rule} gives us
+      $f'(x) = -nx^{n}$ for $n < -1$.
+    \end{subproof}
+
     Notice that $\frac{f(x)}{g(x)} = f(x) \cdot g(x)^{-1}$.
-    Let $h(x) = g(x)^{-1}$. By the \thmref{thm:prod-rule-deriv}, chain rule, and the power
-    rule, we have:
+    Let $h(x) = g(x)^{-1}$. By the \thmref{thm:prod-rule-deriv}, \thmref{thm:chain-rule}, and
+    \thmref{thm:derivative-power-rule-integers}, we have:
     \begin{align*}
         \deriv{}{x} \left( f(x) \cdot {h(x)} \right) &= f'(x)h(x) + h'(x)f(x)\\
                                                     &= \frac{f'(x)}{g(x)} -\frac{g'(x) f(x)}{g(x)^{2}}\\
@@ -207,6 +290,29 @@
 \end{problem}
 
 \begin{problem}
-  Suppose $f$ has a local maximum at $x = a$ and $f$ is differentiable at $x = a$.
+  Suppose $f: A \to R$ has a local maximum at $x = a$ with $a$ being an
+  interior limit point of $A$ and $f$ is differentiable at $x = a$.
   Prove that $f'(a) = 0$. (This is Fermat's theorem.)
+
+  \begin{proof}
+    Because $x = a$ is a local maximum, it follows that
+    \[
+      \exists \delta > 0.\, \forall x \in A. \abs{x - a} < \delta \implies f(x) \leq f(a).
+    \] 
+    Put $h = x - a$. Then $a + h \in A$ for $|h| < \delta$, and $f(a + h) \leq f(a)$ for such $h$.
+    This inequality gives us $f(a + h) - f(a) \leq 0$ for all sufficiently small $h \neq 0$.
+    Therefore, all sufficiently small $h \neq 0$ are described by two cases:
+    \begin{itemize}
+      \item When $h < 0$, we have $\dfrac{f(a + h) - f(a)}{h} \geq 0$.
+      \item When $h > 0$, we have $\dfrac{f(a + h) - f(a)}{h} \leq 0$.
+    \end{itemize}
+
+    Since $f$ is differentiable at $a$, we know that 
+    $f'(a) = \lim\limits_{h \to 0} \dfrac{f(a + h) - f(a)}{h}$ is well-defined and that
+    \[
+      0 \leq \lim\limits_{h \to 0^{-}} \dfrac{f(a + h) - f(a)}{h} = f'(a) = \lim_{h \to 0^{+}} \frac{f(a + h) - f(a)}{h} \leq 0,
+    \]
+    so $f'(a) = 0$.
+  \end{proof}
+
 \end{problem}
