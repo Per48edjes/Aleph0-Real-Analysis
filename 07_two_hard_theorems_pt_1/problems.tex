@@ -101,4 +101,51 @@
   \vspace{\baselineskip}
 
   No, it is not always possible to determine the time.
+
+  \begin{proof}
+    Let $t \in [0, 12)$ be the number of hours elapsed in a $12$-hour period.
+    Then, the position of the hour and minute hands of a clock, as a proportion 
+    of the circumference of the clock is given by
+    \[
+      h(t) = \frac{t}{12}, \text{ and } \quad m(t) = t - \lfloor t \rfloor = \{ t \},
+    \]
+    respectively.
+    We want to show that $\exists t_{1}, t_{2} \in [0, 12)$ with $t_{1} \neq t_{2}$ 
+    satisfying the following system of equations: 
+    \begin{equation*}
+    \left\{
+      \begin{array}{@{}l@{}}
+        h(t_{1}) = m(t_{2})\\
+        m(t_{1}) = h(t_{2}).
+      \end{array}\right.
+    \end{equation*}
+
+    We can decompose each variable into its integer and fractional parts:
+    \[
+      t_{1} = n_{1} + \{t_{1}\}, \quad t_{2} = n_{2} + \{t_{2}\}
+    \]
+    where $n_{1}, n_{2} \in \{ 0, 1, \ldots, 11 \}$.
+    Substituting the given conditions into this decomposition gives
+    \[
+      t_{1} = n_{1} + \frac{t_{2}}{12}, \quad t_{2} = n_{2} + \frac{t_{1}}{12},
+    \]
+    which permits solving for $t_{1}$:
+    \[
+      t_{1} = n_{1} + \frac{1}{12} \left( n_{2} + \frac{t_{1}}{12} \right) = \frac{144n_{1} + 12n_{2}}{143}.
+    \]
+    Similarly, for $t_2$:
+    \[
+      t_{2} = \frac{12n_{1} + 144n_{2}}{143}.
+    \]
+
+    Therefore, for valid solutions, $(n_{1}, n_{2})$ must satisfy:
+    \begin{itemize}
+      \item $n_1, n_2 \in \{0,1,\ldots,11\}$,
+      \item $n_1 \neq n_2$,
+      \item $n_1 + 12n_2 < 143$, and
+      \item $12n_1 + n_2 < 143$.
+    \end{itemize}
+    Finding a single satisfying pair $(n_{1}, n_{2})$ is sufficient. Let $n_{1} = 5 \iff t_{1} = \dfrac{756}{143}$
+    and $n_{2} = 3 \iff t_{2} = \dfrac{492}{143}$. It can be shown that this pair satisfies the constraints. 
+  \end{proof}
 \end{problem}
