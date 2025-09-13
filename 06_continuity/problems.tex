@@ -177,7 +177,7 @@
         \item $f(u) < y < f(v)$ or
         \item $f(u) > y > f(v)$,
       \end{enumerate}
-      then, there exists some $c \in [u, v]$ such that $f(c) = y$.
+      then, there exists some $c \in (u, v)$ such that $f(c) = y$.
     \end{theorem}
 
     \begin{subproof}[Proof of \thmref{thm:intermediate-value-theorem}]
@@ -193,13 +193,13 @@
       so $\exists x \in [u, v]$ such that $u < x < u + \delta$ and $f(u) < f(x) < y$, contradicting the fact that $u$
       is an upperbound of $A$ and that $A = \{ u \}$).
 
-      Also, $s \neq v$ for a similar reason: contintuity of $f$ guarantees that a sufficiently small $\delta$-neighborhood of $v$
-      (not containing $s$) can be found in response to the $\eps$-neighbhoorhood where $\eps = f(v) - y$. Then, for all $x \in [u, v]$,
-      $x$ being a member of said $\delta$-neighborhood implies that $x > s$ and $f(x) > y$, so $s \neq v$.
+      Also, $s \neq v$ for a similar reason: supposing (to reach a contradiction) that $s = v$, continuity of $f$ guarantees that a sufficiently small $\delta$-neighborhood of $v$
+      can be found in response to the $\eps$-neighbhoorhood where $\eps = f(v) - y$. That is, for all $x \in [u, v]$,
+      $x$ being a member of said $\delta$-neighborhood implies that $v = s \geq x$ and $f(x) > y$. This contradicts the fact
+      that, by the definition of the supremum, $\exists a \in A$ where $s - \delta < a < s = v$.
 
-      Therefore, $s \in (u, v)$.
-
-      We claim that $f(s) = y$. To show this, suppose to the contrary, the following two cases:
+      Next, having established that $s \in (u, v)$, we claim that $f(s) = y$.
+      To show this, suppose to the contrary, the following two cases:
       \begin{itemize}
         \item Assume $f(s) < y$. Let $\eps = \dfrac{y - f(s)}{2}$. By continuity of $f$, there exists $\delta > 0$ 
           such that
@@ -219,7 +219,7 @@
 
       \end{itemize}
 
-      Thus, setting $c = s$ gives us $c \in [u, v]$ such that $f(c) = y$.
+      Thus, setting $c = s$ gives us $c \in (u, v)$ such that $f(c) = y$.
     \end{subproof}
 
     % FIX: This proof presupposes $f$ being continuous implies $f$ has intervals over which it is monotonic. 

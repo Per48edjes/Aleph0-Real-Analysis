@@ -1,0 +1,62 @@
+\section{Mean Value Theorem}
+
+\begin{callout}
+  We take the following theorem to be given (as the proof has been
+  \href{https://www.youtube.com/watch?v=qtKZo1qOVlQ}{provided}).
+  \begin{theorem}[Mean Value Theorem]
+  \label{thm:mean-value-theorem}
+    Suppose that $f : [a, b] \to \R$ is differentiable. Then there exists a point $c \in (a, b)$ such that
+    \[
+      f'(c) = \frac{f(b) - f(a)}{b - a}.
+    \]
+  \end{theorem}
+\end{callout}
+
+\begin{callout}
+  The first several problems for this unit were applications of \thmref{thm:mean-value-theorem} with multiple choice
+  answers and are omitted here.
+\end{callout}
+
+\begin{problem}
+  Prove that if $f'(x) \geq M$ for all $x \in [a, b]$, then $f(b) \geq f(a) + M(b - a)$.
+
+  \begin{proof}
+    We will prove the contrapositive. Start by assuming that
+    \[
+      f(b) < f(a) + M(b - a),
+    \]
+    which gives
+    \[
+      \frac{f(b) - f(a)}{b - a} < M.
+    \]
+    By \thmref{thm:mean-value-theorem}, there exists some $c \in (a, b)$ such that
+    \[
+      f'(c) = \frac{f(b) - f(a)}{b - a} < M.
+    \]
+  \end{proof}
+\end{problem}
+
+\begin{problem}
+  Let $f$ be differentiable on $(a, b)$ and suppose $f'(x) \geq m > 0$ for all $x \in (a, b)$.
+  Prove that $f$ is strictly increasing on $[a, b]$.
+
+  \begin{proof}
+
+    By definition, $f$ is strictly increasing over $[a, b]$ if and only if $f(x_{1}) < f(x_{2})$ where $x_{1}, x_{2} \in [a, b]$ and $x_{1} < x_{2}$.
+    Let $x_{1} < x_{2}$ be arbitrary. Then, by \thmref{thm:mean-value-theorem}, there exists some $c \in (x_{1}, x_{2}$ such that
+    \[
+      f'(c) = \frac{f(x_{2}) - f(x_{1})}{x_{2} - x_{1}} \geq m > 0,
+    \]
+    which gives $f(x_{1}) - f(x_{2}) > x_{2} - x_{1} > 0$ and, consequently, $f(x_{1}) < f(x_{2})$. 
+  \end{proof}
+\end{problem}
+
+\begin{problem}
+  A fixed point of a function $f$ is a value $x$ where $f(x) = x$. Show that if
+  $f$ is differentiable on a an interval with $f'(x) \neq 1$, then $f$ can have
+  at most one fixed point.
+
+  \begin{proof}
+  \end{proof}
+  
+\end{problem}
