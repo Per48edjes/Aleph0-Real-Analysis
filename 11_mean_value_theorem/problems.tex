@@ -112,11 +112,12 @@
   interval of length $1/4$ on which $\abs{f(x)} > M/4$. 
 
   \begin{proof}
-    We claim that either $(0, 1/4)$ or $(3/4, 1)$ is a satisfying interval of
-    on which $\abs{f(x)} > M/4$ (both have length $1/4$). Note that $f$ has at
-    most $1$ zero since it is strictly increasing on $[0, 1]$, per the result of
+    We claim that either $(0, 1/4)$ or $(3/4, 1)$ is a satisfying interval on
+    which $\abs{f(x)} > M/4$ and that has length $1/4$. Note that $f$ has at
+    most $1$ zero in the interval $[0, 1]$ since it is strictly increasing on
+    that interval, per the result of
     \probref{prob:lower-bounded-deriv-strictly-increasing}, so we proceed with
-    casework conditioning on the location of this zero (if it exists).
+    casework on the location of this zero (if it exists in $[0, 1]$).
 
     First, consider the case when $f(x) \geq 0$ for all $x \in [0, 1]$. We will show that, for all 
     $x \in (3/4, 1)$, $\abs{f(x)} > M/4$. Since $\abs{f(x)} = f(x)$ is strictly increasing on $[0, 1]$, 
@@ -142,9 +143,9 @@
 
     Lastly, we consider the case where there exists some $z \in (0, 1)$ such
     that $f(z) = 0$. If $z \leq 1/2$, select $(3/4, 1)$, which can be proven to
-    be a satisfying interval using the same reasoning applied to the first
+    be a satisfying interval using the same reasoning in the first
     case. Otherwise, select $(0, 1/4)$, which can be proven to be a satisfying
-    interval using the same reasoning applied to the second case.
+    interval using the same reasoning in the second case.
   \end{proof}
 \end{problem}
 
