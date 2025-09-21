@@ -1,0 +1,91 @@
+\section{Review}
+
+\begin{problem}
+  Show that it is impossible to write $x = f(x)g(x)$ with $f, g$ differentiable and $f(0) = g(0) = 0$.
+
+  \begin{proof}
+    Supposing it were possible to write $x = f(x)g(x)$ with $f, g$ differentiable and $f(0) = g(0) = 0$,
+    by \thmref{thm:prod-rule-deriv} we have
+    \[
+      x = f(x)g(x) \implies 1 = f'(x)g(x) + f(x)g'(x).
+    \]
+    When evaluated at $x = 0$, we obtain $1 = f'(x) \cdot 0 + 0 \cdot g'(x) = 0$ -- an impossibility.
+  \end{proof}
+\end{problem}
+
+\begin{problem}
+  For all $x, y$ in the real numbers, use \thmref{thm:mean-value-theorem} to show that
+  \[
+    \abs{\sin{x} - \sin{y}} \leq \abs{x - y}.
+  \]
+
+  \begin{proof}
+    Let $x, y \in \R$ be arbitrary and, without loss of generality, $x > y$. Also, let $f(x) = \sin{x}$.
+    Then, by \thmref{thm:mean-value-theorem}, we see that there exists some $c \in (y, x)$
+    such that
+    \[
+      f'(c) = \frac{f(x) - f(y)}{x - y}.
+    \]
+    Taking absolute values, it is clear that 
+    \[
+      \abs{f'(c)} = \abs{\cos{c}} = \frac{\abs{f(x) - f(y)}}{\abs{x - y}} \leq 1 \implies \abs{\sin{x} - \sin{y}} \leq \abs{x - y}.
+    \]
+  \end{proof}
+\end{problem}
+
+\begin{problem}
+  Let $a \geq 0$ and define
+  \[
+    f_{a}(x) =
+    \begin{cases}
+      x^{a} &\text{ if } x > 0\\
+      0     &\text{ if } x \leq 0.
+    \end{cases}
+  \]
+  Show that:
+  \begin{enumerate}[label=(\roman*)]
+    \item $f_{a}$ is continuous at $0$ if $a > 0$. \label{prob:real-positive-powers-rhs-limit}
+      \begin{proof}
+        We must show that $\lim\limits_{x \to 0} f_{a}(x) = f_{a}(0) = 0$. It is clear that
+        $\lim\limits_{x \to 0^{-}} f_{a}(x) = 0$, so it is sufficient to show
+        that $\lim\limits_{x \to 0^{+}} f_{a}(x) = 0$. Notice that we can write
+        $x^{a} = e^{a \ln{x}}$ since $a$ is a positive real number. Now, let
+        $\eps > 0$ be given. Put $\delta = e^{(\ln{\eps})/a}$.
+        Then, we have
+        \[
+          \forall x > 0.\, x < \delta \implies e^{a \ln{x}} < \eps,
+        \]
+        thus the right-sided limit equals $0$ as desired.
+      \end{proof}
+
+    \item $f_{a}$ is differentiable at $0$ if $a > 1$.
+      \begin{proof}
+        Since the left-sided limit of the difference quotient is obviously $0$,
+        we restrict our attention to the right-sided limit to show:
+        \[
+          \lim_{h \to 0^{+}} \frac{f_{a}(h)}{h} = \frac{h^{a}}{h} = h^{a - 1} = 0.
+        \]
+        Let $b = a - 1$; since $a > 1$, $b > 0$. Using the result from
+        \probref{prob:real-positive-powers-rhs-limit}, we verify that
+        \[
+          \lim_{h \to 0^{+}} h^{b} = 0.
+        \]
+      \end{proof}
+  \end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+  Show that if $g$ is continuous at $0$, then $f(x) = xg(x)$ is differentiable at $0$ with $f'(0) = g(0)$.
+
+  \begin{proof}
+    To show the consequent, we must demonstrate that
+    \[
+      \lim_{h \to 0} \frac{(0 + h)g(0 + h)}{h} = g(0).
+    \]
+    Simplifying and invoking the hypothesis we do, indeed, have
+    \[
+      \lim_{h \to 0} g(h) = g(0).
+    \]
+  \end{proof}
+\end{problem}
