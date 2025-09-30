@@ -1,0 +1,83 @@
+\section{Uniform Continuity}
+
+\begin{callout}
+  The first several problems for this unit were multiple choice
+  and are omitted here.
+\end{callout}
+
+\begin{problem}
+  Show directly from the definition that if $f, g$ are uniformly continuous,
+  then so is $f+g$.
+
+  \begin{proof}
+    Let $\eps > 0$ be given and fix $\eps_{1}, \eps_{2} > 0$ such that
+    $\eps_{1} + \eps_{2} = \eps$. By definition, 
+    we know:
+    \begin{align*}
+      \forall \eps_{1} > 0.\, \exists \delta_{1} > 0.\, \forall x, y \in \R.\, \abs{x - y} < \delta_{1} \implies \abs{f(x) - f(y)} < \eps_{1},\\
+      \forall \eps_{2} > 0.\, \exists \delta_{2} > 0.\, \forall x, y \in \R.\, \abs{x - y} < \delta_{2} \implies \abs{f(x) - f(y)} < \eps_{2}.
+    \end{align*}
+    Let $\delta = \min{(\delta_{1}, \delta_{2})}$. Then, with the assistance
+    of the triangle inequality, we are able to show that for all $x, y \in R$
+    \[
+      \abs{x - y} < \delta \implies \abs{(f+g)(x) - (f+g)(y)} \leq \abs{f(x) - f(y)} + \abs{g(x) - g(y)} < \eps_{1} + \eps_{2} = \eps.
+    \]
+  \end{proof}
+\end{problem}
+
+\begin{problem}
+  If $f, g$ are uniformly continuous, is $fg$ always uniformly continuous?
+  \vspace{\baselineskip}
+
+  No.
+
+  \begin{proof}
+    Suppose, to the contrary, that $fg$ is always uniformly continuous. 
+    Let $\eps > 0$ be given. Then, put $\delta > 0$ satisfying 
+    \[
+      \forall x, y \in \R.\, \abs{x - y} < \delta \implies \abs{(fg)(x) - (fg)(y))} < \eps.
+    \]
+    Notice that
+    \[
+      \abs{(fg)(x) - (fg)(y)} \leq \abs{g(y)}\abs{f(x)- f(y)} + \abs{f(x)}\abs{g(x)- g(y)}.
+    \]
+    However, the fixed $\delta$ cannot guarantee that the right side can be made sufficiently small
+    (namely, less than $\eps$) for any choice of $x, y \in \R$ when $\abs{x -  y} < \delta$ since
+    the coefficients $\abs{g(y)}, \abs{f(x)}$ may not be bounded.
+  \end{proof}
+
+  Consider $f(x) = g(x) = x$. It can be shown that $x^{2}$ is not uniformly continuous over $\R$.
+
+\end{problem}
+
+\begin{problem}
+  Assume that $g$ is defined on an open interval $(a, c)$ and it is known to be
+  uniformly continuous on $(a, b]$ and on $[b, c)$, where $a < b < c$. Prove
+  that $g$ is uniformly continuous.
+
+  \begin{proof}
+    Let $\eps > 0$ be given and fix $\eps_{1}, \eps_{2} > 0$ such that
+    $\eps_{1} + \eps_{2} = \eps$. By definition, 
+    we know:
+    \begin{align*}
+      \forall \eps_{1} > 0.\, \exists \delta_{1} > 0.\, \forall x, y \in (a, b].\, \abs{x - y} < \delta_{1} \implies \abs{g(x) - g(y)} < \eps_{1},\\
+      \forall \eps_{2} > 0.\, \exists \delta_{2} > 0.\, \forall x, y \in [b, c).\, \abs{x - y} < \delta_{2} \implies \abs{g(x) - g(y)} < \eps_{2}.
+    \end{align*}
+    Note that it is sufficient to show that some $\delta > 0$ satisfying the
+    conditions above (when substituted for $\delta_{1}$ and $\delta_{2}$)
+    also satisfies:
+    \[
+      \forall x \in (a, b].\, \forall y \in [b, c]).\, \abs{x - y} < \delta \implies \abs{g(x) - g(y)} < \eps_{1} + \eps_{2} = \eps.
+    \]
+
+    First, find suitable $\delta_{1}, \delta_{2} > 0$ responses to the
+    $\eps_{1}, \eps_{2}$ challenges, respectively. Let $\delta =
+    \min{(\delta_{1}, \delta_{2})}$. Then, with the assistance
+    of the triangle inequality, we have
+    \[
+      \abs{g(x) - g(y)} \leq \abs{g(b) - g(x)} + \abs{g(y) - g(b)} < \eps_{1} + \eps_{2} = \eps.
+    \]
+    whenever $x \in (a, b], y \in [b, c])$ and $\abs{x - y} < \delta$.
+  \end{proof}
+\end{problem}
+
