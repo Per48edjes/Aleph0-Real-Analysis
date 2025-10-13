@@ -1,0 +1,51 @@
+\section{The Riemann Integral}
+
+\begin{problem}
+  Show that if $P_{1}$ is finer than $P_{2}$, then $L(f, P_{1}) \geq L(f, P_{2})$.
+
+  \begin{proof}
+    By definition, we have $P_{1} \supset P_{2}$. Consider any point $z \in P_{1} \setminus P_{2}$.
+    It follows that $z \in (x_{k-1}, x_{k})$ for $x_{k}, x_{k-1} \in P_{2}$. Next, define the following:
+    \begin{itemize}
+      \item $m_{k} = \inf\{f(x) : x \in [x_{k-1}, x_{k}]\}$
+      \item $m_{k}' = \inf\{f(x) : x \in [z, x_{k}]\}$
+      \item $m_{k}'' = \inf\{f(x) : x \in [x_{k-1}, z]\}$.
+    \end{itemize}
+    Comparing the summands of $L(f, P_{1})$ and $L(f, P_{2})$ concerning the points in $[x_{k-1}, x_{k}]$ gives
+    \[
+      m_{k}'(x_{k} - z) + m_{k}''(z - x_{k-1}) \geq m_{k}(x_{k} - z) + m_{k}(z - x_{k-1})
+    \]
+    since $m_{k} \leq m_{k}'$ and $m_{k} \leq m_{k}''$.
+    Because $z$ was chosen arbitrary from $P_{1} \setminus P_{2}$, it follows
+    that $L(f, P_{1}) \geq L(f, P_{2})$.
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Show that if $P_{1}$ is finer than $P_{2}$, then $U(f, P_{1}) \leq U(f, P_{2})$.
+  
+  \begin{proof}
+    (This result can be proved by using an analogous approach to the previous proof.)
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Show that for a constant function $f(x) = c$, any partition $P$ of $[a,b]$ satisfies
+  \[
+    L(f, P) = U(f, P) = c(b - a).
+  \]
+  
+  \begin{proof}
+    Let $P$ be any partition of $[a,b]$ consisting of $n$ subintervals. Select
+    any subinterval $[x_{k-1}, x_{k}]$ formed by the partition (i.e., $k \in \{1, \ldots, n \}$).
+    Observe that $\inf\{f(x) : x \in [x_{k-1}, x_{k}]\} = \sup\{f(x) : x \in [x_{k-1}, x_{k}]\}$
+    because $f(x) = c$ over $[a, b]$, so it must be the case that $f(x) = c$ on $[x_{k-1}, x_{k}]$.
+    Since, the choice of subinterval was arbitrary, we see that
+    \[
+      L(f, P) = U(f, P) = \sum_{k=1}^{n} c(x_{k} - x_{k-1}) = c \sum_{k=1}^{n} (x_{k} - x_{k-1}) = c(b - a).
+    \]
+  \end{proof}
+
+\end{problem}
