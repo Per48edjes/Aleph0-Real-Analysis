@@ -176,7 +176,7 @@
 
     \begin{lemma}
       \label{lem:2.4.10}
-      $\prod_{n=1}^{\infty} (1 + a_{n})$ with $a_{n} \geq 0$ converges if and ony if $\sum a_{n}$ converges.
+      $\prod_{n=1}^{\infty} (1 + a_{n})$ with $a_{n} \geq 0$ converges if and only if $\sum a_{n}$ converges.
     \end{lemma}
 
   \end{callout}
@@ -233,4 +233,49 @@
 
   \end{enumerate}
 
+\end{problem}
+
+\begin{problem}
+  Prove that $\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^{p}}$ converges if and only if $p > 1$.
+
+  \leavevmode\par\noindent
+
+  \begin{callout}
+    This is Exercise 2.7.5 from \textit{Understanding Analysis} (Abbott 2015).
+  \end{callout}
+
+  \begin{proof}
+
+    We take the following lemma to be given, which will be useful later in the proof:
+    \begin{lemma}
+      \label{lem:2.4.6}
+      Suppose $(b_{n})$ is decreasing and satisfies $(b_{n} \geq 0$ for all $n \in \N$. Then, the series
+      $\sum_{n=1}^{\infty} b_{n}$ converges if and only if the series
+      \[
+        \sum_{n=0}^{\infty} = b_{1} + 2b_{2} + 4b_{4} + 8b_{8} + \cdots
+      \]
+      converges.
+    \end{lemma}
+
+    \begin{forwardimplication}
+      We will show the contrapositive. Suppose $p \le 1$.
+      When $p = 1$ we obtain the harmonic series, which diverges.
+      For any $p < 1$, we have $n^{p} < n$ for all $n \ge 2$, so $n^{-p} > n^{-1}$.
+      Thus, the harmonic series provides a lower bound for $\sum n^{-p}$, and by
+      comparison, $\sum n^{-p}$ diverges.
+    \end{forwardimplication}
+
+    \vspace{\baselineskip}
+  
+    \begin{backwardimplication}
+      Assume now that $p > 1$. It is sufficient to  demonstrate that $\sum 2^{n}(2^{n})^{-p}$
+      converges. Note that the partial sums $t_{k} = \sum_{n=1}^{k} 2^{n}(2^{n})^{-p}$
+      can form the partial sums of a geometric series with common ratio $r = 2^{1-p} < 1$:
+      \begin{align*}
+        t_{k} &= 1 + \frac{2}{2^{p}} + \frac{4}{4^{p}} + \cdots + \frac{2^{k}}{(2^{k})^{p}}\\
+              &= 1 + \frac{1}{2^{p-1}} + \frac{1}{4^{p-1}} + \cdots + \frac{1}{(2^{k})^{p-1}}.
+      \end{align*}
+      Thus, $(t_{k})$ converges, and so too does $\sum n^{-p}$ by \lemref{lem:2.4.6}.
+    \end{backwardimplication}
+  \end{proof}
 \end{problem}
