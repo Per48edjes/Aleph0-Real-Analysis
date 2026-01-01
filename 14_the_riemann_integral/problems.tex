@@ -1,11 +1,12 @@
 \section{The Riemann Integral}
 
 \begin{problem}
+  \label{prob:lower-refinment-mono-incr}
   Show that if $P_{1}$ is finer than $P_{2}$, then $L(f, P_{1}) \geq L(f, P_{2})$.
 
   \begin{proof}
-    By definition, we have $P_{1} \supset P_{2}$. Consider any point $z \in P_{1} \setminus P_{2}$.
-    It follows that $z \in (x_{k-1}, x_{k})$ for $x_{k}, x_{k-1} \in P_{2}$. Next, define the following:
+    By definition, we have $P_{1} \supseteq P_{2}$. Consider any point $z \in P_{1} \setminus P_{2}$.
+    It follows that $z \in (x_{k-1}, x_{k})$ for some $x_{k}, x_{k-1} \in P_{2}$. Next, define the following:
     \begin{itemize}
       \item $m_{k} = \inf\{f(x) : x \in [x_{k-1}, x_{k}]\}$
       \item $m_{k}' = \inf\{f(x) : x \in [z, x_{k}]\}$
@@ -16,13 +17,14 @@
       m_{k}'(x_{k} - z) + m_{k}''(z - x_{k-1}) \geq m_{k}(x_{k} - z) + m_{k}(z - x_{k-1}) = m_{k}(x_{k} - x_{k-1})
     \]
     since $m_{k} \leq m_{k}'$ and $m_{k} \leq m_{k}''$.
-    Because $z$ was chosen arbitrarily from $P_{1} \setminus P_{2}$, it follows
+    Because $z$ was chosen arbitrarily from $P_{1} \setminus P_{2}$, it follows by induction
     that $L(f, P_{1}) \geq L(f, P_{2})$.
   \end{proof}
 
 \end{problem}
 
 \begin{problem}
+  \label{prob:upper-refinement-mono-decr}
   Show that if $P_{1}$ is finer than $P_{2}$, then $U(f, P_{1}) \leq U(f, P_{2})$.
   
   \begin{proof}
@@ -48,4 +50,146 @@
     \]
   \end{proof}
 
+\end{problem}
+
+\begin{problem}
+
+  \begin{definition}
+    \label{def:upper-lower-integral-relation}
+    Let $\mathcal{P}$ be the collection of all possible partitions of the
+    interval $[a, b]$. The \textit{upper integral} of $f$ is $f$ is defined to be
+    \[
+      U(f) = \inf{ \{ U(f, p) : P \in \mathcal{P} \} }.
+    \]
+    Similarly, define the \textit{lower integral} of $f$ as
+    \[
+      L(f) = \sup{ \{ L(f, p) : P \in \mathcal{P} \} }.
+    \]
+  \end{definition}
+
+  \begin{lemma}
+    \label{lem:upper-lower-integral-relation}
+    For any bounded function $f$ on $[a, b]$, it is always the case that $U(f) \geq L(f)$.
+  \end{lemma}
+
+  Let $f$ be a bounded function on $[a, b]$, and let $P$ be an arbitrary partition of $[a, b]$. First,
+  explain why $U(f) \geq L(f, P)$. Now, prove \lemref{lem:upper-lower-integral-relation}.
+
+  \begin{proof}
+    We first establish that $U(f) \geq L(f, P)$. Suppose to the contrary that
+    $U(f) < L(f, P)$. An immediate consequence would be that $U(f) < L(f, P)
+    \leq L(f)$ (by definition of the supremum), contradicting
+    \lemref{lem:upper-lower-integral-relation}.
+
+    We now prove \lemref{lem:upper-lower-integral-relation}. Let $g$ be a bounded function
+    on $[a, b]$. Now suppose, for contradiction's sake, that $U(g) < L(g)$. 
+    Put $\eps = L(g) - U(g)$. Then, but the definition of the supremum,
+    there exists some pair $P, P' \in \mathcal{P}$ such that $U(g, P) \leq U(g) < L(g, P') \leq L(g)$.
+    This is a contradiction: no two partitions $P, P'$ ever result in $U(g, P) < L(g, P')$.
+    To prove this fact, consider the common refinement $P \cup P'$: by the results of 
+    \probref{prob:upper-refinement-mono-decr} and \probref{prob:lower-refinment-mono-incr},
+    we have $L(g, P') \leq L(g, P \cup P') \leq U(g, P \cup P') \leq U(g, P)$.
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Consider $f(x) = 1/x$ over the interval $[1, 4]$. Let $P$ be the paritition consisting of the points
+  $\{ 1, 3/2, 2, 4 \}$.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Compute $L(f, P)$ $U(f, P)$ and $U(f, P) - L(f, P)$.
+    \item What happens to the value of $U(f, P) - L(f, P)$  when we add the point $3$ to the partition?
+    \item Find a partition $P'$ of $[1,4]$ for which $U(f, P')$ - $L(f, P') < 2/5$.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  \begin{enumerate}[label=(\alph*)]
+    \item 
+      \label{prob:seq-criterion-integr}
+      Prove that a bounded function $f$ is integrable on $[a, b]$ if and only if there exists a
+      sequence of partitions $(P_{n})_{n=1}^{\infty}$ satisfying
+      \[
+        \lim_{n \to \infty} [ U(f, P_{n}) - L(f, P_{n}) ] = 0,
+      \]
+      and in this case $\int_{a}^{b} f = \lim_{n \to \infty} U(f, P_{n}) = \lim_{n \to \infty} L(f, P_{n})$.
+
+      \begin{proof}
+        We prove each direction of the biconditional separately.
+        \begin{forwardimplication}
+          We assume that $f$ is bounded and integrable on $[a, b]$. Thus,
+          \[
+            U(f) = \inf{ \{ U(f, P) : P \in \mathcal{P}\} } = \sup{ \{ L(f, P) :P \in \mathcal{P} \} } = L(f),
+          \]
+          where $\mathcal{P}$ is the collection of \textit{all} partitions of $[a, b]$.
+          Let $\eps > 0$ be given. We know that there exists $P_{U}, P_{L} \in \mathcal{P}$
+          such that
+          \[
+            U(f, P_{U}) \leq U(f) + \frac{\eps}{2}, \quad L(f, P_{L}) \geq L(f) - \frac{\eps}{2}.
+          \]
+          Now consider the common refinement $P_{U} \cup P_{L} = P_{\eps} \in \mathcal{P}$.
+          Consequently,
+          \[
+            U(f, P_{\eps}) - L(f, P_{\eps}) \leq U(f, P_{U}) - L(f, P_{L}) < U(f) - L(f) + \eps = \eps.
+          \]
+          Now we use this result to construct the required sequence. For each positive integer $n$, let $\eps = 1/n$. 
+          From our work above, we know that for this $\eps$, there exists a partition, which we will call $P_{n}$, such that
+          \[
+            0 \leq U(f, P_n) - L(f, P_n) < \eps = 1/n.
+          \]
+          By the \thmref{thm:squeeze-theorem-sequences} we conclude that
+          \[
+            \lim_{n \to \infty} [ U(f, P_{n}) - L(f, P_{n}) ] = 0.
+          \]
+        \end{forwardimplication}
+        \begin{backwardimplication}
+          We assume that $f$ is bounded on $[a, b]$ and that there exists a sequence of partitions
+          $(P_{n})$ satisfying $\lim\limits_{n \to \infty} [ U(f, P_{n}) - L(f, P_{n}) ] = 0$.
+          By the definition of the limit, we have
+          \[
+            \forall \eps > 0.\, \exists N \in \N.\, n > N \implies U(f, P_{n}) - L(f, P_{n}) < \eps.
+          \]
+          since $U(f, P_{n}) > L(f, P_{n})$ for any $n \in \N$. Let $\eps > 0$ be given; we see that
+          \[
+            U(f, P_{n}) < L(f, P_{n}) + \eps.
+          \]
+          Define $U^{*} = \inf\limits_{n \in \N}{U(f, P_{n})}$ and $L^{*} = \sup\limits_{n \in \N}{L(f, P_{n})}$.
+          Then,
+          \[
+            L(f, P_{n}) \leq L^{*} \leq L(f) \leq U(f) \leq U^{*} \leq U(f, P_{n}),
+          \]
+          by definition of the infimum and supremum and \lemref{lem:upper-lower-integral-relation}.
+          Hence, for sufficiently large $n$,
+          \[
+            U^{*} - L^{*} \leq U(f, P_{n}) - L(f, P_{n}) < \eps.
+          \]
+          Since $\eps$ was arbitrary, it follows that $0 \leq U^{*} - L^{*} < \eps \implies U^{*} = L^{*}$ implies $U(f) = L(f)$,
+          so $f$ is Riemann integrable over $[a, b]$.
+        \end{backwardimplication}
+      \end{proof}
+
+    \item For each $n$, let $P_{n}$ be the partition of $[0, 1]$ into $n$ equal subintervals. Find formulas
+      for $U(f, P_{n})$ and $L(f, P_{n})$ if $f(x) = x$. The formula $1 + 2 +3 + \dots + n = n(n+1)/2$ will be useful.
+
+      \begin{align*}
+        U(f, P_{n}) &= \frac{1}{n^{2}}\sum_{i=1}^{n} i \\
+                    &= \frac{1}{n^{2}} \cdot \frac{n(n+1)}{2} \\
+                    &= \frac{1}{n^{2}} \cdot \left( \frac{(n-1)(n)}{2} + n \right)\\
+                    &= \frac{1}{n^{2}} \left( \sum_{i=0}^{n-1} i \right) + \frac{1}{n} \\
+                    &= L(f, P_{n}) + \frac{1}{n} \\
+      \end{align*}
+
+
+    \item Use the sequential criterion for integrability from \probref{prob:seq-criterion-integr} to show directly that 
+      $f(x) = x$  is integrable on $[0, 1]$ and compute $\int_{0}^{1} f$.
+
+      Immediately, by the result of \probref{prob:seq-criterion-integr}, we have
+      \begin{align*}
+        \lim_{n \to \infty} [U(f, P_{n}) - L(f, P_{n})] = \lim_{n \to \infty} \frac{1}{n} = 0,
+      \end{align*}
+      and $\int_{0}^{1} f = \lim_{n \to \infty} U(f, P_{n}) = \lim_{n \to \infty} L(f, P_{n}) = \frac{1}{2}$.
+
+
+  \end{enumerate}
 \end{problem}
