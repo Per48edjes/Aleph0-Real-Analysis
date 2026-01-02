@@ -1,0 +1,156 @@
+\section{Uniform Convergence}
+
+\begin{problem}
+  Assume $(f_{n})$ and $(g_{n})$ are uniformly convergent sequences of
+  functions. Show that $(f_{n} + g_{n})$ is a uniformly convergent sequence of
+  functions.
+
+  \begin{proof}
+    Let $\eps > 0$ be given, and set $\eps_{1} = \eps_{2} = \eps/2$. Then, by
+    the definition of uniform convergence, there exists $N_{1}, N_{2}$ such
+    that for all $x$ over the common domain of $f$  and $g$, it is true that
+    \[
+      n > N_{1} \implies \abs{ f_{n}(x) - f(x) } < \eps_{1}, \quad n > N_{2} \implies \abs{ g_{n}(x) - g(x) } < \eps_{2}.
+    \]
+    Now, set $N = \max(N_{1}, N_{2})$. It follows (by the triangle inequality) that
+    \[
+      \abs{ (f_{n} + g_{n})(x) - (f + g)(x) } \leq \abs{ f_{n}(x) - f(x) } + \abs{ g_{n}(x) - g(x) } < \eps_{1} + \eps_{2} = \eps.
+    \]
+    whenever $n > N$.
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Assume that $(f_{n})$ converges uniformly to $f$ and that each $f_{n}$ is
+  uniformly continuous. Prove that $f$ is uniformly continuous.
+
+  \begin{proof}
+    We will show that
+    \[
+      \forall \eps > 0.\, \exists \delta > 0.\, \forall x, y \in \R.\, \abs{x - y} < \delta \implies \abs{f(x) - f(y)} < \eps.
+    \]
+
+    Let $\eps > 0$ be given. Since $(f_{n}) \to f$ uniformly, there exists $N \in \N$ such that
+    \[
+      \forall t \in \R.\, \abs{f(t) - f_N(t)} < \frac{\eps}{3} 
+    \]
+    In particular,
+    \[
+      \abs{f(x) - f_N(x)} < \frac{\eps}{3}
+      \quad\text{and}\quad
+      \abs{f(y) - f_N(y)} < \frac{\eps}{3}.
+    \]
+
+    Because $f_{N}$ is uniformly continuous, there exists $\delta > 0$ such that
+    \[
+      \abs{x - y} < \delta \implies |f_N(x) - f_N(y)| < \frac{\eps}{3}.
+    \]
+
+    Now fix $x,y \in \R$ such that $\abs{ x - y }< \delta$. Then, by the triangle inequality,
+    \[
+      \bigl| \abs{ f(x)-f(y) } - \abs{ f_N(x) - f_N(y) } \bigr| \leq \abs{ f(x) - f_N(x) } + \abs{ f(y) - f_N(y) } < \frac{2\eps}{3}.
+    \]
+
+    Using the inequality
+    \[
+      \abs{ f(x) - f(y) } \leq \abs{ f_N(x) - f_N(y) }
+      + \bigl| \abs{ f(x) - f(y) } - \abs{ f_N(x) - f_N(y) } \bigr|,
+    \]
+    we obtain
+    \[
+      \abs{ f(x) - f(y) }
+      < \frac{\eps}{3} + \frac{2\eps}{3}
+      = \eps.
+    \]
+
+    Hence, for all $x,y \in \R$ with $\abs{ x - y } < \delta$, we have $\abs{ f(x) - f(y) }< \eps$.
+    Therefore, $f$ is uniformly continuous.
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Let
+    \[
+      g_{n}(x) = \frac{nx + \sin(nx)}{2n}.
+    \]
+  Find the pointwise limit $(g_{n})$ on $\R$. Is the convergence uniform on all of $\R$?
+  \vspace{\baselineskip}
+
+    Observe that for all $x \in \R$,
+    \[
+      \lim_{n \to \infty} g_{n}(x) = \frac{x}{2},
+    \]
+    and that the convergence is, indeed, uniform. 
+
+    \begin{proof}
+      Let $\eps > 0$ be given. We need to show that there exists a sufficiently large $N$ such that for any $x \in \R$,
+        \begin{align*}
+          n > N &\implies \abs{g_{n}(x) - \frac{x}{2}} < \eps.\\
+                &\implies \abs{\left(\frac{nx}{2n} + \frac{\sin(nx)}{2n}\right) - \frac{x}{2}} < \eps.\\
+                &\implies \abs{\frac{\sin(nx)}{2n}} < \eps.\\
+        \end{align*}
+      Notice that $\sin(nx) \in [-1, 1]$ for any choice of $x \in \R$ and $n \in \N$.
+      Therefore, we may make $\frac{\sin(nx)}{2n} < \frac{1}{n}$ arbitrarily small by
+      the fact that $1/n \to 0$ as $n \to \infty$ and \thmref{thm:squeeze-theorem-sequences}.
+      Thus, a sufficiently large $N$ exists so that for all $x \in \R$,
+      \[
+          n > N \implies \abs{\frac{\sin(nx)}{2n}} < \eps,
+      \]
+      establishing that $(g_{n}) \to \frac{x}{2}$ uniformly.
+  \end{proof}
+\end{problem}
+
+\begin{problem}
+  \label{prob:unif-conv-fn-with-max-min}
+  For each $n \in \N$, find the points on $\R$ where the function
+  \[
+    f_{n}(x) = \frac{x}{1 + nx^{2}}
+  \]
+  attains its maximum and minimum values. Use this to prove $(f_{n})$ converges
+  uniformly on $\R$. What is the limit function?
+
+  \begin{proof}
+    First, it can be shown that $(f_{n}) \to 0$ pointwise.
+    Let $\eps > 0$ be given. Notice, for a particular $n \in \N$, that the minimum and maximum
+    of $f_{n}$ over $\R$ is 
+    \[
+      \pm \frac{1}{2\sqrt{n}}.
+    \]
+    Put $N = \left\lceil \left( \frac{1}{2\eps} \right)^{2} \right\rceil$.
+    This gives, for all $x \in \R$,
+    \begin{align*}
+      n > N &\implies \abs{f_{n}(x)} \leq \frac{1}{2\sqrt{n}} < \frac{1}{2\sqrt{N}} \leq \eps\\
+            &\implies \abs{f_{n}(x)} < \eps.
+    \end{align*}
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Let
+  \[
+    f_{n}(x) = \frac{x}{1 + nx^{2}}.
+  \]
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Find the pointwise limit of $(f_{n})$ for all $x \in (0, \infty)$.
+      
+      For $x \in (0, \infty)$, we have $f_{n}(x) \to 0$ as $n \to \infty$.
+
+    \item Is the convergence uniform on $(0, \infty)$?
+
+      Yes, by the result of \probref{prob:unif-conv-fn-with-max-min}.
+
+    \item Is the convergence uniform on $(0, 1)$?
+
+      Yes, by the result of \probref{prob:unif-conv-fn-with-max-min}.
+
+    \item Is the convergence uniform on $(1, \infty)$?
+
+      Yes, by the result of \probref{prob:unif-conv-fn-with-max-min}.
+
+  \end{enumerate}
+
+\end{problem}
