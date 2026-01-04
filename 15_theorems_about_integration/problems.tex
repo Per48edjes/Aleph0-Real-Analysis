@@ -1,0 +1,242 @@
+\section{Theorems about Integration}
+
+\begin{callout}
+  The first several problems for this unit were multiple choice
+  and are omitted here.
+\end{callout}
+
+\begin{problem}
+  Let $f$ be bounded on $[a,b]$, $P = \{ x_{0}, \ldots, x_{n} \}$ a partition, and $c \geq 0$. Show
+  \[
+    U(cf, P) = cU(f, P).
+  \]
+  
+  \begin{proof}
+    By definition,
+    \[
+      U(cf, P) = \sum_{i=0}^{n-1} (x_{i+1} - x_{i}) \cdot \sup \{cf(x) : x \in [x_{i}, x_{i+1}] \}.
+    \]
+    From the result of \probref{prob:sup-inf-linear-transformation}\ref{prob:sup-cA}, we obtain
+    \begin{align*}
+      U(cf, P) &= c \sum_{i=0}^{n-1} (x_{i+1} - x_{i}) \cdot \sup \{f(x) : x \in [x_{i}, x_{i+1}] \}\\
+               &= c U(f, P).
+    \end{align*}
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Let $f$ be bounded on $[a,b]$, $P = \{ x_{0}, \ldots, x_{n} \}$ a partition, and $c < 0$. Show
+  \[
+    U(cf, P) = cL(f, P).
+  \]
+
+  \begin{proof}
+    By definition,
+    \[
+      U(cf, P) = \sum_{i=0}^{n-1} (x_{i+1} - x_{i}) \cdot \sup \{cf(x) : x \in [x_{i}, x_{i+1}] \}.
+    \]
+    From the result of \probref{prob:sup-inf-linear-transformation}\ref{prob:sup-cA-negative}, we obtain
+    \begin{align*}
+      U(cf, P) &= c \sum_{i=0}^{n-1} (x_{i+1} - x_{i}) \cdot \inf \{f(x) : x \in [x_{i}, x_{i+1}] \}\\
+               &= c L(f, P).
+    \end{align*}
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Let $f(x) = x^{2}$ on $[0,1]$ and $P_{n} = \{0, \frac{1}{n}, \frac{2}{n}, \ldots, 1 \}$. Compute
+  $U(f, P_{n})$ and $L(f, P_{n})$ and show $U(f, P_{n}) - L(f, P_{n}) \to 0$. Conclude that $f$ is
+  integrable. (Use $\sum_{k=1}^{m} k^{2} = \frac{m(m+1)(2m + 1)}{6}$.)
+
+  \begin{proof}
+    We may write
+    \[
+      U(f, P_{n}) = \frac{1}{n} \cdot \frac{1}{n^{2}} \left( \frac{n(n+1)(2n+1)}{6} \right), \quad L(f, P_{n}) = \frac{1}{n} \cdot \frac{1}{n^{2}} \left( \frac{n(n-1)(2n-1)}{6} \right),
+    \]
+    therefore, giving
+    \begin{align*}
+      U(f, P_{n}) - L(f, P_{n}) &= \frac{n}{n^3} \left( \frac{(n+1)(2n+1) - (n-1)(2n-2)}{6} \right)\\
+                                &= \frac{1}{n^{2}} \left( \frac{(2n^{2} + 3n + 1) - (2n^{2} - 3n + 1)}{6} \right)\\
+                                &= \frac{1}{n}.
+    \end{align*}
+    Thus, $[U(f, P_{n}) - L(f, P_{n})] = 1/n \to 0$ as $n \to \infty$, so by the result of 
+    \probref{prob:seq-criterion-integr-ex}\ref{prob:seq-criterion-integr}, $f$ is integrable over $[0, 1]$.
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Let $f(x) = x^{1/2}$ on $[0,1]$ and $P_{n} = \{0, \frac{1}{n}, \frac{2}{n}, \ldots, 1 \}$. Compute
+  $U(f, P_{n})$ and $L(f, P_{n})$ and show $U(f, P_{n}) - L(f, P_{n}) \to 0$. Conclude that $f$ is
+  integrable.
+
+  \begin{proof}
+    We see that, because $f$ is strictly increasing over $[0, 1]$,
+    \begin{align*}
+    U(f, P_{n}) - L(f, P_{n}) &= \frac{1}{n} \left( \sum_{i=1}^{n}{\sqrt{i/n}} - \sum_{i=0}^{n-1}{\sqrt{i/n}} \right) \\
+                                &= \frac{1}{n} \left( 1 + \sum_{i=1}^{n-1}{(\sqrt{i/n} - \sqrt{i/n})} - 0 \right) \\
+                                &= \frac{1}{n}.
+    \end{align*}
+    Thus, $[U(f, P_{n}) - L(f, P_{n})] = 1/n \to 0$ as $n \to \infty$, so by the result of 
+    \probref{prob:seq-criterion-integr-ex}\ref{prob:seq-criterion-integr}, $f$ is integrable over $[0, 1]$.
+  \end{proof}
+
+\end{problem}
+
+
+\begin{problem}
+  Let $f$ be a bounded function on a set $A$, and set
+  \begin{gather*}
+    M = \sup \{ f(x) : x \in A \}, \quad m = \inf \{ f(x) : x \in A \},\\
+    M' = \sup \{ \abs{f(x)}: x \in A \}, \quad \text{ and } \quad m' = \inf \{ \abs{f(x)} : x \in A \}.
+  \end{gather*}
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Show that $M - m \geq M' - m'$. \label{prob:sup-inf-diff-greater-sup-abs-inf-abs-diff}
+
+        Define $S = \{ f(x) : x \in A \}$ and $-S = \{ -f(x) : x \in A \}$. We see that $M' = \sup (S \cup (-S)) = \max(M, \sup (-S))$.
+        We are given $f$ bounded on $A$, so it follows from \lemref{lem:sup-neg-bounded} that
+        $M' = \max(M, -m)$. When $M' = M$, it is clear that $M - m \geq M - m'$ because $m' \geq m$.
+
+        So, it suffices to show that, if $M' = -m$, then $M - m \geq M' - m' \iff M - m \geq -m - m' \iff M \geq -m' \iff -M \leq m'$.
+        We can obtain the desired result directly, also using \lemref{lem:sup-neg-bounded}:
+        \[
+          -M = -\sup S = \inf(-S) = \inf \{ -f(x) : x \in A \} \leq \inf \{ \abs{f(x)} : x \in A \} = m'.
+        \]
+
+
+    \item Show that if $f$ is integrable on the interval $[a, b]$, then $\abs{f}$ is also integrable
+      on this interval. \label{prob:integ-implied-integ-abs}
+
+      Let $\eps > 0$ be given. Since $f$ is integrable on $[a,b]$, there exists some $P_{\eps}$ expressable as 
+      the ordered set $\{ x_{0}, \ldots, x_{n} \}$ such that $U(f, P_{\eps}) - L(f, P_{\eps}) < \eps$. Define the following: 
+      \begin{itemize}
+        \item $M_{i}' = \sup \{ \abs{f(x)} : x \in [x_{i-1}, x_{i}] \}$,
+        \item $m_{i}' = \inf \{ \abs{f(x)} : x \in [x_{i-1}, x_{i}] \}$,
+        \item $M_{i} = \sup \{ f(x) : x \in [x_{i-1}, x_{i}] \}$, and
+        \item $m_{i} = \inf \{ f(x) : x \in [x_{i-1}, x_{i}] \}$
+      \end{itemize}
+      for any $i \in \{ 1, 2, \ldots, n \}$.
+      Then, we observe that
+      \begin{align*}
+        U(\abs{f}, P_{\eps}) - L(\abs{f}, P_{\eps}) 
+        &\leq \sum_{i=1}^{n} (x_{i} - x_{i-1}) (M_{i}' - m_{i}') \\
+        &\leq \sum_{i=1}^{n} (x_{i} - x_{i-1}) (M_{i} - m_{i}) \\ 
+        &= U(f, P_{\eps}) - L(f, P_{\eps}) < \eps,
+      \end{align*}
+      by \ref{prob:sup-inf-diff-greater-sup-abs-inf-abs-diff}. Hence, $\abs{f}$ is integrable on $[a, b]$.
+
+    \item Provide the details for the argument that in this case we have
+      $\abs{\int_{a}^{b} f} \leq \int_{a}^{b} \abs{f}$.
+
+      We see that $\abs{f}$ is integrable on $[a, b]$ by \ref{prob:integ-implied-integ-abs}.
+      Since $f(x) \leq \abs{f(x)}$ for all $x \in [a, b]$, it follows that
+      \[
+        \int_{a}^{b} f \leq \int_{a}^{b} \abs{f}.
+      \]
+      We note that, by linearity,
+      \[
+        -\int_{a}^{b} f = \int_{a}^{b} -f \leq \int_{a}^{b} \abs{f},
+      \]
+      so,
+      \[
+        -\int_{a}^{b} f \leq \int_{a}^{b} \abs{f}, \quad \int_{a}^{b} f \leq \int_{a}^{b} \abs{f} \implies 
+        \abs{\int_{a}^{b} f} \leq \int_{a}^{b} \abs{f}.
+      \]
+
+  \end{enumerate}
+
+\end{problem}
+
+\begin{problem}
+  \begin{enumerate}[label=(\alph*)]
+    \item Let $g(x) = x^{3}$, and classify each of the following as positive, negative, or zero:
+      \begin{enumerate}[label=(\roman*)]
+        \item $\int_{0}^{-1} g + \int_{1}^{0} g = \dfrac{1}{2}$, positive.
+
+        \item $\int_{1}^{0} g + \int_{0}^{1} g = 0$, zero. 
+
+        \item $\int_{1}^{-2} g + \int_{0}^{1} g = 4$, positive.
+
+      \end{enumerate}
+
+    \item Show that if $b \leq a \leq c$ and $f$ is integrable on the interval
+      $[b,c]$, then it is still the case that $\int_{a}^{b} f = \int_{a}^{c} f + \int_{c}^{b} f$.
+
+      \begin{align*} 
+        \int_{a}^{b} f &= -\int_{b}^{a} f = -\left( \int_{b}^{c} f - \int_{a}^{c} f \right) =\int_{a}^{c} f + \int_{c}^{b} f
+      \end{align*}
+
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Decide which of the following conjectures is true and supply a short proof.
+  For those that are not true, give a counterexample.
+  \begin{enumerate}[label=(\alph*)]
+    \item If $\abs{f}$ is integrable on $[a, b]$, then $f$ is also integrable on this set.
+
+      False. Consider $f(x) = \begin{cases}
+        1   & \text{ if } x \in [a, b] \cap \Q \\
+        -1   & \text{ if } x \notin [a, b] \cap \Q \\
+      \end{cases}$. 
+      Then, $\int_{a}^{b} \abs{f} = (b - a)$. However, for any interval $I$ formed by any partition $P$,
+      $\sup \{ f(x) : x \in I \}$ - $\inf \{ f(x) : x \in I \} = 1 - (-1)$ cannot be made smaller than $2$.
+      Therefore, there exists some $\eps > 0$ (e.g., $\eps = 1$), whereby 
+      \[
+        U(f, P) - L(f, P) \nless \eps 
+      \]
+      for any choice of partition $P$.
+
+    \item Assume $g$ is integrable and $g(x) \geq 0$ on $[a, b]$. If $g(x) > 0$ for an infinite
+      number of points $x \in [a, b]$, then $\int_{a}^{b} g > 0$.
+
+      False. Consider Thomae's function on $[0, 1]$.
+      \[
+        g(x) = \begin{cases}
+          1   & \text{ if } x = 0 \\ 
+          1/n & \text{ if } (\Q \setminus \{ 0 \}) \ni x = m/n \text{ with coprime } m, n \\
+          0   & \text{ if } x \not\in \Q. \\
+        \end{cases}
+      \]
+      Then, it can be shown that $\int_{0}^{1} g = 0$.
+
+    \item If $g$ is continuous on $[a, b]$ and $g \geq 0$ with $g(y_{0}) > 0$ for at least one point
+      $y_{0} \in [a, b]$, then $\int_{a}^{b} g > 0$.
+
+      True. 
+
+  \begin{proof}
+    Let $C = g(y_0)$. By assumption, $C > 0$. Let us choose $\eps = C/2 > 0$.
+    By the continuity of $g$ at $y_0$, there exists a $\delta > 0$ such that 
+    for any $x \in [a, b]$ satisfying $\abs{x - y_0} < \delta$, we have $\abs{g(x) - g(y_0)} < \eps$.
+    
+    This inequality implies $g(x) > g(y_0) - \eps = \dfrac{C}{2}$ for all $x \in I$ where  
+    \[
+      I = [a, b] \cap (y_0 - \delta, y_0 + \delta).
+    \]
+    Let us define a smaller closed interval $J \subset I$ that also has positive length, say $\ell > 0$.
+    (For example, we can take $J = [a,b] \cap [y_0 - \delta/2, y_0 + \delta/2]$
+    after choosing $\delta$ small enough).
+
+    Since $g(x) \geq 0$ on all of $[a, b]$, and $g(x) \ge C/2$ on $J$, we can establish a positive
+    lower bound for the integral:
+    \[
+      \int_{a}^{b} g(x) \geq \int_{J} g(x) \geq \int_{J} \frac{C}{2} = \frac{C\ell}{2} > 0.
+    \]
+  \end{proof}
+
+  \end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+  Show that if $f(x) > 0$ for all $x \in [a, b]$ and $f$ is integrable, then $\int_{a}^{b} f > 0$.
+
+  \begin{proof}
+  \end{proof}
+
+\end{problem}
+
