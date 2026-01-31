@@ -236,7 +236,178 @@
   Show that if $f(x) > 0$ for all $x \in [a, b]$ and $f$ is integrable, then $\int_{a}^{b} f > 0$.
 
   \begin{proof}
+
+    We first prove the following lemma:
+
+    \begin{lemma}
+      \label{lem:union-countable-set-intervals-geq-1}
+      Suppose $[a, b]$ with $a = 0, b = 1$.
+      If $[a_i, b_i] \subseteq [a, b]$ is a countable set of intervals with $\sum_{i}{(b_i - a_i)} < 1$, 
+      then the union of those intervals is not $[0, 1]$.
+    \end{lemma}
+
+    \begin{subproof}
+      Assume (to find a contradiction) that we have a countable set of intervals $[a_i, b_i] \subseteq [a, b]$
+      such that $\bigcup_{i} [a_i, b_i]$ covers $[0, 1]$ and $\sum_{i=1}^{\infty} (b_i - a_i) < 1$.
+      Let $1 - \sum_{i} (b_i - a_i) = \delta$. We can construct an infinite series where each term 
+      $\delta_{i} = \dfrac{\delta}{2^{i+1}}$, which gives:
+      \[
+        \sum_{i=1}^{\infty} \delta_{i} = \frac{\delta}{2} \sum_{i=1}^{\infty} \frac{1}{2^{i}} = \frac{\delta}{2},
+      \]
+      We then extend each interval $[a_{i}, b_{i}]$ in the countable closed cover of $[0, 1]$ to 
+      $(a_{i} - \delta_{i}, b_{i} + \delta_{i})$. Since this is an open cover of $[0, 1]$, we know there exists
+      a finite open subcover
+      \[
+        S = \{ (a_{i_{k}}, b_{i_{k}}) : k \in \{ 1, 2, \ldots, n \} \}.
+      \]
+      for some $n \in \N$. Importantly, note that
+      \[
+        \sum_{s \in S} \ell(s) < \sum_{i} (b_{i} - a_{i}) + \sum_{i=1}^{\infty} \delta_{i} < 1,
+      \]
+      where $\ell(z)$ is defined to be the length of interval $z$.
+
+      After sorting this subcover by increasing $a_{i_{k}}$, merging overlapping intervals, and relabeling interval endpoints, 
+      we still have a collection of countably finite open intervals that cover $[0, 1]$:
+      \[
+        S' = \{ ( c_{j}, d_{j} ) : j \in \{ 1, 2, \ldots, m \} \} \supseteq [0, 1],
+      \]
+      where $m \leq n$. But here we find a contradiction (since $S, S'$ are finitely countable collections of intervals):
+      \[
+        1 = \ell([0, 1]) \leq \sum_{s' \in S'} \ell(s') \leq \sum_{s \in S} \ell(s) < 1.
+      \]
+    \end{subproof}
+
+    Without loss of generality, let $a = 0, b = 1$, and assume, for the sake of contradiction, that 
+    $f(x) > 0$ for all $x \in [0,1]$ but $\int_{0}^{1} f = 0$.
+    
+    First, define the set $E_{n} = \{ x \in [0, 1] : f(x) > 1/n \}$ for all $n \in \N$.
+    Since $f(x) > 0$ for all $x \in [0, 1]$, for any given $x$, we can find an integer $n$ large enough such that $f(x) > 1/n$. 
+    It follows that every point in $[0, 1]$ must belong to some $E_{n}$. Therefore, 
+    \[
+      \bigcup_{n=1}^{\infty} E_{n} = [0, 1].
+    \]
+    Since $f$ is integrable, for any $\eps > 0$, there exists a partition $P_{\eps}$ of $[0, 1]$ such that the 
+    corresponding upper sum $U(P_{\eps}, f) < \eps$. We will use this property to cover each set $E_{n}$.
+    For each $n \in \N$, let us choose $\eps_{n} = \dfrac{1}{n \cdot 2^{n}}$.
+    For this choice of $\eps_{n}$, there must exist a partition $P_n = \{x_0, x_1, \ldots, x_m\}$ of $[0, 1]$ such that
+    \[
+      U(P_n, f) = \sum_{i=1}^m M_i \Delta x_i < \epsilon_n,
+    \]
+    where $M_i = \sup \{ f(x) : x \in [x_{i-1}, x_i] \}$ and $\Delta x_i = x_i - x_{i-1}$.
+    
+    Next, let $S_{n}$ be the collection of all subintervals $[x_{i-1}, x_i]$ from the partition $P_n$ that have a non-empty intersection
+    with the set $E_{n}$. If an interval $I = [x_{i-1}, x_i]$ belongs to $S_{n}$, it must contain a point $x^{*}$ where $f(x^{*}) > 1/n$. 
+    This implies that the supremum of $f$ over that interval must satisfy $M_i > 1/n$.
+    The union of the intervals in $S_{n}$ must cover the set $E_{n}$.
+    We can bound the sum of the lengths of the intervals in $S_{n}$ by considering the upper sum:
+    \[
+      \epsilon_n > U(P_n, f) = \sum_{i=1}^m M_i \Delta x_i \ge \sum_{I \in S_{n}} M_i \ell(I) > \sum_{I \in S_{n}} \frac{1}{n} \ell(I) = \frac{1}{n} \sum_{I \in S_{n}} \ell(I).
+    \]
+    Rearranging this inequality gives us a bound on the total length of the intervals in $S_{n}$:
+    \[
+      \sum_{I \in S_{n}} \ell(I) < n \cdot \epsilon_n = n \cdot \frac{1}{n \cdot 2^n} = \frac{1}{2^n}.
+    \]
+
+    Finally, let $\mathcal{C}$ be the collection of all intervals from all the sets $S_{n}$ for all $n \in \N$. 
+    That is, $\mathcal{C} = \bigcup_{n=1}^\infty S_{n}$. This is a countable collection of closed
+    intervals. The union of these intervals covers $[0, 1]$:
+    \[
+      \bigcup_{I \in \mathcal{C}} I = \bigcup_{n=1}^{\infty} \left( \bigcup_{I \in S_{n}} I \right) \supseteq \bigcup_{n=1}^{\infty} E_{n} = [0, 1].
+    \]
+    The sum of the lengths of all intervals in $\mathcal{C}$ can be bounded by summing the bounds for each $S_{n}$:
+    \[
+      \sum_{I \in \mathcal{C}} \ell(I) \le \sum_{n=1}^{\infty} \left( \sum_{I \in S_{n}} \ell(I) \right) < \sum_{n=1}^{\infty} \frac{1}{2^n} = 1.
+    \]
+    But now, we have constructed a countable set of closed intervals, $\Ccal$, that covers $[0, 1]$ and whose lengths sum to a value strictly less than $1$. 
+    This directly contradicts \lemref{lem:union-countable-set-intervals-geq-1}.
+
   \end{proof}
 
+\end{problem}
+
+
+\begin{problem}
+  Let $f$ and $g$ be integrable functions on $[a, b]$.
+  \begin{enumerate}[label=(\alph*)]
+    \item Show that if $P$ is any partition of $[a, b]$, then
+      \[
+        U(f + g, P) \leq U(f, P) + U(g, P)
+      \]
+      Provide a specific example where the inequality is strict. What does the corresponding inequality for lower sums look like?
+      \label{prob:additivity-upper-lower-sums-inequalities}
+
+      \begin{proof}
+        Let $P$ be an arbitrary partition of $[a, b]$. Now consider an arbitrary subinterval of the partition $I_{i} = [x_{i-1}, x_i]$.
+        By \probref{prob:sup-inf-claims}\ref{prob:additivity-sups}, we have
+        \[
+          \sup \{f(a) + g(b) : a, b \in I_{i} \} = \sup \{f(a) : a \in I_{i} \} + \sup \{g(b) : b \in I_{i} \}.
+        \]
+        Since $\{ f(x) + g(x) : x \in I_{i} \} \subseteq \{f(a) + g(b) : a, b \in I_{i} \}$, the result of \probref{prob:sup-subset}
+        gives 
+        \[
+          \sup \{f(x) + g(x) : x \in I_{i} \} \leq \sup \{f(x) : x \in I_{i} \} + \sup \{g(x) : x \in I_{i} \}.
+        \]
+        Let $\ell(I_{i}) = x_{i} - x_{i-1}$. Because $P$ and $I_{i}$ were arbitrary, we conclude (by definition of upper sums) that
+        \begin{align*}
+          U(f + g, P) &= \sum_{i} \ell(I_{i}) \cdot \sup \{ f(x) + g(x) : x \in I_{i} \} \\
+                      & \leq \sum_{i} \ell(I_{i}) \cdot \sup \{ f(x) : x \in I_{i} \} + \sum_{i} \ell(I_{i}) \cdot \sup \{ g(x) : x \in I_{i} \} \\
+                      &= U(f, P) + U(g, P).
+        \end{align*}
+      \end{proof}
+
+      Consider $f(x) = x$ and $g(x) = -x$ on the interval $[-1, 1]$ with $P = \{ -1, -1/3, 1/3, 1 \}$. 
+      Notice that for $I_{2} = [-1/3, 1/3]$ we have
+      \[
+        \ell(I_{2}) \cdot \sup \{ x-x : x \in I_{2} \} = 0 < 2/9 = \ell(I_{2}) \cdot \left( \sup \{ x : x \in I_{2} \} + \sup \{ -x : x \in I_{2} \} \right).
+      \]
+      With net zero contribution to $U(f + g, P)$ and nonnegative contribution to $U(f, P) + U(g, P)$ 
+      on the other subintervals of $P$, it follows that $U(f + g, P) < U(f, P) + U(g, P)$.
+
+      The inequality is flipped for the lower sums.
+
+    \item Review the proof of Theorem 7.4.2 (Abbott), and provide an argument for part (i) of this theorem.
+      
+      \begin{proof}
+        Fix $\eps > 0$. Since $f, g$ are integrable we can choose partitions $P_{f}$ and $P_{g}$ such that
+        \[
+          U(f,P_{f})-L(f,P_{f})<\frac{\eps}{2}, \qquad U(g,P_{g})-L(g,P_{g})<\frac{\eps}{2}.
+        \]
+        Let $P = P_{f} \cup P_{g}$ be a common refinement. From results of
+        \probref{prob:lower-refinment-mono-incr} and \probref{prob:upper-refinement-mono-decr}, we have
+        \[
+          U(f,P) - L(f,P) \leq U(f,P_f) - L(f,P_f) < \frac{\eps}{2}, 
+        \]
+        and similarly,
+        \[
+          U(g,P) - L(g,P) \leq U(g,P_g) - L(g,P_g) < \frac{\eps}{2}.
+        \]
+        Using the results from \ref{prob:additivity-upper-lower-sums-inequalities}, we have
+        \[
+          U(f+g,P) \leq U(f,P) + U(g,P)
+        \]
+        and
+        \[
+          L(f+g,P) \geq L(f,P) + L(g,P).
+        \]
+        Therefore,
+        \begin{align*}
+          U(f+g,P) - L(f+g,P) &\leq \bigl(U(f,P) + U(g,P)\bigr) - \bigl(L(f,P) + L(g,P)\bigr) \\
+          &= \bigl(U(f,P) - L(f,P)\bigr) + \bigl(U(g,P) - L(g,P)\bigr) \\
+          &< \frac{\eps}{2} + \frac{\eps}{2} = \eps.
+        \end{align*}
+        Since $\eps > 0$ was arbitrary and $U(f+g,P) - L(f+g,P) \geq 0$ always holds, 
+        we conclude that $f+g$ is integrable on $[a,b]$.
+        
+        To show the integral formula, note that for any partition $P$,
+        \[
+          L(f,P) + L(g,P) \leq L(f+g,P) \leq \int_a^b (f+g) \leq U(f+g,P) \leq U(f,P) + U(g,P).
+        \]
+        By \thmref{thm:squeeze-theorem-sequences} (over a sequence of increasingly refined partitions), we get
+        \[
+          \int_a^b f + \int_a^b g \leq \int_a^b (f+g) \leq \int_a^b f + \int_a^b g,
+        \]
+        which shows $\int_a^b (f+g) = \int_a^b f + \int_a^b g$ .
+      \end{proof}
+  \end{enumerate}
 \end{problem}
 
