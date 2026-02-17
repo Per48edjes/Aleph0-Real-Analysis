@@ -1,0 +1,389 @@
+\section{Continuous Functions are Integrable}
+
+\begin{callout}
+  We take the following theorem to be given (as the proof has been
+  \href{https://youtu.be/rdUaRDS9Elc}{provided}).
+  \begin{theorem}[Continuous Functions are Integrable]
+  \label{thm:continuous-functions-integrable}
+    If $f$ is continuous on $[a, b]$, then $f$ is integrable on $[a, b]$.
+  \end{theorem}
+
+\end{callout}
+
+\begin{problem}
+  Which functions have the property that every lower sum equals every upper sum?
+  \vspace{\baselineskip}
+
+  Constant functions.
+\end{problem}
+
+\begin{problem}
+  Suppose $f$ is nondecreasing on $[a, b]$. Notice that $f$ is automatically bounded on $[a, b]$ because
+  $f(a) \leq f(x) \leq f(b)$ for all $x \in [a, b]$.
+  \begin{enumerate}[label=(\alph*)]
+    \item The $P$ be a partition of the form $a = t_{0}, t_{1}, \ldots, t_{n} = b$. What is $L(f, P)$ and $U(f, P)$.
+
+      Since $f$ is nondecreasing on $[a, b]$, we can write
+      \[
+        L(f, P) = \sum_{i=1}^{n} \Delta t_i f(t_{i-1}),  \qquad U(f, P) = \sum_{i=1}^{n} \Delta t_i f(t_{i}),
+      \]
+      where $\Delta t_i = t_{i} - t_{i-1}$ for each $i$.
+
+    \item Suppose that $t_{i} - t_{i-1} = \delta$ for each $i$. Prove that $U(f, P) - L(f, P) = \delta [f(b) - f(a)]$.
+
+      Observe, assuming $\Delta t_i = t_{i} - t_{i-1} = \delta$ for each $i$, that
+      \begin{align*}
+        U(f, P) - L(f, P) &= \sum_{i=1}^{n} \delta f(t_{i}) - \sum_{i=1}^{n} \delta f(t_{i-1}) \\
+                          &= \delta \sum_{i=1}^{n} f(t_{i}) - f(t_{i-1}) \\
+                          &= \delta [ (f(b) - f(t_{n-1})) + (f(t_{n-1}) - f(t_{n-2})) + \cdots \\
+                          &\quad + (f(t_{2}) - f(t_{1})) + (f(t_{1}) - f(a))] \\
+                          &= \delta [ f(b) - f(a)].
+      \end{align*}
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Suppose $f$ is bounded on $[a, b]$ and that $f$ is continuous at each point in $[a, b]$
+  with the exception of $x_{0} \in (a, b)$. Prove that $f$ is integrable on $[a, b]$.
+
+  \begin{proof}
+    We first prove a couple of useful lemmas that makes the remainder of the proof trivial.
+
+    \begin{lemma}
+      \label{lem:discontinuous-endpoint-integrable}
+      Suppose $f$ is a bounded function on $[a, b]$ and continuous on $[a, b)$, but discontinuous at $b$. 
+      Then, $f$ is integrable on $[a, b]$ and $\int_{a}^{b} f(t) \dt = \lim\limits_{x \to b^{-}} \int_{a}^{x} f(t) \dt$.
+    \end{lemma}
+
+    \begin{subproof}
+      First, define $g : [a, b) \to \R$ with $ g(x) = \int_{a}^{x} f(t) \dt$.
+      We will show that $\lim\limits_{x \to b^{-}} g(x) = \Lambda$ (for some $\Lambda \in \R$).
+      Note that $f$ is continuous on $[a, x]$ when $x \in [a, b)$, so $f$ is also integrable on $[a, x]$ 
+      by \thmref{thm:continuous-functions-integrable}. Therefore, $g$ is well-defined.
+      
+      Fix $\eps > 0$. Let $\delta = \eps/M$ where $M = \sup \{ f(x) : x \in [a, b] \}$. Then, for all $x, y \in (b - \delta, b)$ with $x < y$,
+      we see that
+      \[
+        \abs{g(x) - g(y)} = \abs{ \int_{a}^{x} f(t) \dt - \int_{a}^{y} f(t) \dt } \leq \int_{x}^{y} \abs{ f(t) } \dt \leq M \abs{x - y} < \eps.
+      \]
+      Hence, $g$ converges by the Cauchy criterion for functional limits.
+
+      Next, we will show that $\int_{a}^{b} f(x) \dx$ exists. We start by letting $\eps > 0$ be arbitrary. 
+      Because $f$ is bounded, the difference between the infimum, $m$, and supremum, $M$, of $f$ on $[a, b]$
+      is at most some $D > 0$: i.e., $(M - m) \leq D$. Therefore, we can choose $\delta > 0$ small enough 
+      so that 
+      \[
+        U(f, [b - \delta, b]) - L(f, [b - \delta, b]) \leq \delta \cdot D < \frac{\eps}{3}.
+      \]
+      Choose $x^{*} \in (b - \delta, b)$. Therefore, there exists a partition $P = \{a, \ldots, x^{*} \}$
+      so that
+      \[
+        U(f, P) - L(f, P) < \frac{\eps}{3},
+      \]
+      by integrability of $f$ over $[a, x^{*}]$.
+      We can now construct partition $P^{*} = P \cup \{ b \}$ that satisfies
+      \[
+        U(f, P^{*}) - L(f, P^{*}) \leq \frac{2 \eps}{3} < \eps.
+      \]
+      Since $\eps$ was chosen arbitrarily and we have found a satisfying $P^{*}$, we conclude that $f$
+      is integrable on $[a, b]$.
+
+      Finally, we will demonstrate that $\Lambda = \int_{a}^{b} f(x) \dx$.
+      Let $\eps > 0$ be given, and for convenience, $I = \int_a^b f(x) \dx$. 
+      Then, by the definition of the limit, there exists $\delta > 0$ such that
+      $\abs{ g(x) - \Lambda } < \frac{\eps}{2}$ whenever $x \in (b - \delta, b)$. We may also pick 
+      $\delta^{*} < \delta$ such that $M \delta^{*} < \frac{\eps}{2}$. Put $c \in (b - \delta^{*}, b)$.
+      We examine $\abs{ I - \Lambda} $. By \lemref{lem:integral-interval-additivity},
+      \[
+        I = \int_{a}^{b} f(x) \dx = \int_{a}^{c} f(x) \dx + \int_{c}^{b} f(x) \dx,
+      \]
+      so,
+      \begin{align*}
+        \abs{I - \Lambda} &= \abs{ \left( \int_a^c f(x) \dx + \int_c^b f(x) \dx \right) - \Lambda } \\
+                          &= \abs{ \left( \int_a^c f(x) \dx - \Lambda \right) + \int_c^b f(x) \dx } \\
+                          &\leq \abs{ g(c) - \Lambda } + \abs{ \int_c^b f(x) \dx }.
+      \end{align*}
+      Therefore,
+      \[
+        \abs{I - \Lambda} \leq \abs{ g(c) - \Lambda } + \abs{ \int_c^b f(x) \dx } \leq \frac{\eps}{2} +  \frac{\eps}{2} = \eps.
+      \]
+      Since $\eps > 0$ was arbitrary, it must be that $I = \Lambda$.
+    \end{subproof}
+
+    \begin{lemma}
+      \label{lem:integral-interval-additivity}
+      Assume $f : [a, b] \to \R$ is bounded, and let $c \in (a, b)$. Then, $f$ is integrable on $[a, b]$ if and only if $f$ is integrable 
+      on $[a, c]$ and $[c, b]$. Moreover,
+      \[
+        \int_{a}^{b} f(x) \dx = \int_{a}^{c} f(x) \dx + \int_{c}^{b} f(x) \dx.
+      \]
+    \end{lemma}
+
+    \begin{subproof}
+      We first prove the biconditional regarding integrability and then show that 
+      \[ 
+        \int_{a}^{b} f(x) \dx = \int_{a}^{c} f(x) \dx + \int_{c}^{b} f(x) \dx. 
+      \]
+
+      \begin{forwardimplication}
+        Let $\eps > 0$ be given. We will show there exists partitions $P_{[a,c]}$ and $P_{[c,b]}$, such that
+        $U(f, P_{[a,c]}) - L(f, P_{[a,c]}) < \eps$ and $U(f, P_{[c,b]}) - L(f, P_{[c,b]}) < \eps$.
+        Let $P$ be the partition of $[a, b]$ where 
+        $U(f, P) - L(f, P) < \eps$. Then, let $P^{*} = P \cup \{c\}$. We can construct 
+        $P_{[a, c]} = \{a, \ldots, c\}$ and $P_{[c, b]} = \{c, \ldots, b\}$ whereby 
+        $P^{*} = P_{[a, c]} \cup P_{[c, b]}$. Notice that
+        \[
+          0 < U(f, P^{*}) - L(f, P^{*}) = \left( U(f, P_{[a, c]}) - L(f, P_{[a, c]}) \right) + \left( U(f, P_{[c, b]}) - L(f, P_{[c, b]}) \right)  < \eps,
+        \]
+        so,
+        \[
+          U(f, P_{[a, c]}) - L(f, P_{[a, c]}) < \eps, \qquad U(f, P_{[c, b]}) - L(f, P_{[c, b]}) < \eps.
+        \]
+        Therefore, $f$ is integrable on $[a, c]$ and $[c, b]$.
+      \end{forwardimplication}
+
+      \begin{backwardimplication}
+        By assuming integrability of $f$ on $[a,c]$ and $[c,b]$, we see that there exists $P_{[a,c]}$ 
+        and $P_{[c,b]}$ such that
+        \[
+          U(f, P_{[a,c]}) - L(f, P_{[a,c]}) < \eps/2, \qquad U(f, P_{[c,b]}) - L(f, P_{[c,b]}) < \eps/2.
+        \]
+        for arbitrary $\eps > 0$. (Refine and redefine $P_{[a,c]}$ and $P_{[c,b]}$ to include $c$ 
+        if they do not already.) Let $P^{*} = P_{[a, c]} \cup P_{[c, b]}$, which partitions $[a, b]$.
+        Then,
+        \[
+          \left( U(f, P_{[a, c]}) - L(f, P_{[a, c]}) \right) + \left( U(f, P_{[c, b]}) - L(f, P_{[c, b]}) \right) = U(f, P^{*}) - L(f, P^{*}) < \frac{\eps}{2} + \frac{\eps}{2} = \eps. 
+        \]
+        Hence, $f$ is integrable on $[a, b]$.
+      \end{backwardimplication}
+
+      Continuing to let $\eps > 0$ be arbitrary and $P^{*} = P_{[a, c]} \cup P_{[c, b]}$, observe that
+      \[
+        \int_{a}^{b} f(x) \dx \leq U(f, P^{*}) < L(f, P^{*}) + \eps
+      \]
+      and
+      \[
+        L(f, P^{*}) = L(f, P_{[a, c]}) + L(f, P_{[c, b]}) \leq \int_{a}^{c} f(x) \dx + \int_{c}^{b} f(x) \dx,
+      \]
+      so,
+      \[
+        \int_{a}^{b} f(x) \dx \leq \int_{a}^{c} f(x) \dx + \int_{c}^{b} f(x) \dx + \eps.
+      \]
+      Similarly,
+      \begin{align*}
+        \int_{a}^{c} f(x) \dx + \int_{c}^{b} f(x) \dx &\leq U(f, P_{[a,c]}) + U(f, P_{[c,b]}) \\
+                                                      &= U(f, P^{*}) < L(f, P^{*}) + \eps \leq \int_{a}^{b} f(x) \dx + \eps.
+      \end{align*}
+      Hence, the only way both
+      \[
+        \int_{a}^{b} f(x) \dx \leq \int_{a}^{c} f(x) \dx + \int_{c}^{b} f(x) \dx + \eps.
+      \]
+      and
+      \[
+        \int_{a}^{b} f(x) \dx + \eps  \geq \int_{a}^{c} f(x) \dx + \int_{c}^{b} f(x) \dx
+      \]
+      hold true is when
+      \[
+        \int_{a}^{b} f(x) \dx =\int_{a}^{c} f(x) \dx + \int_{c}^{b} f(x) \dx.
+      \]
+    \end{subproof}
+
+    Let $A = [a, x_{0}]$ and $B = [x_{0}, b]$. By \lemref{lem:discontinuous-endpoint-integrable}, $f$ is integrable on $A$ and $B$ (the latter by symmetry).
+    By \lemref{lem:integral-interval-additivity}, $f$ is integrable on $[a, b] = A \cup B$.
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  A \textit{tagged partition} $(P, \{t_k\})$ is one where in addition to a partition $P$ 
+  we choose a sampling point $t_k$ in each of the subintervals $[x_{k-1}, x_k]$. The corresponding \textit{Riemann sum,}
+  \[
+  R(f, P) = \sum_{k=1}^{n} f(t_k)\Delta x_k,
+  \]
+  is discussed in Section 7.1 (Abbott 2015), where the following definition is alluded to.
+
+  \noindent
+  \textbf{Riemann's Original Definition of the Integral:} A bounded function $f$ is \textit{integrable} on $[a,b]$
+  with $\int_a^b f = A$ if for all $\eps > 0$ there exists a $\delta > 0$ such that for any tagged partition $(P, \{t_k\})$
+  satisfying $\Delta x_k < \delta$ for all $k$, it follows that
+  \[
+    \abs{R(f, P) - A} < \eps.
+  \]
+
+  Show that if $f$ satisfies Riemann's definition above, then $f$ is integrable in the sense of Definition 7.2.7 (Abbott 2015).
+
+  \begin{proof}
+    Assume $f$ is Riemann integrable on $[a,b]$ in the ``tagged-sum'' sense, and let $A$ denote its integral.
+    Fix $\varepsilon>0$. By Riemann integrability, there exists $\delta > 0$ such that whenever
+    $P=\{ x_0, x_1, \dots, x_n \}$ satisfies $\Delta x_k = x_k - x_{k-1} < \delta$ for all $k$,
+    and whenever tags $t_k \in [x_{k-1},x_k]$ are chosen,
+    \[
+      \abs{\sum_{k=1}^n f(t_k)\Delta x_k - A}<\frac{\eps}{4}.
+    \]
+
+    Choose a partition $P$ with $\Delta x_k<\delta$ for all $k$.
+    For each subinterval define
+    \[
+      M_k = \sup\{ f(x) : x \in [x_{k-1}, x_k] \}, \qquad m_k = \inf\{ f(x) : x \in [x_{k-1}, x_k] \}.
+    \]
+    Then
+    \[
+      U(f,P)=\sum_{k=1}^n M_k\Delta x_k, \qquad L(f,P)=\sum_{k=1}^n m_k\Delta x_k. 
+    \]
+
+    Let $\eta = \frac{\eps}{4(b-a)}$.
+    For each $k$, choose $c_k,d_k\in[x_{k-1},x_k]$ such that
+    \[
+      M_k-\eta < f(c_k)\le M_k, \qquad m_k\le f(d_k)< m_k+\eta.
+    \]
+    Then
+    \begin{align*}
+      U(f,P)-\sum_{k=1}^n f(c_k)\Delta x_k &= \sum_{k=1}^n M_k\Delta x_k - \sum_{k=1}^n f(c_k)\Delta x_k\\
+      &= \sum_{k=1}^n (M_k - f(c_k))\Delta x_k
+    \end{align*}
+    Since $M_k-\eta < f(c_k) \leq M_k$, we have $0 \leq M_k - f(c_k) < \eta$ for each $k$. Therefore,
+    \begin{align*}
+      0 \leq \sum_{k=1}^n (M_k - f(c_k))\Delta x_k &< \sum_{k=1}^n \eta\Delta x_k\\
+      &= \eta \sum_{k=1}^n \Delta x_k\\
+      &= \eta(b-a) = \frac{\eps}{4},
+    \end{align*}
+    giving
+    \[
+      0 \le U(f,P)-\sum_{k=1}^n f(c_k)\Delta x_k < \frac{\eps}{4}
+    \]
+    Similarly, since $m_k \leq f(d_k) < m_k+\eta$, for the lower sum:
+    \begin{align*}
+      \sum_{k=1}^n f(d_k)\Delta x_k - L(f,P) &= \sum_{k=1}^n f(d_k)\Delta x_k - \sum_{k=1}^n m_k\Delta x_k\\
+      &= \sum_{k=1}^n (f(d_k) - m_k)\Delta x_k\\
+      &< \sum_{k=1}^n \eta\Delta x_k\\
+      &= \eta(b-a) = \frac{\eps}{4},
+    \end{align*}
+    giving
+    \[
+      0 \le \sum_{k=1}^n f(d_k)\Delta x_k - L(f,P) < \frac{\eps}{4}.
+    \]
+
+    Now write
+    \[
+      U(f,P)-A = \Bigl(U(f,P)-\sum_{k=1}^n f(c_k)\Delta x_k\Bigr) + \Bigl(\sum_{k=1}^n f(c_k)\Delta x_k - A\Bigr).
+    \]
+    Using the two preceding estimates,
+    \[
+      U(f,P)-A < \frac{\varepsilon}{4}+\frac{\eps}{4} = \frac{\eps}{2}.
+    \]
+    Similarly,
+    \[
+      A-L(f,P) = \Bigl(A-\sum_{k=1}^n f(d_k)\Delta x_k\Bigr) + \Bigl(\sum_{k=1}^n f(d_k)\Delta x_k - L(f,P)\Bigr) < \frac{\eps}{2}.
+    \]
+
+    Finally, when taken together,
+    \[
+      U(f,P)-L(f,P) = (U(f,P)-A)+(A-L(f,P)) = U(f,P)-L(f,P) < \frac{\eps}{2}+\frac{\eps}{2} = \eps.
+    \]
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Prove that $f(x) = \sqrt{x}$ is uniformly continuous on $[0, \infty)$.
+
+  \begin{proof}
+    Fix $\eps > 0$. We claim that $\delta = \eps^2$ suffices. Let $x,y \in [0,\infty)$ with $\abs{x-y} < \delta$.
+    Then,
+    \[
+      \abs{ x-y } = \abs{ \sqrt{x} - \sqrt{y} } \abs{ \sqrt{x} + \sqrt{y} } \geq \abs{ \sqrt{x}-\sqrt{y} }^2,
+    \]
+    since $\abs{ \sqrt{x} + \sqrt{y} } \geq \abs{ \sqrt{x} - \sqrt{y} }$ for all $x,y \geq 0$.
+    Hence,
+    \[
+      \abs{ \sqrt{x} - \sqrt{y} }^2 \leq \abs{ x-y } < \eps^2 \implies \abs{ \sqrt{x} - \sqrt{y} } < \eps.
+    \]
+
+    Because $\eps > 0$ was arbitrary, it follows that for every $\eps > 0$ there exists
+    $\delta > 0$ such that for all $x,y \in [0,\infty)$,
+    \[
+      \abs{ x-y } < \delta \implies \abs{ \sqrt{x}-\sqrt{y} } < \eps.
+    \]
+    Therefore, $f(x)=\sqrt{x}$ is uniformly continuous on $[0,\infty)$.
+  \end{proof}
+
+\end{problem}
+
+\begin{problem}
+  Give an example of each of the following, or provide a short argument for why the request is impossible.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item A continuous function defined on $[0,1]$ with range $(0, 1)$.
+
+      This is impossible due to the preservation of compact sets by continuous functions, which
+      is implied by \thmref{thm:boundedness-theorem} and \thmref{thm:extreme-value-theorem}.
+
+    \item A continuous function defined on $(0,1)$ with range $[0,1]$.
+
+      $f(x) = \frac{1}{2} + \frac{1}{2} \sin {(2 \pi x)}$
+
+    \item A continuous function defined on $(0,1]$ with range $(0,1)$.
+
+      $f(x) = (1-x) \sin^{2}(1/x) + \frac{x}{2}$
+
+  \end{enumerate}
+
+\end{problem}
+
+\begin{problem}
+  A function $f : A \to \R$ is called \textit{Lipschitz} if there exists a bound $M$ such that
+  \[
+    \abs{ \frac{f(x)-f(y)}{x-y} } \leq M
+  \]
+  for all $x \neq y \in A$. Geometrically speaking, a function $f$ if Lipschitz
+  if there is a uniform bound on the magnitude of the slopes of lines drawn
+  through any two points on the graph of $f$.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Show that if $f : A \to \R$ is Lipschitz, then it is uniformly continuous on $A$.
+
+      \begin{proof}
+        Fix $\eps > 0$. Let $\delta = \eps/M$. Since $f$ is Lipschitz,
+        \[
+          \abs{f(x) - f(y)} \leq \abs{x - y} \cdot M < \eps.
+        \]
+        whenever $\abs{x - y} < \delta = \eps/M$ and $x \neq y \in A$.
+        Because $\eps$ was arbitrary, we have shown that $f$ is uniformly continuous on $A$.
+      \end{proof}
+
+    \item Is the converse statement necessarily true? Are all uniformly continuous functions necessarily Lipshitz?
+
+      No; consider $f(x) = \sqrt{x}$ on $[0, 1]$. The derivative goes to infinity as $x \to 0$, so the secant lines
+      are not bounded by a constant (less than infinity).
+  \end{enumerate}
+
+\end{problem}
+
+\begin{problem}
+  Assume that $f$ and $g$ are uniformly continuous functions defined on a
+  common domain $A$. Which of the following combinations are necessarily
+  uniformly continuous on $A$:
+  \[
+    f(x) + g(x), \quad f(x)g(x), \quad \frac{f(x)}{g(x)}, \quad f(g(x)) ?
+  \]
+  (Assume the quotient and the composition are properly defined and thus at least continuous.)
+
+  \begin{enumerate}[label=(\alph*)]
+    \item $f + g$ is uniformly continuous on $A$. This can be shown by letting $\eps > 0$ be given. By the
+      triangle inequality, $\abs{f(x) + g(x) - (f(y) + g(y)) } \leq \abs{ f(x) - f(y) } + \abs{ g(x) - g(y) }$.
+      We can find sufficiently small $\delta_{1}, \delta_{2} > 0$ that forces 
+      $\abs{ f(x) - f(y) } < \eps/2$ and $\abs{ g(x) - g(y) } < \eps/2 $ whenever $\abs{ x - y } < \min(\delta_{1}, \delta_{2}) = \delta$.
+    \item $f \cdot g$ is not necessarily uniformly continuous on $A$. If $A = \R$ and $f(x) = g(x) = x$, we 
+      have $f(x) = x^{2}$, which is not uniformly continuous on $\R$.
+    \item $f / g$ is not necessarily uniformly continuous on $A$. If $A = (0, \infty)$, $f(x) = 1$, and $g(x) = \sqrt{x}$, then
+      $f/g = 1/\sqrt{x}$, which is not uniformly continuous on $(0, \infty)$.
+    \item $f \circ g$ is uniformly continuous on $A$. Let $\eps > 0$ be given. By uniform continuity of $f$,
+      there exists $\delta_{1} > 0$ such that $\abs{ f(s) - f(t) } < \eps$ whenever $\abs{ s - t } < \delta_{1}$.
+      By uniform continuity of $g$, there exists $\delta > 0$ such that $\abs{ g(x) - g(y) } < \delta_{1}$
+      whenever $\abs{ x - y } < \delta$. Therefore, $\abs{ f(g(x)) - f(g(y)) } < \eps$ whenever $\abs{ x - y } < \delta$.
+
+  \end{enumerate}
+  
+
+\end{problem}
+
