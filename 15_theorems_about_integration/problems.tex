@@ -154,7 +154,7 @@
   \begin{enumerate}[label=(\alph*)]
     \item Let $g(x) = x^{3}$, and classify each of the following as positive, negative, or zero:
       \begin{enumerate}[label=(\roman*)]
-        \item $\int_{0}^{-1} g + \int_{1}^{0} g = \dfrac{1}{2}$, positive.
+        \item $\int_{0}^{-1} g + \int_{1}^{0} g = 0$, zero.
 
         \item $\int_{1}^{0} g + \int_{0}^{1} g = 0$, zero. 
 
@@ -267,11 +267,11 @@
       where $\ell(z)$ is defined to be the length of interval $z$.
 
       After sorting this subcover by increasing $a_{i_{k}}$, merging overlapping intervals, and relabeling interval endpoints, 
-      we still have a collection of countably finite open intervals that cover $[0, 1]$:
+      we still have a finite collection of open intervals that cover $[0, 1]$:
       \[
         S' = \{ ( c_{j}, d_{j} ) : j \in \{ 1, 2, \ldots, m \} \} \supseteq [0, 1],
       \]
-      where $m \leq n$. But here we find a contradiction (since $S, S'$ are finitely countable collections of intervals):
+      where $m \leq n$. But here we find a contradiction (since $S, S'$ are finite collections of intervals):
       \[
         1 = \ell([0, 1]) \leq \sum_{s' \in S'} \ell(s') \leq \sum_{s \in S} \ell(s) < 1.
       \]

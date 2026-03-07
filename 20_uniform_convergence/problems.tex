@@ -35,13 +35,6 @@
     \[
       \forall t \in \R.\, \abs{f(t) - f_N(t)} < \frac{\eps}{3} 
     \]
-    In particular,
-    \[
-      \abs{f(x) - f_N(x)} < \frac{\eps}{3}
-      \quad\text{and}\quad
-      \abs{f(y) - f_N(y)} < \frac{\eps}{3}.
-    \]
-
     Because $f_{N}$ is uniformly continuous, there exists $\delta > 0$ such that
     \[
       \abs{x - y} < \delta \implies |f_N(x) - f_N(y)| < \frac{\eps}{3}.
@@ -86,11 +79,13 @@
 
     \begin{proof}
       Let $\eps > 0$ be given. We need to show that there exists a sufficiently large $N$ such that for any $x \in \R$,
-        \begin{align*}
-          n > N &\implies \abs{g_{n}(x) - \frac{x}{2}} < \eps.\\
-                &\implies \abs{\left(\frac{nx}{2n} + \frac{\sin(nx)}{2n}\right) - \frac{x}{2}} < \eps.\\
-                &\implies \abs{\frac{\sin(nx)}{2n}} < \eps.\\
-        \end{align*}
+        \[
+          n > N \implies \abs{g_{n}(x) - \frac{x}{2}} < \eps.
+        \]
+      Rewriting the left-hand side,
+        \[
+          \abs{g_{n}(x) - \frac{x}{2}} = \abs{\left(\frac{nx}{2n} + \frac{\sin(nx)}{2n}\right) - \frac{x}{2}} = \abs{\frac{\sin(nx)}{2n}}.
+        \]
       Notice that $\sin(nx) \in [-1, 1]$ for any choice of $x \in \R$ and $n \in \N$.
       Therefore, we may make $\frac{\sin(nx)}{2n} < \frac{1}{n}$ arbitrarily small by
       the fact that $1/n \to 0$ as $n \to \infty$ and \thmref{thm:squeeze-theorem-sequences}.
