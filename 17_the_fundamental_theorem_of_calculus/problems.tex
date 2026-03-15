@@ -1,0 +1,76 @@
+\section{The Fundamental Theorem of Calculus}
+
+\begin{callout}
+  We take the following theorem to be given (as the proof has been
+  \href{https://www.youtube.com/watch?v=dgfnO4uDR58}{provided}).
+  \begin{theorem}[Fundamental Theorem of Calculus]
+  \label{thm:ftc}
+    \leavevmode
+    \begin{enumerate}[label=(\roman*)]
+      \item \label{thm:ftc-i} If $f : [a, b] \to \R$ is integrable, and $F : [a, b] \to \R$ satisfies $F'(x) = f(x)$ for all
+        $x \in [a, b]$, then
+        \[
+          \int_{a}^{b} f = F(b) - F(a).
+        \]
+
+      \item \label{thm:ftc-ii} Let $g : [a, b] \to \R$ be integrable, and for $x \in [a, b]$, define
+        \[
+          G(x) = \int_{a}^{x} g.
+        \]
+        Then $G$ is continuous on $[a, b]$. If $g$ is continuous at some point $c \in [a, b]$,
+        then $G$ is differentiable at $c$ and $G'(c) = g(c)$.
+    \end{enumerate}
+  \end{theorem}
+\end{callout}
+
+\begin{problem}
+  Let $F(x) = \int_{0}^{x} t^{2} \dt$. Find $F'(x)$.
+  \vspace{\baselineskip}
+
+  $F'(x) = x^{2}$ by \thmref{thm:ftc}\ref{thm:ftc-ii}.
+\end{problem}
+
+\begin{problem}
+  Let $G(x) = \int_{2}^{x} e^{t} \dt$. Compute $G'(x)$ and $G(2)$.
+  \vspace{\baselineskip}
+
+  $G'(x) = e^{x}, \quad G(2) = 0$ by \thmref{thm:ftc}\ref{thm:ftc-ii}.
+\end{problem}
+
+\begin{problem}
+  Evaluate $\int_{1}^{4} 2x \dx$.
+  \vspace{\baselineskip}
+
+  $\int_{1}^{4} 2x \dx = \left. x^{2} \right\rvert_{1}^{4} = (4)^{2} - (1)^{2} = 15$ by \thmref{thm:ftc}\ref{thm:ftc-i}.
+\end{problem}
+
+\begin{problem}
+  Find all continuous functions $f$ satisfying
+  \[
+    \int_{0}^{x} f(t) \dt = (f(x))^{2} + C
+  \]
+  for some constant $C$.
+  \vspace{\baselineskip}
+
+  Differentiating both sides using \thmref{thm:ftc}\ref{thm:ftc-ii} and
+  \thmref{thm:chain-rule} gives
+  \[
+    f(x) = 2f(x)f'(x).
+  \]
+  Dividing by $f(x)$ (when nonzero) yields $f'(x) = \frac{1}{2}$,
+  so $f(x) = \frac{x}{2} + A$. Evaluating at $x = 0$ gives $C = -A^{2}$.
+  Therefore, $f(x) = \frac{x}{2} + A$ for any $A \in \R$, with $C = -A^{2}$.
+\end{problem}
+
+\begin{problem}
+  Let $F(x) = \int_{0}^{x} x \, f(t) \dt$. Find $F'(x)$. (The answer is not $x f(x)$;
+  first rewrite the integral in an obvious way, then differentiate.)
+  \vspace{\baselineskip}
+
+  Since $x$ is constant with respect to $t$, we have
+  $F(x) = x \int_{0}^{x} f(t) \dt$. By \thmref{thm:prod-rule-deriv}
+  and \thmref{thm:ftc}\ref{thm:ftc-ii},
+  \[
+    F'(x) = \int_{0}^{x} f(t) \dt + x \, f(x).
+  \]
+\end{problem}
