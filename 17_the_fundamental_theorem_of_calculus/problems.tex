@@ -74,3 +74,163 @@
     F'(x) = \int_{0}^{x} f(t) \dt + x \, f(x).
   \]
 \end{problem}
+
+\begin{problem}
+  Decide whether each statement is true or false, providing a short justification
+  for each conclusion.
+  \begin{enumerate}[label=(\alph*)]
+    \item If $g = h'$ for some $h$ on $[a, b]$, then $g$ is continuous on $[a, b]$.
+
+      False. If $h(x) = \abs{x}$ over $[-1, 1]$, then $g = h'$ is not continuous on 
+      $[a,b]$.
+
+    \item If $g$ is continuous on $[a, b]$, then $g = h'$ for some $h$ on $[a, b]$.
+
+      True. Define $h(x) = \int_{a}^{x} g$. Since $g$ is continuous on $[a, b]$,
+      \thmref{thm:ftc}\ref{thm:ftc-ii} implies $h'(x) = g(x)$ for all $x \in [a, b]$.
+
+    \item If $H(x) = \int_{a}^{x} h$ is differentiable at $c \in [a, b]$, then $h$ is
+      continuous at $c$.
+
+      False. Let $h : [-1, 1] \to \R$ be defined by $h(x) = 1$ for $x \neq 0$ and
+      $h(0) = 0$. Then $H(x) = \int_{-1}^{x} h = x + 1$, so $H'(0) = 1$ exists, but $h$
+      is not continuous at $c = 0$.
+
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  The hypothesis in \thmref{thm:ftc}\ref{thm:ftc-i} that $F'(x) = f(x)$ for all
+  $x \in [a, b]$ is slightly stronger than it needs to be. Carefully read the proof
+  and state exactly what needs to be assumed with regard to the relationship between
+  $f$ and $F$ for the proof to be valid.
+  \vspace{\baselineskip}
+
+  The proof applies \thmref{thm:mean-value-theorem} to $F$ on subintervals of a partition,
+  which only requires $F$ to be continuous on $[a, b]$ and differentiable on $(a, b)$. Thus
+  it suffices to assume $F'(x) = f(x)$ for all $x \in (a, b)$, with $F$ continuous on
+  $[a, b]$.
+\end{problem}
+
+\begin{problem}
+  Show that if $f : [a, b] \to \R$ is continuous and $\int_{a}^{x} f = 0$ for all
+  $x \in [a, b]$, then $f(x) = 0$ everywhere on $[a, b]$. Provide an example to show
+  that this conclusion does not follow if $f$ is not continuous.
+  \vspace{\baselineskip}
+
+  Define $F(x) = \int_{a}^{x} f = 0$ for all $x \in [a, b]$. Since $f$ is continuous,
+  \thmref{thm:ftc}\ref{thm:ftc-ii} gives $F'(x) = f(x)$ for all $x \in [a, b]$. But
+  $F \equiv 0$, so $f(x) = F'(x) = 0$ everywhere on $[a, b]$.
+
+  For a counterexample without continuity, let $f(x) = 0$ for $x \neq c$ and $f(c) = 1$
+  for some $c \in [a, b]$. Then $\int_{a}^{x} f = 0$ for all $x$, but $f(c) \neq 0$.
+\end{problem}
+
+\begin{problem}
+  \label{prob:integration-by-parts}
+  (Integration-by-parts).
+  \begin{enumerate}[label=(\alph*)]
+    \item Assume $h(x)$ and $k(x)$ have continuous derivatives on $[a, b]$ and derive
+      the familiar integration-by-parts formula
+      \[
+        \int_{a}^{b} h(t)k'(t) \dt = h(b)k(b) - h(a)k(a) - \int_{a}^{b} h'(t)k(t) \dt.
+      \]
+
+      Define $F(x) = h(x)k(x)$. By \thmref{thm:prod-rule-deriv},
+      $F'(x) = h'(x)k(x) + h(x)k'(x)$, which is continuous since $h', k, h, k'$ are all
+      continuous. Applying \thmref{thm:ftc}\ref{thm:ftc-i},
+      \[
+        \int_{a}^{b} \bigl[h'(t)k(t) + h(t)k'(t)\bigr] \dt = F(b) - F(a) = h(b)k(b) - h(a)k(a).
+      \]
+      Rearranging gives the result.
+
+    \item Explain how the result in Exercise 7.4.6 can be used to slightly weaken the
+      hypothesis in part (a).
+
+      Exercise 7.4.6 states that the product of integrable functions is integrable. Since
+      $h$ and $k$ are differentiable and hence continuous, the products $h'k$ and $hk'$ are
+      integrable whenever $h'$ and $k'$ are merely integrable. Thus $F' = h'k + hk'$ is
+      integrable and \thmref{thm:ftc}\ref{thm:ftc-i} still applies, so we only need $h'$
+      and $k'$ to be integrable rather than continuous.
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  Use part \ref{thm:ftc-ii} of \thmref{thm:ftc} to construct another proof of
+  part \ref{thm:ftc-i} of \thmref{thm:ftc} under the stronger hypothesis that $f$
+  is continuous. (To get started, set $G(x) = \int_{a}^{x} f$.)
+  \begin{proof}
+    Define $G(x) = \int_{a}^{x} f$. Since $f$ is continuous,
+    \thmref{thm:ftc}\ref{thm:ftc-ii} gives $G'(x) = f(x)$ for all $x \in [a, b]$.
+    But $F'(x) = f(x)$ as well, so $(F - G)'(x) = 0$ for all $x \in [a, b]$.
+
+    Let $D = F - G$. For any $x \in [a, b]$, applying
+    \thmref{thm:mean-value-theorem} to $D$ on $[a, x]$ yields some $c \in (a, x)$
+    with
+    \[
+      D(x) - D(a) = D'(c)(x - a) = 0 \cdot (x - a) = 0,
+    \]
+    so $D(x) = D(a)$ for all $x$, i.e.\ $F(x) = G(x) + C$ for some constant $C$.
+    Since $G(a) = 0$,
+    \[
+      F(b) - F(a) = (G(b) + C) - (G(a) + C) = G(b) = \int_{a}^{b} f.
+    \]
+  \end{proof}
+\end{problem}
+
+\begin{problem}
+  \label{prob:natural-log-euler}
+  (Natural Logarithm and Euler's Constant). Let
+  \[
+    L(x) = \int_{1}^{x} \frac{1}{t} \dt,
+  \]
+  where we consider only $x > 0$.
+  \begin{enumerate}[label=(\alph*)]
+    \item What is $L(1)$? Explain why $L$ is differentiable and find $L'(x)$.
+
+      $L(1) = \int_{1}^{1} \frac{1}{t} \dt = 0$. Since $1/t$ is continuous for $x > 0$,
+      \thmref{thm:ftc}\ref{thm:ftc-ii} implies $L$ is differentiable and $L'(x) = 1/x$.
+
+    \item Show that $L(xy) = L(x) + L(y)$. (Think of $y$ as a constant and
+      differentiate $g(x) = L(xy)$.) \label{prob:log-product-rule}
+
+      Fix $y > 0$ and define $g(x) = L(xy)$. By \thmref{thm:ftc}\ref{thm:ftc-ii} and
+      \thmref{thm:chain-rule}, $g'(x) = \frac{1}{xy} \cdot y = \frac{1}{x} = L'(x)$. So $(g - L)'(x) = 0$, and
+      by \thmref{thm:mean-value-theorem}, $g(x) = L(x) + C$ for some constant $C$. Setting
+      $x = 1$ gives $L(y) = L(1) + C = C$. Therefore $L(xy) = L(x) + L(y)$.
+
+    \item Show $L(x/y) = L(x) - L(y)$.
+
+      By \ref{prob:log-product-rule}, $L(x) = L\bigl(\frac{x}{y} \cdot y\bigr) = L(x/y) + L(y)$.
+      Rearranging gives $L(x/y) = L(x) - L(y)$.
+
+    \item Let
+      \[
+        \gamma_{n} = \left( 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n} \right) - L(n).
+      \]
+      Prove that $(\gamma_{n})$ converges. The constant $\gamma = \lim \gamma_{n}$ is called
+      Euler's constant.
+
+    \item Show how consideration of the sequence $\gamma_{2n} - \gamma_{n}$ leads to the
+      interesting identity
+      \[
+        L(2) = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \frac{1}{5} - \frac{1}{6} + \cdots.
+      \]
+  \end{enumerate}
+\end{problem}
+
+\begin{problem}
+  \label{prob:total-variation}
+  Given a function $f$ on $[a, b]$, define the \textit{total variation} of $f$ to be
+  \[
+    Vf = \sup \left\{ \sum_{k=1}^{n} \abs{f(x_{k}) - f(x_{k-1})} \right\},
+  \]
+  where the supremum is taken over all partitions $P$ of $[a, b]$.
+  \begin{enumerate}[label=(\alph*)]
+    \item If $f$ is continuously differentiable ($f'$ exists as a continuous function),
+      use the Fundamental Theorem of Calculus to show $Vf \leq \int_{a}^{b} \abs{f'}$.
+
+    \item Use the Mean Value Theorem to establish the reverse inequality and conclude
+      that $Vf = \int_{a}^{b} \abs{f'}$.
+  \end{enumerate}
+\end{problem}
