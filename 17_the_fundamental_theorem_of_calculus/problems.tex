@@ -63,6 +63,7 @@
 \end{problem}
 
 \begin{problem}
+  \label{prob:leibniz-integral-rule}
   Let $F(x) = \int_{0}^{x} x \, f(t) \dt$. Find $F'(x)$. (The answer is not $x f(x)$;
   first rewrite the integral in an obvious way, then differentiate.)
   \vspace{\baselineskip}
@@ -73,6 +74,19 @@
   \[
     F'(x) = \int_{0}^{x} f(t) \dt + x \, f(x).
   \]
+  \begin{callout}[Leibniz's Integral Rule]
+    \probref{prob:leibniz-integral-rule} is a special case of \textit{Leibniz's integral rule}
+    (differentiation under the integral sign). In general, if
+    $g(x, t)$ has a continuous partial derivative in $x$, then
+    \[
+      \frac{d}{dx} \int_{a(x)}^{b(x)} g(x, t) \dt
+      = g(x, b(x)) \cdot b'(x) - g(x, a(x)) \cdot a'(x)
+        + \int_{a(x)}^{b(x)} \frac{\partial g}{\partial x}(x, t) \dt.
+    \]
+    Here $g(x, t) = x f(t)$, $a(x) = 0$, and $b(x) = x$, so the
+    boundary term gives $x f(x)$ and the partial derivative term gives
+    $\int_{0}^{x} f(t) \dt$, recovering the same result.
+  \end{callout}
 \end{problem}
 
 \begin{problem}
@@ -199,7 +213,7 @@
       by \thmref{thm:mean-value-theorem}, $g(x) = L(x) + C$ for some constant $C$. Setting
       $x = 1$ gives $L(y) = L(1) + C = C$. Therefore $L(xy) = L(x) + L(y)$.
 
-    \item Show $L(x/y) = L(x) - L(y)$.
+t a    \item Show $L(x/y) = L(x) - L(y)$.
 
       By \ref{prob:log-product-rule}, $L(x) = L\bigl(\frac{x}{y} \cdot y\bigr) = L(x/y) + L(y)$.
       Rearranging gives $L(x/y) = L(x) - L(y)$.
@@ -210,6 +224,32 @@
       \]
       Prove that $(\gamma_{n})$ converges. The constant $\gamma = \lim \gamma_{n}$ is called
       Euler's constant.
+
+      \begin{proof}
+        We show $(\gamma_{n})$ is decreasing and bounded below, then apply
+        \thmref{thm:monotone-convergence}. First, observe
+        \begin{align*}
+          \gamma_{n} - \gamma_{n+1}
+            &= -\frac{1}{n+1} + \left( \int_{1}^{n+1} \frac{1}{t} \dt - \int_{1}^{n} \frac{1}{t} \dt \right) \\
+            &= \int_{n}^{n+1} \frac{1}{t} \dt - \frac{1}{n+1}.
+        \end{align*}
+        Since $1/t$ is strictly decreasing on $[n, n+1]$,
+        \[
+          \int_{n}^{n+1} \frac{1}{t} \dt > \int_{n}^{n+1} \frac{1}{n+1} \dt = \frac{1}{n+1},
+        \]
+        so $\gamma_{n} > \gamma_{n+1}$ for all $n$. Next, because $1/t$ is decreasing,
+        each term $1/k$ satisfies
+        \[
+          \frac{1}{k} \geq \int_{k}^{k+1} \frac{1}{t} \dt
+        \]
+        for $k = 1, \ldots, n-1$. Summing gives
+        $\sum_{k=1}^{n-1} \frac{1}{k} \geq \int_{1}^{n} \frac{1}{t} \dt$, so
+        \[
+          \gamma_{n} = \sum_{k=1}^{n} \frac{1}{k} - L(n) \geq \frac{1}{n} > 0.
+        \]
+        Therefore $(\gamma_{n})$ is decreasing and bounded below by $0$, and
+        \thmref{thm:monotone-convergence} gives the result.
+      \end{proof}
 
     \item Show how consideration of the sequence $\gamma_{2n} - \gamma_{n}$ leads to the
       interesting identity
