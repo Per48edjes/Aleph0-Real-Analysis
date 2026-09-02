@@ -45,7 +45,6 @@ make release
 - `main.tex`: master file, includes unit files and sets up document layout
 - `macros.tex`: math symbols, theorem styles, and environments
 - `XX_unit_name/problems.tex`: problems for each unit (where `XX` is the unit number and `unit_name` is the unit's name)
-- `build.sh`: builds `main.pdf`
 - `release.sh`: releases PDF to GitHub with metadata
 
 ## Notes
