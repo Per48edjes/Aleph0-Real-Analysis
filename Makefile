@@ -1,13 +1,22 @@
-.PHONY: all clean purge release
+.PHONY: all clean purge release shell
+
+NIX ?= nix
+RESULT ?= result
+PDF ?= main.pdf
 
 all:
-	./build.sh
+	$(NIX) build --out-link $(RESULT)
+	rm -f $(PDF)
+	ln -s $(RESULT)/main.pdf $(PDF)
+
+shell:
+	$(NIX) develop
 
 clean:
-	latexmk -C
+	$(NIX) develop --command latexmk -C
 
 purge: clean
-	rm -f main.pdf
+	rm -f $(PDF) $(RESULT)
 
 release: all
 	./release.sh

@@ -10,7 +10,15 @@ This repository contains artifacts from the [Aleph 0](https://aleph0.substack.co
 make
 ```
 
-(Requires TeX Live 2024.)
+Requires Nix with flakes enabled. The build uses the pinned TeX Live environment
+from `flake.nix` and leaves `main.pdf` as a local symlink to the ignored Nix
+build result.
+
+Enter the same environment for interactive editing with:
+
+```bash
+make shell
+```
 
 ### Clean auxiliary files
 
