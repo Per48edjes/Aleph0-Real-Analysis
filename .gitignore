@@ -9,6 +9,7 @@
 *.pdf
 *.bbl
 *.blg
+/result
 
 # OS-specific
 .DS_Store
